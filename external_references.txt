@@ -1,0 +1,7 @@
+Install with "sudo dpkg -i xxx.deb"
+
+playerctl	https://github.com/acrisci/playerctl/releases
+Font-Awesome	https://github.com/FortAwesome/Font-Awesome/releases
+		https://fontawesome.com/cheatsheet
+Yosemite San Francisco font	https://github.com/supermarin/yosemitesanfranciscofont
+Arc-darker chrome theme		https://github.com/horst3180/arc-theme/tree/master/extra/Chrome	
