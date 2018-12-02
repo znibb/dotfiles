@@ -35,7 +35,7 @@ dpkg -i "$script_path/tools/playerctl-0.5.0_amd64.deb"
 ## Copy/link files
 # Fonts
 mkdir -p $target_path/.fonts
-cp $script_path/fonts/. $target_path/.fonts/
+cp -r $script_path/fonts/ $target_path/.fonts/
 # i3 config
 mkdir -p $target_path/.config/i3
 ln -f $script_path/i3/config 				$target_path/.config/i3/
