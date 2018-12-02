@@ -1,15 +1,21 @@
 #!/bin/bash
 
-if [ "$#" -ne 1 ]; then
-	echo "Error: no home path"
-	exit 1
+# If no path was given as argument use current users home dir as target
+if [[ "$#" -ne 1 ]]; then
+	target_path=$(echo $HOME)
+else
+	target_path=$1
 fi
 
-home_path=$1
-script_path=$(dirname $(realpath $0))	# Get path script was run from
+# Get path this script was run from
+script_path=$(dirname $(realpath $0))
 
-# If batching "apt update" has already been run
-if [ ! -f /tmp/apt_updated ]; then
+# Prompt for confirmation if not running as batched script
+if [[ ! -f /tmp/running_batch ]]; then
+	read -p "Install i3 with '$target_path' as base target dir? [Y/n]" answer
+	case $answer in
+		[Nn]* ) exit 1;;
+	esac
 	apt update
 fi
 
@@ -19,36 +25,29 @@ apt install -y \
 	vim \
 	pulseaudio-utils \
 	feh \
-	arandr \
-	lxappearance \
-	arc-theme \
-	moka-icon-theme \
-	rofi \
-	compton \
-	i3blocks \
 	scrot \
 	imagemagick
+	font-awesome
 
 # Install playerctl
-dpkg -i "$script_path/tools/playerctl-0.5.0_amd64.deb"	# For media control
+dpkg -i "$script_path/tools/playerctl-0.5.0_amd64.deb"
 
-## Copy files
-mkdir -p $home_path/.fonts
-cp $script_path/fonts/* $home_path/.fonts/
-mkdir -p $home_path/.config/i3
-cp $script_path/i3/i3.conf $home_path/.config/i3/config
-cp $script_path/i3/i3blocks.conf $home_path/.config/i3/i3blocks.conf
-mkdir -p $home_path/scripts/i3blocks
-cp $script_path/i3/i3blocks_scripts/* $home_path/scripts/i3blocks/
-cp $script_path/scripts/i3lock.sh $home_path/scripts/i3lock.sh
-cp $script_path/scripts/toggleTouchpad.sh $home_path/scripts/toggleTouchPad.sh
-cp $script_path/i3/.gtkrc-2.0 $home_path/
-mkdir -p $home_path/.config/gtk-3.0
-cp $script_path/i3/gtk-3.0_settings.ini $home_path/.config/gtk-3.0/settings.ini
-mkdir -p $home_path/wallpapers
-cp $script_path/wallpapers/* $home_path/wallpapers/
-
-
-#sudo add-apt-repository ppa:moka/daily
-#sudo apt-get update
-#sudo apt-get install moka-icon-theme
+## Copy/link files
+# Fonts
+mkdir -p $target_path/.fonts
+cp $script_path/fonts/* $target_path/.fonts/
+# i3 config
+mkdir -p $target_path/.config/i3
+ln $script_path/i3/config 				$target_path/.config/i3/
+ln $script_path/i3/lock_clean.sh	$target_path/.config/i3/
+ln -s $target_path/.config/i3/lock_clean.sh $target_path/.config/i3/lock.sh
+# User scripts
+mkdir -p $target_path/scripts
+ln $script_path/user_scripts/* $target_path/scripts/
+# Helper scripts
+mkdir -p $target_path/.scripts
+ln $scripts_path/helper_scripts/* $target_path/.scripts
+# Wallpapers
+mkdir -p $target_path/wallpapers
+cp $script_path/wallpapers/* $target_path/wallpapers
+ln -s $target_path/wallpapers/misty_hills.jpg $target_path/.config/wallpaper.image

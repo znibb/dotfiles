@@ -1,0 +1,200 @@
+# Parameters
+set $term i3-sensible-terminal
+set $lock ~/.config/i3/lock.sh
+set $exit i3-msg exit
+set $suspend	systemctl suspend
+set $hibernate	systemctl hibernate
+set $reboot	systemctl reboot
+set $shutdown	systemctl poweroff -i
+set $netrefresh --no-startup-id systemctl restart NetworkManager
+
+# Set modifier
+set $mod Mod4
+
+# Font for window titles
+font pango:monospace 10
+
+# Start polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# # Basic settings
+# Restart i3 (to upgrade i3 or reload config)
+bindsym $mod+Shift+r	restart
+# Start a terminal
+bindsym $mod+Return	exec $term
+# Kill focused container
+bindsym $mod+q		kill
+# Open launcher
+bindsym $mod+d		exec dmenu_run
+# Enter resize mode
+bindsym $mod+r		mode "resize"
+# Keepass global auto type
+bindsym Control+Mod1+a keepass2 -auto-type-selected
+
+# Power management 
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l		exec --no-startup-id $lock, mode "default"
+    bindsym e		exec --no-startup-id $exit, mode "default"
+    bindsym s		exec --no-startup-id $lock && $suspend, mode "default"
+    bindsym h		exec --no-startup-id $lock && $hibernate, mode "default"
+    bindsym r 		exec --no-startup-id $reboot, mode "default"
+    bindsym Shift+s	exec --no-startup-id $shutdown, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+x mode "$mode_system"
+
+# # Window control
+# Change focus
+bindsym $mod+h		focus left
+bindsym $mod+j		focus down
+bindsym $mod+k		focus up
+bindsym $mod+l		focus right
+
+bindsym $mod+Left	focus left
+bindsym $mod+Down	focus down
+bindsym $mod+Up		focus up
+bindsym $mod+Right	focus right
+
+# Move focused window
+bindsym $mod+Shift+h		move left
+bindsym $mod+Shift+j		move down
+bindsym $mod+Shift+k		move up
+bindsym $mod+Shift+l		move right
+
+bindsym $mod+Shift+Left		move left
+bindsym $mod+Shift+Down		move down
+bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Right	move right
+
+# Split orientations
+bindsym $mod+v	split v
+bindsym $mod+c	split h
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f	fullscreen toggle
+
+# Resize mode
+mode "resize" {
+# Default style
+#	bindsym h	resize shrink width 10 px or 10 ppt
+#	bindsym j	resize grow height 10 px or 10 ppt
+#	bindsym k	resize shrink height 10 px or 10 ppt
+#	bindsym l	resize grow width 10 px or 10 ppt
+
+#	bindsym Left	resize shrink width 10 px or 10 ppt
+#	bindsym Down	resize grow height 10 px or 10 ppt
+#	bindsym Up	resize shrink height 10 px or 10 ppt
+#	bindsym Right	resize grow width 10 px or 10 ppt
+
+# Improved style
+	bindsym h				resize grow		left	10 px or 10 ppt
+	bindsym Shift+h	resize shrink	left	10 px or 10 ppt
+	bindsym j				resize grow		down	10 px or 10 ppt
+	bindsym Shift+j	resize shrink	down	10 px or 10 ppt
+	bindsym k				resize grow		up	10 px or 10 ppt
+	bindsym Shift+k	resize shrink	up	10 px or 10 ppt
+	bindsym l				resize grow 	right	10 px or 10 ppt
+	bindsym Shift+l	resize shrink	right	10 px or 10 ppt
+
+	bindsym Left				resize grow 	left	10 px or 10 ppt
+	bindsym Shift+Left	resize shrink	left	10 px or 10 ppt
+	bindsym Down				resize grow		down	10 px or 10 ppt
+	bindsym Shift+Down	resize shrink	down	10 px or 10 ppt
+	bindsym Up					resize grow		up 10 px or 10 ppt
+	bindsym Shift+Up		resize shrink	up	10 px or 10 ppt
+	bindsym Right				resize grow		right	10 px or 10 ppt
+	bindsym Shift+Right	resize shrink	right	10 px or 10 ppt
+
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# # Workspace settings
+# Workspace labels
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws0 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1 
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+# # Function key shortcuts
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec	--no-startup-id pactl set-sink-volume 0 +5%  # up volume
+bindsym XF86AudioLowerVolume exec	--no-startup-id pactl set-sink-volume 0 -5%  # down volume
+bindsym XF86AudioMute exec 		--no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Media player controls
+bindsym XF86AudioPlay	exec playerctl play-pause
+#bindsym XF86AudioPause	exec playerctl pause
+bindsym XF86AudioNext	exec playerctl next
+bindsym XF86AudioPrev	exec playerctl previous
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp	exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown	exec xbacklight -dec 10 # decrease screen brightness
+
+# Print screen
+set $scrot_base -q 100 '%F_%T.png' -e 'mv $f ~/screenshots/'
+bindsym --release Print exec 		exec scrot $scrot_base
+bindsym --release Shift+Print		exec scrot -u $scrot_base
+bindsym --release Control+Print	exec scrot -s $scrot_base
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# # Autostart background apps
+# Setting the desktop background
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.image
+# Dunst for notifications
+#exec --no-startup-id dunst
+# Composite manager
+#exec --no-startup-id compton --xrender-sync-fence
+# Unclutter hides mouse after a set delay
+exec --no-startup-id unclutter
+# Network Manager applet (nm-applet vs nm-tray?)
+exec --no-startup-id nm-applet
+# Dropbox
+exec --no-startup-id dropbox start
+# Spotify
+exec spotify
+
+# # Assign apps to workspaces
+# Spotify
+for_window [class="Spotify"] move to workspace $ws0
+# Slack
+for_window [class="Slack"] move to workspace $ws9
