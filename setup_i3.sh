@@ -27,7 +27,10 @@ apt install -y \
 	feh \
 	scrot \
 	imagemagick
-	font-awesome
+	font-awesome \
+	# Required for polybar
+	libmpdclient2 \
+	libxcb-ewmh2
 
 # Install playerctl
 dpkg -i "$script_path/tools/playerctl-0.5.0_amd64.deb"
@@ -55,8 +58,9 @@ cp -flr $script_path/helper_scripts/. $target_path/.scripts/
 mkdir -p $target_path/wallpapers
 cp -r $script_path/wallpapers/* $target_path/wallpapers/
 ln -sf $target_path/wallpapers/misty_hills.jpg $target_path/.config/wallpaper.image
-# Bash aliases etc
+# Bash config
 cp -flr $script_path/bash/.	$target_path/
+rm $target_path/.profile
 # X resouces
 cp -flr $script_path/X/.		$target_path/
 # vim config
