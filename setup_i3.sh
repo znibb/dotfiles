@@ -38,26 +38,26 @@ mkdir -p $target_path/.fonts
 cp $script_path/fonts/* $target_path/.fonts/
 # i3 config
 mkdir -p $target_path/.config/i3
-ln $script_path/i3/config 				$target_path/.config/i3/
-ln $script_path/i3/lock_clean.sh	$target_path/.config/i3/
-ln -s $target_path/.config/i3/lock_clean.sh $target_path/.config/i3/lock.sh
+ln -f $script_path/i3/config 				$target_path/.config/i3/
+ln -f $script_path/i3/lock_clean.sh	$target_path/.config/i3/
+ln -sf $target_path/.config/i3/lock_clean.sh $target_path/.config/i3/lock.sh
 # polybar
 cp $script_path/tools/polybar /usr/local/bin/polybar
 mkdir -p $target_path/.config/polybar
-ln $script_path/polybar/* $target_path/.config/polybar/
+ln -f $script_path/polybar/* $target_path/.config/polybar/
 # User scripts
 mkdir -p $target_path/scripts
-ln $script_path/user_scripts/* $target_path/scripts/
+ln -f $script_path/user_scripts/* $target_path/scripts/
 # Helper scripts
 mkdir -p $target_path/.scripts
-ln $script_path/helper_scripts/* $target_path/.scripts/
+ln -f $script_path/helper_scripts/* $target_path/.scripts/
 # Wallpapers
 mkdir -p $target_path/wallpapers
 cp $script_path/wallpapers/* $target_path/wallpapers
-ln -s $target_path/wallpapers/misty_hills.jpg $target_path/.config/wallpaper.image
+ln -sf $target_path/wallpapers/misty_hills.jpg $target_path/.config/wallpaper.image
 # Bash aliases etc
-ln $script_path/bash/*	$target_path/
+ln -f $script_path/bash/.*	$target_path/
 # X resouces
-ln $script_path/X/*			$target_path/
+ln -f $script_path/X/.*			$target_path/
 # vim config
-ln $script_path/vim/*		$target_path/
+ln -f $script_path/vim/.*		$target_path/
