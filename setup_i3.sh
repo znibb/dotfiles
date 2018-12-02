@@ -50,7 +50,7 @@ mkdir -p $target_path/scripts
 ln $script_path/user_scripts/* $target_path/scripts/
 # Helper scripts
 mkdir -p $target_path/.scripts
-ln $scripts_path/helper_scripts/* $target_path/.scripts/
+ln $script_path/helper_scripts/* $target_path/.scripts/
 # Wallpapers
 mkdir -p $target_path/wallpapers
 cp $script_path/wallpapers/* $target_path/wallpapers
