@@ -44,20 +44,20 @@ ln -sf $target_path/.config/i3/lock_clean.sh $target_path/.config/i3/lock.sh
 # polybar
 cp $script_path/tools/polybar /usr/local/bin/polybar
 mkdir -p $target_path/.config/polybar
-ln -f $script_path/polybar/. $target_path/.config/polybar/
+cp -flr $script_path/polybar/ $target_path/.config/polybar/
 # User scripts
 mkdir -p $target_path/scripts
-ln -f $script_path/user_scripts/. $target_path/scripts/
+cp -flr $script_path/user_scripts/ $target_path/scripts/
 # Helper scripts
 mkdir -p $target_path/.scripts
-ln -f $script_path/helper_scripts/. $target_path/.scripts/
+cp -flr $script_path/helper_scripts/ $target_path/.scripts/
 # Wallpapers
 mkdir -p $target_path/wallpapers
-cp $script_path/wallpapers/. $target_path/wallpapers/
+cp -r $script_path/wallpapers/* $target_path/wallpapers/
 ln -sf $target_path/wallpapers/misty_hills.jpg $target_path/.config/wallpaper.image
 # Bash aliases etc
-ln -f $script_path/bash/.	$target_path/
+cp -flr $script_path/bash/	$target_path/
 # X resouces
-ln -f $script_path/X/.			$target_path/
+cp -flr $script_path/X/			$target_path/
 # vim config
-ln -f $script_path/vim/.		$target_path/
+cp -flr $script_path/vim/		$target_path/
