@@ -3,4 +3,5 @@
 # Config file shortcuts
 alias cfi='vim ~/.config/i3/config'
 alias cfp='vim ~/.config/polybar/config'
+alias cfpm='cd ~/.config/polybar'
 alias cfx='vim ~/.Xresources'
