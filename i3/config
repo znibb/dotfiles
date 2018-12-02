@@ -179,7 +179,7 @@ bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # # Autostart background apps
 # Setting the desktop background
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.image
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.config/wallpaper.image
 # Dunst for notifications
 #exec --no-startup-id dunst
 # Composite manager
