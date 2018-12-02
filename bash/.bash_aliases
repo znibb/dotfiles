@@ -1,0 +1,10 @@
+alias ..="cd .."
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias ls="ls -hN --color=auto --group-directories-first"
+alias la="ls -a"
+alias ll="ls -la"
+alias grep="grep --color=auto"
+alias psa="ps aux"
+alias psg="psa | grep "
+alias pdf="zathura --fork "
+alias sshhosts="sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/config"

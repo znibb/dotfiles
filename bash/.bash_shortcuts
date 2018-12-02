@@ -1,0 +1,6 @@
+# vim: filetype=sh
+
+# Config file shortcuts
+alias cfi='vim ~/.config/i3/config'
+alias cfp='vim ~/.config/polybar/config'
+alias cfx='vim ~/.Xresources'
