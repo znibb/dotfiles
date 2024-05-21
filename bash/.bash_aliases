@@ -9,6 +9,7 @@ alias psg="psa | grep "
 alias pdf="zathura --fork "
 alias sshhosts="sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/config"
 alias cfa='vim ~/.bash_aliases'
+alias cfr='vim ~/.bashrc'
 alias cft='vim ~/.tmux.conf'
 alias tml='tmux ls'
 alias tma='tmux attach -t '
