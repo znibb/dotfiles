@@ -9,6 +9,9 @@ FILES=".bash_aliases
 cd $HOME
 
 for filename in $FILES; do
+	if [ -f $filename ]; then
+		rm $filename
+	fi
 	ln -s -v $script_path/$filename $filename
 done
 
