@@ -16,3 +16,8 @@ alias tma='tmux attach -t '
 alias tmn='tmux new -s '
 alias tmr='tmux rename-session -t '
 alias tmk='tmux kill-session -t '
+
+mcd () {
+	mkdir -v "$1"
+	cd "$1"
+}
