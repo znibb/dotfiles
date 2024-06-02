@@ -26,3 +26,8 @@ fi
 
 # Source aliases
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+
+# Pretty prompt via synth-shell-prompt.sh
+if [ -f ~/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source ~/.config/synth-shell/synth-shell-prompt.sh
+fi
