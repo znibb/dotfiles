@@ -17,6 +17,8 @@ alias cft='vim ~/.tmux.conf'
 
 # Docker
 alias dc='docker compose'
+alias dcr='docker compose up -d --force-recreate'
+alias dcl='docker compose logs -f'
 
 # Git
 alias g='git'
