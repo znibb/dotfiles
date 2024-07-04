@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Author:		znibb
-# Contact:	znibb@zkylark.se
-# Date created:				2018-10-21
-# Date last modified:	2018-10-21
+# Author:			znibb
+# Contact:			znibb@zkylark.se
+# Date created:		2018-10-21
+# Last modified:	2024-07-04
 
 # Echoes current system load averages, can toggle between default value and normalizing for core count 
 # For use e.g. as a script component in polybar

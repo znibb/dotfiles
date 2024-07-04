@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Author:		znibb
-# Contact:	znibb@zkylark.se
-# Date created:				2018-10-21
-# Date last modified:	2018-10-21
+# Author:			znibb
+# Contact:			znibb@zkylark.se
+# Date created:		2018-10-21
+# Last modified:	2018-10-21
 
 # Echoes current information about Spotify playback
 # For use e.g. as a script component in polybar

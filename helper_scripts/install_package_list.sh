@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Author:		znibb
-# Contact:	znibb@zkylark.se
-# Date created:				2018-10-29
-# Date last modified:	2018-11-14
+# Author:			znibb
+# Contact:			znibb@zkylark.se
+# Date created:		2018-10-29
+# Last modified:	2024-07-04
 
 # Allows easy install of a list of apt packages from a text file
 
