@@ -1,0 +1,15 @@
+font_color_user="white"
+background_user="21"
+texteffect_user="bold"
+
+font_color_host="white"
+background_host="27"
+texteffect_host="bold"
+
+font_color_pwd="white"
+background_pwd="33"
+texteffect_pwd="bold"
+
+font_color_input="33"
+background_input="none"
+texteffect_input="bold"

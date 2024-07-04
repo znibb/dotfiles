@@ -1,0 +1,3 @@
+The default config will also source override-colour.config if it exists
+Create override file as a symlink to your desired colour profile
+E.g.: ln -sf colours/red override-colour.config
