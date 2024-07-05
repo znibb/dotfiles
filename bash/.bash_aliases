@@ -37,7 +37,7 @@ alias tmk='tmux kill-session -t '
 
 # Other
 alias pdf='zathura --fork '
-alias sshhosts='sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/config'
+alias sshhosts="sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/config"
 
 # Helper functions
 mcd () {
