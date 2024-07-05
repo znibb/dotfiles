@@ -14,6 +14,7 @@ alias psg="psa | grep "
 alias cfa='vim ~/.bash_aliases'
 alias cfr='vim ~/.bashrc'
 alias cft='vim ~/.tmux.conf'
+alias cfv='vim ~/.vimrc'
 
 # Docker
 alias dc='docker compose'
