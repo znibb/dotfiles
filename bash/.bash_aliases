@@ -2,13 +2,13 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # File system traversal/usage
-alias ..="cd .."
-alias ls="ls -hN --color=auto --group-directories-first"
-alias la="ls -a --color=auto --group-directories-first"
-alias ll="ls -la --color=auto --group-directories-first"
-alias grep="grep --color=auto"
-alias psa="ps aux"
-alias psg="psa | grep "
+alias ..='cd ..'
+alias ls='ls -hN --color=auto --group-directories-first'
+alias la='ls -a --color=auto --group-directories-first'
+alias ll='ls -la --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+alias psa='ps aux'
+alias psg='psa | grep '
 
 # Config shortcuts
 alias cfa='vim ~/.bash_aliases'
@@ -36,8 +36,8 @@ alias tmr='tmux rename-session -t '
 alias tmk='tmux kill-session -t '
 
 # Other
-alias pdf="zathura --fork "
-alias sshhosts="sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/config"
+alias pdf='zathura --fork '
+alias sshhosts='sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/config'
 
 # Helper functions
 mcd () {
