@@ -5,12 +5,12 @@ set nocompatible
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 if has('filetype')
- 	filetype indent plugin on
+	filetype indent plugin on
 endif
 
 " Enable syntax highlighting
 if has('syntax')
-	 syntax on
+	syntax on
 endif
 
 " Enable hybrid line numbering
