@@ -10,6 +10,6 @@ font_color_pwd="white"
 background_pwd="21"
 texteffect_pwd="bold"
 
-font_color_input="27"
+font_color_input="33"
 background_input="none"
 texteffect_input="bold"
