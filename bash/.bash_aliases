@@ -4,8 +4,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # File system traversal/usage
 alias ..='cd ..'
 alias ls='ls -hN --color=auto --group-directories-first'
-alias la='ls -a --color=auto --group-directories-first'
-alias ll='ls -la --color=auto --group-directories-first'
+alias la='ls -ah --color=auto --group-directories-first'
+alias ll='ls -lah --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 alias psa='ps aux'
 alias psg='psa | grep '
