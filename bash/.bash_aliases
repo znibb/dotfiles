@@ -8,7 +8,7 @@ alias la='ls -ah --color=auto --group-directories-first'
 alias ll='ls -lah --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 alias psa='ps aux'
-alias psg='psa | grep '
+alias psg='psa | grep -v grep | grep '
 
 # Config shortcuts
 alias cfa='vim ~/.bash_aliases'
