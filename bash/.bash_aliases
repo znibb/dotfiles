@@ -27,6 +27,7 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gd='git diff'
+alias lg='lazygit'
 
 # Tmux
 alias tml='tmux ls'
