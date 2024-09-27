@@ -1,0 +1,88 @@
+- name: Install pacman packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      # Yay prereqs
+      - base-devel
+
+      # System
+      - bat
+      - btop
+      - fastfetch
+      - fzf # fuzzy-finder
+      - git
+      - lazygit
+      - man
+      - nfs-utils
+      - rsync
+      - speedtest-cli
+      - tldr
+      - tmux
+      - tree
+      - ttf-meslo-nerd # Font for Starship prompt
+      - unzip
+      - usbutils # lsusb etc
+      - vim
+      - zsh
+
+      # Desktop
+      - 7zip
+      - bluezutils # bluetoothctl
+      - discord
+      - firefox
+      - ghostty
+      - keepassxc
+      - libreoffice-still
+      - nextcloud-client
+      - signal-desktop
+      - spotify-launcher
+      - thunderbird
+      - vlc
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Installed pacman packages
+  debug: msg="{{ pacman_output.packages }}"
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Check for yay binary
+  ansible.builtin.stat:
+    path: "/usr/bin/{{ aur_helper }}"
+  register: bin_file
+
+- name: Clone yay source
+  ansible.builtin.git:
+    repo: "https://aur.archlinux.org/{{ aur_helper }}.git"
+    dest: "{{ aur_helper_dir }}"
+  register: source_cloned
+  when: not bin_file.stat.exists
+
+- name: Build and install yay
+  ansible.builtin.command:
+    chdir: "{{ aur_helper_dir }}"
+    cmd: makepkg -si --noconfirm
+    creates: "/usr/bin/{{ aur_helper }}"
+  when: not bin_file.stat.exists
+
+- name: Remove build files for yay
+  ansible.builtin.file:
+    path: "{{ aur_helper_dir }}"
+    state: absent
+  when: source_cloned is changed
+
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - firefox-extension-keepassxc-browser # Keepass Firefox integration
+      - starship # prompt customization
+      - vscodium-bin
+      - wireguird # Wireguard GUI client
+    state: present

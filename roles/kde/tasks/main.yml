@@ -1,0 +1,76 @@
+- name: Install pacman packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - power-profiles-daemon
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Installed pacman packages
+  debug: msg="{{ pacman_output.packages }}"
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Enable power-profiles-daemon
+  become: true
+  ansible.builtin.systemd_service:
+    name: power-profiles-daemon
+    enabled: true
+    state: started
+
+# - name: Allow KDE Connect ports
+#   become: true
+#   ansible.builtin.iptables:
+#     chain: "{{ item.chain }}"
+#     protocol: "{{ item.protocol }}"
+#     destination_port: "{{ item.port }}"
+#     ctstate: "{{ item.state }}"
+#     jump: ACCEPT
+#     action: insert
+#   loop:
+#     - { chain: INPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+#     - { chain: INPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+#     - { chain: OUTPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+#     - { chain: OUTPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+
+# - name: Install AUR packages
+#   kewlfft.aur.aur:
+#     use: yay
+#     update_cache: true
+#     name:
+#       - ags-hyprpanel-git
+#     state: present
+
+- name: Ensure KDE config directory exists
+  ansible.builtin.file:
+    path: "{{ kde_config_dir }}"
+    state: directory
+    mode: '0755'
+
+# https://github.com/shalva97/kde-configuration-files
+- name: Symlink KDE configs
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    # Input devices, cursors
+    - { src: "kcminputrc", dest: "{{ kde_config_dir }}/kcminputrc"}
+    # System tray module autoloading settings
+    - { src: "kded5rc", dest: "{{ kde_config_dir }}/kded5rc"}
+    # Global theme
+    - { src: "kdeglobals", dest: "{{ kde_config_dir }}/kdeglobals" }
+    # Global shortcuts
+    - { src: "kglobalshortcutsrc", dest: "{{ kde_config_dir }}/kglobalshortcutsrc" }
+    # Session settings
+    - { src: "ksmserverrc", dest: "{{ kde_config_dir }}/ksmserverrc" }
+    # Virtual desktops
+    - { src: "kwinrc", dest: "{{ kde_config_dir }}/kwinrc" }
+    # System tray customization
+    - { src: "plasma-org.kde.plasma.desktop-appletsrc", dest: "{{ kde_config_dir }}/plasma-org.kde.plasma.desktop-appletsrc"}

@@ -1,0 +1,13 @@
+- name: Ensure vim config directory exists
+  ansible.builtin.file:
+    path: "{{ vim_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink vim config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "vimrc", dest: "{{ vim_config_dir }}/vimrc" }

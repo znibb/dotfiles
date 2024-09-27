@@ -1,0 +1,49 @@
+- name: Set user shell to zsh
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+
+- name: Set ZDOTDIR
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/zsh/zshenv
+    state: present
+    line: export ZDOTDIR=$HOME/.config/zsh
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Ensure zsh config directory exists
+  ansible.builtin.file:
+    path: "{{ zsh_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink zsh configs
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "zshenv",   dest: "{{ zsh_config_dir }}/.zshenv" }
+    - { src: "zprofile", dest: "{{ zsh_config_dir }}/.zprofile" }
+    - { src: "zshrc",    dest: "{{ zsh_config_dir }}/.zshrc" }
+    - { src: "zlogin",   dest: "{{ zsh_config_dir }}/.zlogin" }
+    - { src: "zlogout",  dest: "{{ zsh_config_dir }}/.zlogout" }
+    - { src: "aliases",  dest: "{{ zsh_config_dir }}/aliases" }
+    - { src: "themes",   dest: "{{ zsh_config_dir }}/themes"}
+
+- name: Check if a theme is set
+  ansible.builtin.stat:
+    path: "{{ zsh_config_dir }}/theme"
+  register: theme_file
+
+- name: Set default theme
+  ansible.builtin.file:
+    src: "{{ zsh_config_dir }}/themes/gruvbox-rainbow.toml"
+    dest: "{{ zsh_config_dir }}/starship-theme"
+    state: link
+    force: true
+  when: not theme_file.stat.exists or not theme_file.stat.islnk

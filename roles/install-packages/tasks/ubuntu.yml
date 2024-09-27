@@ -1,0 +1,23 @@
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      # System
+      - git
+      - tree
+      - btop
+      - speedtest-cli
+      - neofetch
+      - tldr
+      - bat
+      - zsh
+      - man
+      - tmux
+      - neovim
+
+      # Desktop
+      # ghostty
+      # firefox
+      # discord
+      # spotify
+      # thunderbird

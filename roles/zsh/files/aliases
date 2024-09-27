@@ -1,0 +1,62 @@
+# general
+alias   ..='cd ..'
+alias grep='grep --color=auto'
+alias  psa='ps aux'
+alias  psg='ps aux | grep -v grep | grep '
+alias tree="tree -a -I '.git|__pycache__'"
+alias code='vscodium . > /dev/null 2>&1'
+alias  cat='bat --color=always'
+
+# config shortcuts
+alias  cfa='vim ~/.config/zsh/.aliases'
+alias  cfb='vim ~/.config/waybar/config'
+alias cfbm='vim ~/.config/waybar/modules.json'
+alias  cfe='vim ~/.dotfiles/sway/sway-bootstrap'
+alias  cfs='vim ~/.config/sway/config'
+alias  cft='vim ~/.config/alacritty/alacritty.toml'
+alias cftm='vim ~/.config/tmux/.tmux.conf'
+alias  cfv='vim ~/.config/nvim/init.lua'
+alias  cfz='vim ~/.config/zsh/.zshrc'
+alias  cfw='vim ~/.config/wofi/style.css'
+
+# dotfiles shortcuts
+alias  dfi='cd ~/.dotfiles/'
+alias dfiz='cd ~/.dotfiles/zsh'
+
+# ls
+alias  l='ls -lahH --group-directories-first --color=auto'
+alias la='ls -ahH --group-directories-first --color=auto'
+alias ls='ls -hH --group-directories-first --color=auto'
+
+# ansible
+alias  a='ansible'
+alias ap='ansible-playbook'
+
+# docker
+alias   d='docker'
+alias  dc='docker compose'
+alias dcl='docker compose logs -f'
+alias dcr='docker compose up -d --force-recreate'
+
+# git
+alias  g='git'
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gs='git status'
+alias gp='git pull'
+alias gP='git push'
+alias lg='lazygit'
+
+# tmux
+alias tma='tmux attach -t '
+alias tmk='tmux kill-session -t '
+alias tml='tmux tmux ls'
+alias tmn='tmux new -s '
+alias tmr='tmux rename-session -t '
+
+# helper functions
+mcd () {
+  mkdir -v "$1"
+  cd "$1"
+}

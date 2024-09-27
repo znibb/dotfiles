@@ -1,0 +1,18 @@
+# Used for setting user's interactive shell configuration and executing
+# commands, will be read when starting as an interactive shell
+
+# Source aliases
+[ -f $ZDOTDIR/aliases ] && source $ZDOTDIR/aliases
+
+# Activate fuzzy-finder
+source <(fzf --zsh)
+
+# History
+HISTFILE=$ZDOTDIR/zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# Load theme
+export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
+eval "$(starship init zsh)"

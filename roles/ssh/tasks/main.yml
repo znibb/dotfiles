@@ -1,0 +1,17 @@
+- name: "Ensure {{ ssh_config_dir }} directory exists"
+  ansible.builtin.file:
+    path: "{{ ssh_config_dir }}"
+    state: directory
+    mode: '0700'
+
+- name: "Check if {{ ssh_config_dir }}/config exists"
+  ansible.builtin.stat:
+    path: "{{ ssh_config_dir }}/config"
+  register: config_file
+
+- name: Copy template config file
+  ansible.builtin.copy:
+    src: config
+    dest: "{{ ssh_config_dir }}/config"
+    mode: '0600'
+  when: not config_file.stat.exists
