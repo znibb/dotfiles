@@ -8,6 +8,5 @@ which alacritty > /dev/null 2>&1 || sudo apt install -y alacritty
 
 
 # Link config file
-cd $HOME
 mkdir -p $target_path
 ln -s -f $script_path/alacritty/alacritty.toml $target_path/alacritty.toml

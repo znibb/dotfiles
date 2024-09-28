@@ -1,0 +1,31 @@
+* {
+  border-radius: 10px;
+  border: none;
+}
+
+window {
+  font-size: 20px;
+  font-family: "Ubuntu Sans Mono";
+  background-color: rgba(50, 50, 50, 0.9);
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+#entry{
+  padding: 0.40em;
+}
+
+#entry:selected {
+  background-color: #bbccdd;
+  background: linear-gradient(90deg, #bbccdd, #dd77ff);
+}
+
+#text:selected {
+  color: #333333;
+}
+
+#input{
+  background-color: rgba(50, 50, 50, 0.5);
+  color: white;
+  padding: 0.25em;
+}

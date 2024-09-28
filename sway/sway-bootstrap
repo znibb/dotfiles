@@ -1,5 +1,9 @@
 # Zsh config dir
 export ZDOTDIR=$HOME/.config/zsh
 
+# Default apps
+export EDITOR=nvim
+export TERMINAL=alacritty
+
 # Start sway
 exec sway "$@"

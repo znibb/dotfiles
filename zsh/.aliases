@@ -1,20 +1,26 @@
 # general
-alias vim='nvim'
-alias ..='cd ..'
+alias  vim='nvim'
+alias   ..='cd ..'
 alias grep='grep --color=auto'
-alias psa='ps aux'
-alias psg='ps aux | grep -v grep | grep '
+alias  psa='ps aux'
+alias  psg='ps aux | grep -v grep | grep '
+alias tree="tree -a -I '.git|__pycache__'"
 
 # config shortcuts
-alias cfa='nvim ~/.config/zsh/.aliases'
-alias cfs='nvim ~/.config/sway/config'
-alias cft='nvim ~/.config/tmux/.tmux.conf'
-alias cfv='nvim ~/.config/nvim/init.lua'
+alias  cfa='nvim ~/.config/zsh/.aliases'
+alias  cfe='nvim ~/.dotfiles/sway/sway-bootstrap'
+alias  cfs='nvim ~/.config/sway/config'
+alias  cft='nvim ~/.config/alacritty/alacritty.toml'
+alias cftm='nvim ~/.config/tmux/.tmux.conf'
+alias  cfv='nvim ~/.config/nvim/init.lua'
+alias  cfz='nvim ~/.config/zsh/.zshrc'
+alias  cfw='nvim ~/.config/wofi/style.css'
 
 # dotfiles shortcuts
-alias  df='cd ~/.dotfiles'
-alias dfp='cd ~/.dotfiles/packages'
-alias dfz='cd ~/.dotfiles/zsh'
+alias  dfi='cd ~/.dotfiles/'
+alias dfis='cd ~/.dotfiles/sway'
+alias dfip='cd ~/.dotfiles/packages'
+alias dfiz='cd ~/.dotfiles/zsh'
 
 # ls
 alias  l='ls -lah --group-directories-first --color=auto'
