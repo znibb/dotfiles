@@ -48,12 +48,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 # 'swaymsg -t get_inputs' for info
 input "type:touchpad" { 
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-    accel_profile "flat" # (adaptive/flat)
-    pointer_accel 0.5 # used for adaptive
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+  accel_profile "flat" # (adaptive/flat)
+  pointer_accel 0.5 # used for adaptive
 }
 input "type:keyboard" {
     xkb_layout se

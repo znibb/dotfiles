@@ -1,0 +1,5 @@
+# Zsh config dir
+export ZDOTDIR=$HOME/.config/zsh
+
+# Start sway
+exec sway "$@"

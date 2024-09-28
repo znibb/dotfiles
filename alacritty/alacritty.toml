@@ -8,9 +8,22 @@ decorations = "Full"
 decorations_theme_variant = "Dark"
 
 [font]
-normal.family = "Cascadia Code PL"
-bold.family = "Cascadia Code PL"
-italic.family = "Cascadia Code PL"
-bold_italic.family = "Cascadia Code PL"
+size = 12.0
 
-size = 15.0
+# Show available fonts with 'fc-list : family style'
+# Some fonts provide 'Oblique' style instead of 'Italic'
+[font.bold]
+family = "monospace"
+style = "Bold"
+
+[font.italic]
+family = "monospace"
+style = "Italic"
+
+[font.bold_italic]
+family = "monospace"
+style = "Bold Italic"
+
+[font.normal]
+family = "monospace"
+style = "Regular"
