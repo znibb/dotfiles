@@ -32,7 +32,7 @@ sudo cp -r $script_path/sddm/* /usr/share/sddm/themes
 
 # Set up icons for login screen usage
 ln -s -f $script_path/icons $target_path/icons
-ln -s $target_path/icons/default.icon $HOME/.face.icon
+ln -s $target_path/icons/default.icon $HOME/.face.icon > /dev/null 2>&1
 
 # Install swaylock for lock screen
 which swaylock > /dev/null 2>&1 || sudo apt-get install -y swaylock
@@ -47,8 +47,6 @@ mkdir -p $target_path/sway
 mkdir -p $target_path/wofi
 ln -s -f $script_path/sway/sway-config $target_path/sway/config
 ln -s -f $script_path/sway/config.d $target_path/sway/config.d
-ln -s -f $script_path/sway/input_devices.conf $target_path/sway/config.d/input_devices.conf
-ln -s -f $script_path/sway/special_keys.conf $target_path/sway/config.d/special_keys.conf
 ln -s -f $script_path/sway/wofi-style.css $target_path/wofi/style.css
 
 # Update sway-desktop to launch bootstrap script

@@ -33,9 +33,6 @@ mode "$mode_system" {
 }
 bindsym $mod+x mode "$mode_system"
 
-# Suspend on lid close
-#bindsym lid:on exec $suspend
-
 # gaps
 gaps inner 4
 gaps outer 4
@@ -43,7 +40,7 @@ gaps outer 4
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.config/wallpaper/misty_hills.jpg fill
+output * bg ~/.config/wallpaper/wallpaper fill
 #
 # Example configuration:
 #
@@ -55,11 +52,11 @@ output * bg ~/.config/wallpaper/misty_hills.jpg fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+#exec swayidle -w \
+#      timeout 300 'swaylock -f -c 000000' \
+#      timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#      before-sleep 'swaylock -f -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
