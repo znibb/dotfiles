@@ -25,3 +25,15 @@ df -h
 
 # Find the physical offset of the swap file
 sudo filefrag -v /swapfile | awk '{ print $4 }' | head -4 | tail -1 | sed 's/.\{2\}$//'
+
+## Change SDDM theme
+Store themes in ./sddm/ and use `setup_sway` to copy them to /usr/share/sddm/themes
+
+Set theme by adding the following to /etc/sddm.conf:
+```
+[Theme]
+Current=THEME-NAME
+```
+
+# Wallpaper
+Change wallpaper by symlinking desired wallpaper to ~/.config/wallpaper/wallpaper

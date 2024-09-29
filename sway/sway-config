@@ -13,7 +13,7 @@ set $suspend    systemctl suspend
 set $reboot     systemctl reboot
 set $shutdown   systemctl poweroff -i
 set $hibernate  sudo systemctl hibernate
-set $lock swaylock -C ~/.config/sway/swaylock.conf
+set $lock exec ~/.config/sway/lock.sh
 set $exit sway exit
 
 ## Power Management
@@ -38,8 +38,7 @@ gaps inner 4
 gaps outer 4
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Set wallpaper
 output * bg ~/.config/wallpaper/wallpaper fill
 #
 # Example configuration:
@@ -52,10 +51,10 @@ output * bg ~/.config/wallpaper/wallpaper fill
 #
 # Example configuration:
 #
-#exec swayidle -w \
-#      timeout 300 'swaylock -f -c 000000' \
-#      timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#      before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+      timeout 30  $lock \
+      timeout 60 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+      before-sleep $lock
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
