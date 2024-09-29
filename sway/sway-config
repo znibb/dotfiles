@@ -1,20 +1,49 @@
 # Set modifier key, Mod4 = "Windows key"
 set $mod Mod4
 
-# gaps
-gaps inner 4
-gaps outer 4
-
+## Paramaters
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 
+# Power states
+set $suspend    systemctl suspend
+set $reboot     systemctl reboot
+set $shutdown   systemctl poweroff -i
+set $hibernate  sudo systemctl hibernate
+set $lock swaylock -C ~/.config/sway/swaylock.conf
+set $exit sway exit
+
+## Power Management
+# Power menu
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+  bindsym l       exec --no-startup-id $lock, mode "default"
+  bindsym e       exec --no-startup-id $exit, mode "default"
+  bindsym s       exec --no-startup-id $lock && $suspend, mode "default"
+  bindsym h       exec --no-startup-id $lock && $hibernate, mode "default"
+  bindsym r       exec --no-startup-id $reboot, mode "default"
+  bindsym Shift+s exec --no-startup-id $shutdown, mode "default"
+
+  # Back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_system"
+
+# Suspend on lid close
+#bindsym lid:on exec $suspend
+
+# gaps
+gaps inner 4
+gaps outer 4
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.config/wallpaper/misty_hills.jpg fill
 #
 # Example configuration:
 #
@@ -46,7 +75,7 @@ bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec wofi --show drun
+bindsym $mod+d exec wofi --show drun --allow-images --width 400
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.

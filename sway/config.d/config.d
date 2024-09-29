@@ -1,0 +1,1 @@
+/home/znibb/.dotfiles/sway/config.d

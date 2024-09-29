@@ -4,11 +4,29 @@
 }
 
 window {
-  font-size: 20px;
+  font-size: 24px;
   font-family: "Ubuntu Sans Mono";
   background-color: rgba(50, 50, 50, 0.9);
   color: white;
   border-bottom: 3px solid white;
+}
+
+#input {
+  background-color: rgba(50, 50, 50, 0.5);
+  color: white;
+  padding: 0.25em;
+}
+
+#scroll {
+
+}
+
+#inner-box {
+
+}
+
+#outer-box {
+
 }
 
 #entry{
@@ -20,12 +38,15 @@ window {
   background: linear-gradient(90deg, #bbccdd, #dd77ff);
 }
 
+#text {
+
+}
+
 #text:selected {
   color: #333333;
 }
 
-#input{
-  background-color: rgba(50, 50, 50, 0.5);
-  color: white;
-  padding: 0.25em;
+#img {
+  margin-left: 0.50em;
+  margin-right: 0.50em;
 }

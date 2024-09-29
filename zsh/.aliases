@@ -23,9 +23,9 @@ alias dfip='cd ~/.dotfiles/packages'
 alias dfiz='cd ~/.dotfiles/zsh'
 
 # ls
-alias  l='ls -lah --group-directories-first --color=auto'
-alias la='ls -ah --group-directories-first --color=auto'
-alias ls='ls -h --group-directories-first --color=auto'
+alias  l='ls -lahH --group-directories-first --color=auto'
+alias la='ls -ahH --group-directories-first --color=auto'
+alias ls='ls -hH --group-directories-first --color=auto'
 
 # docker
 alias  dc='docker compose'
