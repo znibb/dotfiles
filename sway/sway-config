@@ -52,9 +52,9 @@ output * bg ~/.config/wallpaper/wallpaper fill
 # Example configuration:
 #
 exec swayidle -w \
-      timeout 30  $lock \
-      timeout 60 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-      before-sleep $lock
+  timeout 300 ~/.config/sway/lock.sh \
+  timeout 600 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
