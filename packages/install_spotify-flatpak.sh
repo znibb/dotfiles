@@ -10,7 +10,7 @@ which flatpak > /dev/null || sudo apt install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo > /dev/null
 
 # Install
-which $bin_name > /dev/null 2>&1 || flatpak install -y flathub $flatpak_name > /dev/null 2>&1
+which $bin_name > /dev/null 2>&1 || flatpak install -y flathub $flatpak_name
 
 # Create symlink to /use/bin
 sudo ln -s -f /var/lib/flatpak/exports/bin/$flatpak_name /usr/bin/$bin_name

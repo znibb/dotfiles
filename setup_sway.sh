@@ -7,7 +7,7 @@ target_path=~/.config
 which sway > /dev/null 2>&1 || sudo apt-get install -y sway
 mkdir -p $target_path/sway
 ln -s -f $script_path/sway/sway-config $target_path/sway/config
-ln -s -f $script_path/sway/config.d $target_path/sway/config.d
+ln -s -f $script_path/sway/config.d $target_path/sway
 
 # Update sway-desktop to launch bootstrap script
 sudo sed -i -e 's/^Exec=sway$/Exec=sway-bootstrap/g' /usr/share/wayland-sessions/sway.desktop

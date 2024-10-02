@@ -1,7 +1,8 @@
 #!/bin/bash
-bin_name=spotify
-desktop_name=Spotify
-flatpak_name=com.spotify.Client
+
+bin_name=
+desktop_name=
+flatpak_name=
 
 # Ensure flatpak is installed
 which flatpak > /dev/null || sudo apt install -y flatpak
@@ -10,7 +11,7 @@ which flatpak > /dev/null || sudo apt install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo > /dev/null
 
 # Install
-which $bin_name > /dev/null 2>&1 || flatpak install -y flathub $flatpak_name > /dev/null 2>&1
+which $bin_name > /dev/null 2>&1 || flatpak install -y flathub $flatpak_name
 
 # Create symlink to /use/bin
 sudo ln -s -f /var/lib/flatpak/exports/bin/$flatpak_name /usr/bin/$bin_name

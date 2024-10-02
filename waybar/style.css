@@ -1,7 +1,8 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+/*    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+    font-family: MesloLGS NF;
+    font-size: 16px;
 }
 
 window#waybar {
@@ -158,7 +159,11 @@ label:focus {
 #backlight {
     background-color: #90b1b1;
 }
-
+#load {
+    padding: 0 5px;
+    background-color: #34e1eb;
+    color: #000000;
+}
 #network {
     background-color: #2980b9;
 }
@@ -184,6 +189,12 @@ label:focus {
 
 #wireplumber.muted {
     background-color: #f53c3c;
+}
+
+#custom-spotify {
+    background-color: #66cc99;
+    color: #000000;
+    padding: 0 5px;
 }
 
 #custom-media {

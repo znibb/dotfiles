@@ -139,6 +139,13 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 ## ===== Layout stuff =====
 
+# Custom window behaviour
+for_window [title="nmtui"] floating enable
+for_window [title="Volume Control"] floating enable
+
+# Remove window title bar
+default_border pixel
+
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
@@ -199,8 +206,6 @@ bindsym $mod+r mode "resize"
 
 ## ===== Status Bar =====
 # Read `man 5 sway-bar` for more information about this section.
-#exec_always nm-tray
-for_window [title="nmtui"] floating enable
 bar {
   swaybar_command waybar
 }

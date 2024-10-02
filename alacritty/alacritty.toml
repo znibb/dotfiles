@@ -12,18 +12,21 @@ size = 12.0
 
 # Show available fonts with 'fc-list : family style'
 # Some fonts provide 'Oblique' style instead of 'Italic'
-[font.bold]
-family = "monospace"
-style = "Bold"
+#[font.bold]
+#family = "monospace"
+#style = "Bold"
 
-[font.italic]
-family = "monospace"
-style = "Italic"
+#[font.italic]
+#family = "monospace"
+#style = "Italic"
 
-[font.bold_italic]
-family = "monospace"
-style = "Bold Italic"
+#[font.bold_italic]
+#family = "monospace"
+#style = "Bold Italic"
+
+#[font.normal]
+#family = "monospace"
+#style = "Regular"
 
 [font.normal]
-family = "monospace"
-style = "Regular"
+family = "MesloLGS NF"
