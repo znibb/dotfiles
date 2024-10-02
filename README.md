@@ -1,3 +1,12 @@
+## Wifi with wpa_supplicant
+wpa_cli
+add_network
+set_network 0 ssid "<SSID>"
+set_network 0 psk "<password>"
+enable_network 0
+save_config
+quit
+
 ## Setup swap from file
 # Disable swap if active, check with 'free'
 sudo swapoff

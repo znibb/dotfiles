@@ -1,7 +1,7 @@
 #!/bin/bash
-bin_name=spotify
-desktop_name=Spotify
-flatpak_name=com.spotify.Client
+bin_name=discord
+desktop_name=Discord
+flatpak_name=com.discordapp.Discord
 
 # Ensure flatpak is installed
 which flatpak > /dev/null || sudo apt install -y flatpak

@@ -25,8 +25,10 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
   bindsym l       exec --no-startup-id $lock, mode "default"
   bindsym e       exec --no-startup-id $exit, mode "default"
-  bindsym s       exec --no-startup-id $lock && $suspend, mode "default"
-  bindsym h       exec --no-startup-id $lock && $hibernate, mode "default"
+  bindsym s       exec --no-startup-id $suspend && $lock, mode "default"
+  bindsym h       exec --no-startup-id $hibernate && $lock, mode "default"
+#  bindsym s       exec --no-startup-id $lock && $suspend, mode "default"
+#  bindsym h       exec --no-startup-id $lock && $hibernate, mode "default"
   bindsym r       exec --no-startup-id $reboot, mode "default"
   bindsym Shift+s exec --no-startup-id $shutdown, mode "default"
 
@@ -67,7 +69,7 @@ bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec wofi --show run --allow-images --width 400
+bindsym $mod+d exec wofi --show drun --allow-images --width 400
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -106,6 +108,9 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 ## ===== Workspaces: =====
+
+# Alt+Tab between two last active workspaces
+bindsym Mod1+Tab workspace back_and_forth
 
 # Switch to workspace
 bindsym $mod+1 workspace number 1
@@ -194,18 +199,10 @@ bindsym $mod+r mode "resize"
 
 ## ===== Status Bar =====
 # Read `man 5 sway-bar` for more information about this section.
+#exec_always nm-tray
+for_window [title="nmtui"] floating enable
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+  swaybar_command waybar
 }
 
 include /etc/sway/config.d/*
