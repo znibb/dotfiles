@@ -144,7 +144,7 @@ for_window [title="nmtui"] floating enable
 for_window [title="Volume Control"] floating enable
 
 # Remove window title bar
-default_border pixel
+default_border pixel 3
 
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
