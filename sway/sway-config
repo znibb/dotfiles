@@ -43,8 +43,8 @@ gaps inner 4
 gaps outer 4
 
 ## ===== Output configuration =====
-# Set wallpaper
-output * bg ~/.config/wallpaper/wallpaper fill
+# Set wallpapers
+output * bg ~/.config/wallpapers/wallpaper fill
 #
 # Example configuration:
 #
@@ -142,6 +142,18 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Custom window behaviour
 for_window [title="nmtui"] floating enable
 for_window [title="Volume Control"] floating enable
+
+# Custom window placement
+assign [class="Spotify"]  workspace 9
+assign [class="KeePass2"] workspace 9
+assign [class="Ferdium"]  workspace 10
+assign [class="discord"]  workspace 10
+
+# Autostart
+exec spotify
+exec keepass2
+exec ferdium
+exec discord
 
 # Remove window title bar
 default_border pixel 3

@@ -7,7 +7,7 @@ target_path=~/.config/waybar
 which waybar > /dev/null 2>&1 || sudo apt-get install -y waybar
 
 # Install fonts-powerline for icons
-fc-list | grep Powerline > /dev/null 2>&1 || sudo apt-get install -y fonts-powerline
+#fc-list | grep Powerline > /dev/null 2>&1 || sudo apt-get install -y fonts-powerline
 
 # Install custom fonts as well
 sudo cp fonts/*.ttf /usr/local/share/fonts

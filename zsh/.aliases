@@ -5,6 +5,7 @@ alias grep='grep --color=auto'
 alias  psa='ps aux'
 alias  psg='ps aux | grep -v grep | grep '
 alias tree="tree -a -I '.git|__pycache__'"
+alias code='vscodium . > /dev/null 2>&1'
 
 # config shortcuts
 alias  cfa='nvim ~/.config/zsh/.aliases'

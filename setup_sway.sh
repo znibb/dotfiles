@@ -9,11 +9,14 @@ mkdir -p $target_path/sway
 ln -s -f $script_path/sway/sway-config $target_path/sway/config
 ln -s -f $script_path/sway/config.d $target_path/sway
 
-# Update sway-desktop to launch bootstrap script
+# Update sway.desktop to launch bootstrap script
 sudo sed -i -e 's/^Exec=sway$/Exec=sway-bootstrap/g' /usr/share/wayland-sessions/sway.desktop
 
 # Link bootstrap script to /usr/local/bin
 sudo ln -s -f $script_path/sway/sway-bootstrap /usr/local/bin/sway-bootstrap
+
+# Install wallpapers
+ln -s -f $script_path/wallpapers $target_path
 
 # Add sudoers file to enable use of systemctl without sudo password
 #sudo cp $script_path/sway/systemctl-sway /etc/sudoers.d/
@@ -49,3 +52,8 @@ which wob > /dev/null 2>&1 || sudo apt-get install -y wob
 
 # Copy sddm themes to system dir
 sudo cp -r $script_path/sddm/* /usr/share/sddm/themes
+
+# Set custom theme if not already done
+grep "\[Theme\]" /etc/sddm.conf > /dev/null 2>&1 || echo "
+[Theme]
+Current=Bluish-SDDM" | sudo tee -a /etc/sddm.conf

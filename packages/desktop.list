@@ -1,8 +1,20 @@
+# Email
 thunderbird
+# PDF reader
 zathura
+# Bluetooth GUI
 blueman
+# Nextcloud
 nextcloud-desktop
+# TUI image viewer
 eog
+# Password management
 keepass2
 kpcli
+# Audio device GUI
 pavucontrol
+# Diagnose key-codes
+wev
+# Screenshot utility
+slurp
+grim

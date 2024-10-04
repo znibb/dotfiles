@@ -14,4 +14,4 @@ Pin-Priority: 900
 sudo apt update > /dev/null 2>&1
 
 # Install
-which firefox > /dev/null 2>&1 || sudo apt install -y firefox > /dev/null 2>&1
+which firefox > /dev/null 2>&1 || sudo apt install -y firefox
