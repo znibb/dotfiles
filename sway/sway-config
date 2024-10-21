@@ -39,8 +39,8 @@ mode "$mode_system" {
 bindsym $mod+x mode "$mode_system"
 
 # gaps
-gaps inner 4
-gaps outer 4
+gaps inner 2
+gaps outer 2
 
 ## ===== Output configuration =====
 # Set wallpapers
@@ -68,6 +68,7 @@ bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 # MX Ergo S keybinds
 #bindcode --whole-window 275 
 bindcode --whole-window 276 workspace back_and_forth
+
 # Kill focused window
 bindsym $mod+Shift+q kill
 
