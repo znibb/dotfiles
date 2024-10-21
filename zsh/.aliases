@@ -6,6 +6,7 @@ alias  psa='ps aux'
 alias  psg='ps aux | grep -v grep | grep '
 alias tree="tree -a -I '.git|__pycache__'"
 alias code='vscodium . > /dev/null 2>&1'
+alias  cat='batcat --color=always'
 
 # config shortcuts
 alias  cfa='nvim ~/.config/zsh/.aliases'
