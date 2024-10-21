@@ -65,6 +65,9 @@ bindsym $mod+Return exec $TERMINAL
 # Take a screenshot window and copy to clipboard
 bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 
+# MX Ergo S keybinds
+#bindcode --whole-window 275 
+bindcode --whole-window 276 workspace back_and_forth
 # Kill focused window
 bindsym $mod+Shift+q kill
 
