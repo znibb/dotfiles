@@ -19,7 +19,6 @@ sudo ln -s -f $script_path/sway/sway-bootstrap /usr/local/bin/sway-bootstrap
 ln -s -f $script_path/wallpapers $target_path
 
 # Add sudoers file to enable use of systemctl without sudo password
-#sudo cp $script_path/sway/systemctl-sway /etc/sudoers.d/
 echo "$USER ALL= NOPASSWD: /bin/systemctl hibernate" | sudo tee /etc/sudoers.d/systemctl-sway > /dev/null
 
 # Install swayidle for screen timeout
@@ -29,6 +28,13 @@ which swayidle > /dev/null 2>&1 || sudo apt-get install -y swayidle
 which swaylock > /dev/null 2>&1 || sudo apt-get install -y swaylock
 ln -s -f $script_path/sway/swaylock.conf $target_path/sway/swaylock.conf
 ln -s -f $script_path/sway/lock.sh $target_path/sway/lock.sh
+
+# Install sway notification center
+which swaync > /dev/null 2>&1 || sudo apt-get install -y sway-notification-center
+mkdir -p $target_path/swaync
+ln -s -f $script_path/sway/swaync/config.json $target_path/swaync/config.json
+ln -s -f $script_path/sway/swaync/configSchema.json $target_path/swaync/configSchema.json
+ln -s -f $script_path/sway/swaync/style.css $target_path/swaync/style.css
 
 # Install wofi (launcher/menu program)
 which wofi > /dev/null 2>&1 || sudo apt-get install -y wofi

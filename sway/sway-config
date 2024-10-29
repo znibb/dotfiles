@@ -62,12 +62,21 @@ exec swayidle -w \
 # Start a terminal
 bindsym $mod+Return exec $TERMINAL
 
+# Open GUI file browser
+bindsym $mod+e exec dolphin
+
+# Toggle notification control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 # Take a screenshot window and copy to clipboard
 bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 
 # MX Ergo S keybinds
 #bindcode --whole-window 275 
-bindcode --whole-window 276 workspace back_and_forth
+#bindcode --whole-window 276 workspace back_and_forth
+
+# MX Master 3S keybinds
+bindcode --whole-window 277 workspace back_and_forth
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -158,6 +167,8 @@ exec spotify
 exec keepass2
 exec ferdium
 exec discord
+exec swaync
+exec nextcloud
 
 # Remove window title bar
 default_border pixel 3
@@ -169,9 +180,8 @@ bindsym $mod+b splith
 bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -225,5 +235,3 @@ bindsym $mod+r mode "resize"
 bar {
   swaybar_command waybar
 }
-
-include /etc/sway/config.d/*

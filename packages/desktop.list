@@ -20,3 +20,5 @@ slurp
 grim
 # Office suite
 libreoffice
+# Input emulation
+ydotool
