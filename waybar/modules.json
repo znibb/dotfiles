@@ -1,0 +1,70 @@
+{
+  "backlight": {
+    "format": "{icon}{percent:3}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true,
+    "tooltip-format": "{timeTo}"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "CPU:{usage:2}%",
+    "tooltip": true
+  },
+  "load": {
+    "interval": 5,
+    "format": "Load: {load1:0.2f} {load5:0.2f} {load15:0.2f}"
+  },
+  "memory": {
+    "interval": 10,
+    "format": "RAM:{:2}%",
+    "tooltip": true,
+    "tooltip-format": "RAM: {percentage}% - {used:0.1f}/{total:0.1f}  GiB\nSwap: {swapPercentage}% - {swapUsed:0.1f}/{swapTotal:0.1f} GiB"
+  },
+  "sway/workspaces":{
+    "format": "{name} {icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": ""
+    }
+  },
+  "temperature": {
+    "critical-threshold": 85,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 8
+  },
+  "custom/spotify": {
+    "exec": "$HOME/.scripts/spotify-status.sh",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "playerctl -p spotify next"
+  }
+}

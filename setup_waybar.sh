@@ -19,3 +19,4 @@ fc-cache -fv > /dev/null
 mkdir -p $target_path
 ln -s -f $script_path/waybar/config $target_path/config
 ln -s -f $script_path/waybar/style.css $target_path/style.css
+ln -s -f $script_path/waybar/modules.json $target_path/modules.json

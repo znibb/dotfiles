@@ -4,6 +4,9 @@ set $mod Mod4
 # Chunks of settings handled in separate config files
 include ~/.config/sway/config.d/*
 
+# Fix xdg-desktop-portal issues
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 ## ===== Paramaters =====
 # Home row direction keys, like vim
 set $left h
