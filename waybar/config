@@ -1,5 +1,5 @@
-// Get icons from https://www.nerdfonts.com/cheat-sheet
 [{  // ### TOP ###
+// Get icons from https://www.nerdfonts.com/cheat-sheet
     "layer": "top",
     "position": "top",
     "height": 30,
@@ -9,115 +9,26 @@
       "~/.config/waybar/modules.json",
     ],
 
-    "modules-left": ["sway/workspaces",
-                     "sway/mode",
-                     "sway/scratchpad",
-                     "custom/spotify"],
+    "modules-left": [
+      "sway/workspaces",
+      "sway/mode",
+    ],
 
-    "modules-center": [],
+    "modules-center": [
 
-    "modules-right": ["idle_inhibitor",
-                      "pulseaudio",
-                      "network",
-                      "load",
-                      "cpu",
-                      "memory",
-                      "temperature",
-                      "backlight", 
-                      "battery"],
+    ],
 
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 2,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon}  {format_source}",
-        "format-bluetooth-muted": "󰝟 {icon}  {format_source}",
-        "format-muted": "󰝟 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
+    "modules-right": [
+      "sway/scratchpad",
+      "idle_inhibitor",
+      "pulseaudio",
+      "load",
+      "cpu",
+      "memory",
+      "temperature",
+      "backlight", 
+      "battery"
+    ],
 },
 
 {  // ### BOTTOM ###
@@ -130,10 +41,18 @@
     "~/.config/waybar/modules.json",
   ],
 
-  "modules-left": ["sway/mode"],
+  "modules-left": [
+    "sway/mode",
+    "custom/spotify",
+  ],
 
-  "modules-center": [],
+  "modules-center": [
 
-  "modules-right": ["tray",
-                    "clock"],
+  ],
+
+  "modules-right": [
+    "network",
+    "tray",
+    "clock",
+  ],
 }]

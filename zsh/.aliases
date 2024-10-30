@@ -11,6 +11,7 @@ alias  cat='batcat --color=always'
 # config shortcuts
 alias  cfa='nvim ~/.config/zsh/.aliases'
 alias  cfb='nvim ~/.config/waybar/config'
+alias cfbm='nvim ~/.config/waybar/modules.json'
 alias  cfe='nvim ~/.dotfiles/sway/sway-bootstrap'
 alias  cfs='nvim ~/.config/sway/config'
 alias  cft='nvim ~/.config/alacritty/alacritty.toml'

@@ -8,8 +8,7 @@
 # Echoes current information about Spotify playback
 # For use e.g. as a script component in polybar
 
-INTERVAL=1			# Sleep duration, default if not supplied
-TRUNC_LENGTH=40	# Max output length (unicode character counts as 6) 
+DEFAULT_INTERVAL=1			# Sleep duration, default if not supplied
 
 while true; do
 	# If Spotify is running, otherwise return empty string
@@ -25,12 +24,8 @@ while true; do
 		ARTIST=`playerctl -p spotify metadata 'xesam:artist'`
 		TITLE=`playerctl -p spotify metadata 'xesam:title'`
 
-		# Assemble return string and truncate if needed
+		# Assemble return string
 		OUTPUT="$PLAY_PAUSE $ARTIST - $TITLE"
-		if [[ ${#OUTPUT} -gt $TRUNC_LENGTH ]]; then
-			OUTPUT=$(echo $OUTPUT | cut -c 1-$TRUNC_LENGTH)
-			OUTPUT="$OUTPUT..."
-		fi
 
 		echo -e "$OUTPUT"
 	else
@@ -41,7 +36,7 @@ while true; do
 	if [[ $# -ge 1 ]]; then
 		sleep $1
 	else
-		sleep $INTERVAL
+		sleep $DEFAULT_INTERVAL
 	fi
 done
 
