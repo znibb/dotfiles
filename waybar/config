@@ -51,6 +51,8 @@
   ],
 
   "modules-right": [
+    "custom/public-ip",
+    "custom/wireguard",
     "network",
     "tray",
     "clock",

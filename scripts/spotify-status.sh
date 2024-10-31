@@ -1,42 +1,18 @@
 #!/bin/bash
 
-# Author:			znibb
-# Contact:			znibb@zkylark.se
-# Date created:		2018-10-21
-# Last modified:	2018-10-21
+PLAYER=spotify
 
-# Echoes current information about Spotify playback
-# For use e.g. as a script component in polybar
+STATUS=$(playerctl -p $PLAYER status)
+ARTIST=$(playerctl -p $PLAYER metadata 'xesam:artist')
+TITLE=$(playerctl -p $PLAYER metadata 'xesam:title')
 
-DEFAULT_INTERVAL=1			# Sleep duration, default if not supplied
-
-while true; do
-	# If Spotify is running, otherwise return empty string
-	if pgrep -x "spotify" > /dev/null; then
-		# Determine if Spotify is currently playing and set icon accordingly
-		if [[ $(playerctl -p spotify status) == 'Playing' ]]; then
-			PLAY_PAUSE='\u25B6'	# Play sign
-		else
-			PLAY_PAUSE='\u25FC'	# Stop sign
-		fi
-
-		# Extract metadata
-		ARTIST=`playerctl -p spotify metadata 'xesam:artist'`
-		TITLE=`playerctl -p spotify metadata 'xesam:title'`
-
-		# Assemble return string
-		OUTPUT="$PLAY_PAUSE $ARTIST - $TITLE"
-
-		echo -e "$OUTPUT"
-	else
-		echo ""
-	fi
-
-	# Wait for next iteration
-	if [[ $# -ge 1 ]]; then
-		sleep $1
-	else
-		sleep $DEFAULT_INTERVAL
-	fi
-done
-
+case $1 in
+  -j | --json)
+    echo '{"status":"'"$STATUS"'","artist":"'"$ARTIST"'","title":"'"$TITLE"'","url":"'"$URL"'"}'
+    ;;
+  -w | --waybar)
+    echo '{"text":"'"$ARTIST - $TITLE"'","class":"custom/spotify","alt":"'"$STATUS"'"}'
+    ;;
+  *)
+    echo "$ARTIST - $TITLE"
+esac

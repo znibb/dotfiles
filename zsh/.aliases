@@ -21,9 +21,10 @@ alias  cfz='nvim ~/.config/zsh/.zshrc'
 alias  cfw='nvim ~/.config/wofi/style.css'
 
 # dotfiles shortcuts
+alias dfib='cd ~/.dotfiles/waybar'
 alias  dfi='cd ~/.dotfiles/'
-alias dfis='cd ~/.dotfiles/sway'
 alias dfip='cd ~/.dotfiles/packages'
+alias dfis='cd ~/.dotfiles/sway'
 alias dfiz='cd ~/.dotfiles/zsh'
 
 # ls

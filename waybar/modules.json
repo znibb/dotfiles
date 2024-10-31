@@ -46,12 +46,12 @@
     "tooltip-format": "RAM: {percentage}% - {used:0.1f}/{total:0.1f}  GiB\nSwap: {swapPercentage}% - {swapUsed:0.1f}/{swapTotal:0.1f} GiB"
   },
   "network": {
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈁 {ipaddr}",
+    "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{ifname}: {ipaddr}",
+    "tooltip-format": "{ifname} via {gwaddr}"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -103,12 +103,35 @@
     "icon-size": 21,
     "spacing": 8
   },
+  "custom/public-ip": {
+    "interval": 3,
+    "exec": "$HOME/.scripts/public-ip.sh --waybar",
+    "return-type": "json",
+    "format": " {}"
+  },
   "custom/spotify": {
-    "format": " {}",
-    "max-length": 40,
-    "exec": "$HOME/.scripts/spotify-status.sh",
-    "restart-interval": 5,
+    "interval": 1,
+    "exec-if": "pgrep -x spotify",
+    "exec": "$HOME/.scripts/spotify-status.sh --waybar",
+    "return-type": "json",
+    "format": " {icon} {}",
+    "format-icons": {
+      "Playing": "",
+      "Paused": ""
+    },
+    "max-length": 60,
     "on-click": "playerctl -p spotify play-pause",
     "on-click-right": "playerctl -p spotify next"
+  },
+  "custom/wireguard": {
+    "interval": 3,
+    "exec": "$HOME/.scripts/wireguard-control.sh --status",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "connected": "VPN: ",
+      "disconnected": "VPN: "
+    },
+    "on-click": "exec $HOME/.scripts/wireguard-control.sh --toggle"
   }
 }
