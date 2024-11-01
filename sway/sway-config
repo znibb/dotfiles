@@ -1,6 +1,10 @@
 # Set modifier key, Mod4 = "Windows key"
 set $mod Mod4
 
+# Gaps
+gaps inner 2
+gaps outer 2
+
 # Chunks of settings handled in separate config files
 include ~/.config/sway/config.d/*
 
@@ -30,8 +34,6 @@ mode "$mode_system" {
   bindsym e       exec --no-startup-id $exit, mode "default"
   bindsym s       exec --no-startup-id $suspend && $lock, mode "default"
   bindsym h       exec --no-startup-id $hibernate && $lock, mode "default"
-#  bindsym s       exec --no-startup-id $lock && $suspend, mode "default"
-#  bindsym h       exec --no-startup-id $lock && $hibernate, mode "default"
   bindsym r       exec --no-startup-id $reboot, mode "default"
   bindsym Shift+s exec --no-startup-id $shutdown, mode "default"
 
@@ -40,10 +42,6 @@ mode "$mode_system" {
   bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_system"
-
-# gaps
-gaps inner 2
-gaps outer 2
 
 ## ===== Output configuration =====
 # Set wallpapers
@@ -74,11 +72,8 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 # Take a screenshot window and copy to clipboard
 bindsym $mod+Shift+s exec grim -g "$(slurp -d)" - | wl-copy
 
-# MX Ergo S keybinds
-#bindcode --whole-window 275 
-#bindcode --whole-window 276 workspace back_and_forth
-
 # MX Master 3S keybinds
+# Thumb button
 bindcode --whole-window 277 workspace back_and_forth
 
 # Kill focused window
@@ -101,55 +96,127 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 # mouse button for dragging.
 floating_modifier $mod normal
 
-# Move your focus around
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
+# Move your focus around, vim keys
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 # Or use $mod+[up|down|left|right]
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
 
 # Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
 bindsym $mod+Shift+$right move right
 # Ditto, with arrow keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left   move left
+bindsym $mod+Shift+Down   move down
+bindsym $mod+Shift+Up     move up
+bindsym $mod+Shift+Right  move right
+
+## ===== Resizing containers =====
+mode "resize" {
+  # left will shrink the containers width
+  # right will grow the containers width
+  # up will shrink the containers height
+  # down will grow the containers height
+  bindsym $left   resize shrink width   10px
+  bindsym $down   resize grow   height  10px
+  bindsym $up     resize shrink height  10px
+  bindsym $right  resize grow   width   10px
+
+  # Ditto, with arrow keys
+  bindsym Left  resize shrink width   10px
+  bindsym Down  resize grow   height  10px
+  bindsym Up    resize shrink height  10px
+  bindsym Right resize grow   width   10px
+
+  # Return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
 
 ## ===== Workspaces: =====
 
 # Alt+Tab between two last active workspaces
 bindsym Mod1+Tab workspace back_and_forth
 
+# Workspace labels
+set $ws01 "1"
+set $ws02 "2"
+set $ws03 "3"
+set $ws04 "4"
+set $ws05 "5"
+set $ws06 "6"
+set $ws07 "7"
+set $ws08 "8"
+set $ws09 "9"
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
+set $ws21 "21"
+set $ws22 "22"
+
 # Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+1    workspace $ws01
+bindsym $mod+2    workspace $ws02
+bindsym $mod+3    workspace $ws03
+bindsym $mod+4    workspace $ws04
+bindsym $mod+5    workspace $ws05
+bindsym $mod+6    workspace $ws06
+bindsym $mod+7    workspace $ws07
+bindsym $mod+8    workspace $ws08
+bindsym $mod+9    workspace $ws09
+bindsym $mod+0    workspace $ws10
+bindsym $mod+F1   workspace $ws11
+bindsym $mod+F2   workspace $ws12
+bindsym $mod+F3   workspace $ws13
+bindsym $mod+F4   workspace $ws14
+bindsym $mod+F5   workspace $ws15
+bindsym $mod+F6   workspace $ws16
+bindsym $mod+F7   workspace $ws17
+bindsym $mod+F8   workspace $ws18
+bindsym $mod+F9   workspace $ws19
+bindsym $mod+F10  workspace $ws20
+bindsym $mod+F11  workspace $ws21
+bindsym $mod+F12  workspace $ws22
+
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+1    move container to workspace number 1
+bindsym $mod+Shift+2    move container to workspace number 2
+bindsym $mod+Shift+3    move container to workspace number 3
+bindsym $mod+Shift+4    move container to workspace number 4
+bindsym $mod+Shift+5    move container to workspace number 5
+bindsym $mod+Shift+6    move container to workspace number 6
+bindsym $mod+Shift+7    move container to workspace number 7
+bindsym $mod+Shift+8    move container to workspace number 8
+bindsym $mod+Shift+9    move container to workspace number 9
+bindsym $mod+Shift+0    move container to workspace number 10
+bindsym $mod+Shift+F1   move container to workspace number 11
+bindsym $mod+Shift+F2   move container to workspace number 12
+bindsym $mod+Shift+F3   move container to workspace number 13
+bindsym $mod+Shift+F4   move container to workspace number 14
+bindsym $mod+Shift+F5   move container to workspace number 15
+bindsym $mod+Shift+F6   move container to workspace number 16
+bindsym $mod+Shift+F7   move container to workspace number 17
+bindsym $mod+Shift+F8   move container to workspace number 18
+bindsym $mod+Shift+F9   move container to workspace number 19
+bindsym $mod+Shift+F10  move container to workspace number 20
+bindsym $mod+Shift+F11  move container to workspace number 21
+bindsym $mod+Shift+F12  move container to workspace number 22
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
 
@@ -211,29 +278,6 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
-
-## ===== Resizing containers =====
-mode "resize" {
-  # left will shrink the containers width
-  # right will grow the containers width
-  # up will shrink the containers height
-  # down will grow the containers height
-  bindsym $left resize shrink width 10px
-  bindsym $down resize grow height 10px
-  bindsym $up resize shrink height 10px
-  bindsym $right resize grow width 10px
-
-  # Ditto, with arrow keys
-  bindsym Left resize shrink width 10px
-  bindsym Down resize grow height 10px
-  bindsym Up resize shrink height 10px
-  bindsym Right resize grow width 10px
-
-  # Return to default mode
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
 
 ## ===== Status Bar =====
 # Read `man 5 sway-bar` for more information about this section.

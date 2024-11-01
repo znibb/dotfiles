@@ -28,6 +28,13 @@
     "format": "CPU:{usage:2}%",
     "tooltip": true
   },
+  "disk": {
+    "interval": 5,
+    "path": "/",
+    "format": "/ {free}",
+    "tooltip": true,
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
+  },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -70,7 +77,7 @@
     "on-click": "pavucontrol"
   },
   "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
+    "format": "{}"
   },
   "sway/scratchpad": {
     "format": "{icon} {count}",

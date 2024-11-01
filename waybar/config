@@ -10,8 +10,7 @@
     ],
 
     "modules-left": [
-      "sway/workspaces",
-      "sway/mode",
+      "sway/workspaces"
     ],
 
     "modules-center": [
@@ -22,6 +21,7 @@
       "sway/scratchpad",
       "idle_inhibitor",
       "pulseaudio",
+      "disk",
       "load",
       "cpu",
       "memory",
