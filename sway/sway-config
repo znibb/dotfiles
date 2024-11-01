@@ -160,12 +160,14 @@ for_window [title="nmtui"] floating enable
 for_window [title="Volume Control"] floating enable
 
 # Custom window placement
+assign [app_id="thunderbird"] workspace 8
 assign [class="Spotify"]  workspace 9
 assign [class="KeePass2"] workspace 9
 assign [class="Ferdium"]  workspace 10
 assign [class="discord"]  workspace 10
 
 # Autostart
+exec thunderbird
 exec spotify
 exec keepass2
 exec ferdium

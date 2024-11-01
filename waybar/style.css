@@ -1,12 +1,13 @@
 * {
   font-family: MesloLGS NF;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 8px;
 }
 
-window#waybar {
+window#waybar.top,
+window#waybar.bottom {
   background-color: rgba(43, 48, 59, 0.7);
-  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+  border-bottom: 0px solid rgba(100, 114, 125, 0.5);
   color: #ffffff;
   transition-property: background-color;
   transition-duration: .5s;
@@ -302,7 +303,7 @@ label:focus {
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {
