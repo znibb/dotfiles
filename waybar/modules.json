@@ -59,7 +59,7 @@
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "on-click-right": "exec alacritty --title nmtui -e nmtui"
+    "on-click-right": "exec alacritty --title nmtui -e nmtui-connect"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
