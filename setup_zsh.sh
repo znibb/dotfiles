@@ -7,7 +7,7 @@ target_path=~/.config
 which zsh > /dev/null 2>&1 || sudo apt install -y zsh
 
 # Add zsh config location to .profile
-grep "export ZDOTDIR" ~/.profile > /dev/null|| echo '
+grep "export ZDOTDIR" ~/.profile > /dev/null || echo '
 # Set zsh config dir
 export ZDOTDIR=$HOME/.config/zsh' | tee -a ~/.profile > /dev/null
 
