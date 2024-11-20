@@ -12,7 +12,7 @@ grep "export ZDOTDIR" ~/.profile > /dev/null || echo '
 export ZDOTDIR=$HOME/.config/zsh' | tee -a ~/.profile > /dev/null
 
 # Install starship if not already available
-which /usr/local/bin/starship > /dev/null 2>&1 || curl -sS https://starship.rs/install.sh | sh
+which /usr/local/bin/starship > /dev/null 2>&1 || sh $script_path/zsh/install_starship.sh -y
 
 # Link config files
 mkdir -p $target_path/zsh
