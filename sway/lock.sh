@@ -1,1 +1,0 @@
-lock-fuzzy.sh
