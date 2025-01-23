@@ -1,4 +1,4 @@
-- name: With roles
+- name: Setup packages and dotfiles
   hosts: localhost
   gather_facts: true
 

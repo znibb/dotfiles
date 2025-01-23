@@ -1,4 +1,4 @@
-- name: Install packages
+- name: Arch | Install packages
   become: true
   community.general.pacman:
     update_cache: true
@@ -11,6 +11,7 @@
       - tldr
       - bat
       - zsh
+      - man
 
       # Desktop
       - ghostty

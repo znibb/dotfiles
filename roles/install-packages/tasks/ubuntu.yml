@@ -1,4 +1,4 @@
-- name: Update
+- name: Ubuntu | Install packages
   become: true
   ansible.builtin.apt:
     update_cache: true
