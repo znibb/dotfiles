@@ -1,0 +1,7 @@
+- name: With roles
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - install-packages
+    - ghostty

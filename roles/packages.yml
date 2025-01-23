@@ -19,7 +19,6 @@
     - name: Desktop packages
       community.general.pacman:
         name:
-          - ghostty
           - firefox
           - discord
           - spotify-launcher
