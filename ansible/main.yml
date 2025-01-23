@@ -4,3 +4,6 @@
 
 - name: Install packages
   ansible.builtin.import_playbook: packages.yml
+
+- name: Setup Ghostty
+  ansible.builtin.import_playbook: ghostty.yml
