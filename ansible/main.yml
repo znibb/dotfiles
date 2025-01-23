@@ -1,5 +1,6 @@
 - name: Setup
   hosts: localhost
+  gather_facts: true
 
-- name: Install system packages
+- name: Install packages
   ansible.builtin.import_playbook: packages.yml

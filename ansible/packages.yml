@@ -1,8 +1,10 @@
-- name: Install system packages
+- name: Install packages
   hosts: localhost
+  gather_facts: false
   become: true
+
   tasks:
-    - name: Packages
+    - name: System packages
       community.general.pacman:
         name:
           - tree
@@ -12,4 +14,14 @@
           - tldr
           - bat
           - zsh
+        state: present
+
+    - name: Desktop packages
+      community.general.pacman:
+        name:
+          - ghostty
+          - firefox
+          - discord
+          - spotify-launcher
+          - thunderbird
         state: present
