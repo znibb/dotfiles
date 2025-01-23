@@ -1,0 +1,3 @@
+theme = catppuccin-frappe
+
+keybind = ctrl+t=new_tab
