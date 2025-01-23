@@ -1,0 +1,11 @@
+- name: Install system packages
+  community.general.pacman:
+    name:
+      - tree
+      - btop
+      - speedtest-cli
+      - neofetch
+      - tldr
+      - bat
+      - zsh
+    state: present
