@@ -1,11 +1,15 @@
 - name: Install system packages
-  community.general.pacman:
-    name:
-      - tree
-      - btop
-      - speedtest-cli
-      - neofetch
-      - tldr
-      - bat
-      - zsh
-    state: present
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Packages
+      community.general.pacman:
+        name:
+          - tree
+          - btop
+          - speedtest-cli
+          - neofetch
+          - tldr
+          - bat
+          - zsh
+        state: present
