@@ -1,5 +1,5 @@
 - name: Setup
-- hosts: localhost
+  hosts: localhost
 
 - name: Install system packages
   ansible.builtin.import_playbook: packages.yml
