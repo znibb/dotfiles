@@ -27,7 +27,7 @@ After the install finishes agree to enter chroot and add your personal user acco
 4. Exit out of the chroot with `exit` and poweroff to remove the booted installation media
 
 ### Setting up dotfiles
-Install the required ansible collections: `ansible.galaxy install -r requirements.yml`
+Install the required ansible collections: `ansible-galaxy install -r requirements.yml`
 
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
