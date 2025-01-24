@@ -52,7 +52,6 @@
   when: not bin_file.stat.exists
 
 - name: Arch | Install AUR packages
-  become: true
   kewlfft.aur.aur:
     name:
       - vscodium
