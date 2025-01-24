@@ -1,4 +1,4 @@
-- name: Arch | Install packages
+- name: Arch | Install pacman packages
   become: true
   community.general.pacman:
     update_cache: true
@@ -19,4 +19,12 @@
       - discord
       - spotify-launcher
       - thunderbird
+    state: present
+
+- name: Arch | Install AUR packages
+  become: true
+  kewlfft.aur.aur:
+    name:
+      - vscodium
+    use: yay
     state: present
