@@ -25,20 +25,32 @@
       - thunderbird
     state: present
 
+- name: "Check for {{ aur_helper }}"
+  stat:
+    path: "/usr/bin/{{ aur_helper }}"
+  register: bin_file
+
 - name: "Clone {{ aur_helper }} source"
   ansible.builtin.git:
     repo: "https://aur.archlinux.org/{{ aur_helper }}.git"
     dest: "{{ aur_helper_dir }}"
+  register: cloned
+  when: not bin_file.stat.exists
+
 - name: "Build {{ aur_helper }}"
   ansible.builtin.command:
     chdir: "{{ aur_helper_dir }}"
     cmd: makepkg -s
     creates: "{{ aur_helper_dir }}/pkg"
   become: true
+  when: not bin_file.stat.exists
+
 - name: "Install {{ aur_helper }}"
   ansible.builtin.command:
     cmd: "sh -c 'pacman -U --noconfirm {{ aur_helper_dir }}/{{ aur_helper }}-*.pkg.tar.zst'"
-    creates: "/use/bin/{{ aur_helper }}"
+    creates: "/usr/bin/{{ aur_helper }}"
+  become: true
+  when: not bin_file.stat.exists
 
 - name: Arch | Install AUR packages
   become: true
