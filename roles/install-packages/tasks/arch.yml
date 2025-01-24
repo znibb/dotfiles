@@ -34,6 +34,7 @@
     chdir: "{{ aur_helper_dir }}"
     cmd: makepkg -s
     creates: "{{ aur_helper_dir }}/pkg"
+  become: true
 - name: "Install {{ aur_helper }}"
   ansible.builtin.command:
     cmd: "sh -c 'pacman -U --noconfirm {{ aur_helper_dir }}/{{ aur_helper }}-*.pkg.tar.zst'"
