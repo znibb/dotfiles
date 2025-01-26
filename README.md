@@ -16,8 +16,8 @@
    3. Greeter: Personal preference, will assume `lightdm-slick-greeter`
 7. Audio: Pipewire
 8. Network: `Copy ISO network configuration to installation` (assuming you have your desired connectivity at time of setup)
-9. Timezone: `Europe/Berlin`
-10. Additional packages: `git ansible`
+9. Additional packages: `git ansible`
+10. Timezone: `Europe/Berlin`
 11. Install
 
 After the install finishes agree to enter chroot and add your personal user account to `sudo` group and allow members of that group to use the sudo command:
