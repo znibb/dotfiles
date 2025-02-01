@@ -44,6 +44,12 @@
     creates: "/usr/bin/{{ aur_helper_dir }}"
   when: not bin_file.stat.exists
 
+- name: "Remove build files"
+  ansible.builtin.file:
+    path: "{{ aur_helper_dir }}"
+    state: absent
+  when: cloned is defined
+
 - name: Install AUR packages
   kewlfft.aur.aur:
     use: yay
