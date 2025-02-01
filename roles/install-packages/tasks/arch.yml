@@ -27,7 +27,7 @@
 
 - name: Arch | Install AUR packages
   kewlfft.aur.aur:
-    name:
-      - vscodium
     use: yay
+    name:
+      - vscodium-bin
     state: present
