@@ -1,4 +1,10 @@
-- name: Arch | Symlink config
+- name: Ensure config dir exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/ghostty"
+    state: directory
+    mode: '0755'
+
+- name: Symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ item.dest }}"

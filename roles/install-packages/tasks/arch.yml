@@ -1,4 +1,4 @@
-- name: Arch | Install pacman packages
+- name: Install pacman packages
   become: true
   community.general.pacman:
     update_cache: true
@@ -37,14 +37,14 @@
   register: cloned
   when: not bin_file.stat.exists
 
-- name: "Build {{ aur_helper }}"
+- name: "Build and install {{ aur_helper }}"
   ansible.builtin.command:
     chdir: "{{ aur_helper_dir }}"
-    cmd: makepkg -s
-    creates: "{{ aur_helper_dir }}/pkg"
+    cmd: makepkg -si --noconfirm
+    creates: "/usr/bin/{{ aur_helper_dir }}"
   when: not bin_file.stat.exists
 
-- name: Arch | Install AUR packages
+- name: Install AUR packages
   kewlfft.aur.aur:
     use: yay
     name:
