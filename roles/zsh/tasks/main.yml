@@ -47,5 +47,5 @@
 
 - name: Install Meslo LGS font
   ansible.builtin.shell:
-    cmd: oh-my-posh font install meslo
+    cmd: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh font install meslo"
     creates: "{{ ansible_env.HOME }}/.local/share/fonts/meslolgm-nerd-font-mono"
