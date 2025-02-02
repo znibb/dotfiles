@@ -11,5 +11,5 @@ SAVEHIST=10000
 setopt appendhistory
 
 # Load theme
-export STARSHIP_CONFIG=$ZDOTDIR/theme
+export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
 eval "$(starship init zsh)"

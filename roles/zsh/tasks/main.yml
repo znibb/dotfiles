@@ -43,7 +43,7 @@
 - name: Set default theme
   ansible.builtin.file:
     src: "{{ zsh_config_dir }}/themes/gruvbox-rainbow.toml"
-    dest: "{{ zsh_config_dir }}/theme"
+    dest: "{{ zsh_config_dir }}/starship-theme"
     state: link
     force: true
   when: not theme_file.stat.exists or not theme_file.stat.islnk
