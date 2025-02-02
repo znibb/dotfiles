@@ -11,4 +11,5 @@
     path: /etc/pacman.conf
     state: present
     search_string: ILoveCandy
+    line: ILoveCandy
     insertafter: Color
