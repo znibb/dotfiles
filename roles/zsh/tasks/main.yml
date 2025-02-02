@@ -1,7 +1,51 @@
-- name: Arch
-  ansible.builtin.include_tasks: "arch.yml"
-  when: ansible_distribution | lower == 'archlinux'
+- name: Set user shell to zsh
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
 
-- name: Ubuntu
-  ansible.builtin.include_tasks: "ubuntu.yml"
-  when: ansible_distribution | lower == 'ubuntu'
+- name: Set ZDOTDIR
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/zsh/zshenv
+    state: present
+    line: export ZDOTDIR=$HOME/.config/zsh
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Ensure config dir exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/zsh"
+    state: directory
+    mode: '0755'
+
+- name: Symlink configs
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "zshenv",    dest: "{{ ansible_env.HOME }}/.config/zsh/.zshenv" }
+    - { src: "zprofile",  dest: "{{ ansible_env.HOME }}/.config/zsh/.zprofile" }
+    - { src: "zshrc",     dest: "{{ ansible_env.HOME }}/.config/zsh/.zshrc" }
+    - { src: "zlogin",    dest: "{{ ansible_env.HOME }}/.config/zsh/.zlogin" }
+    - { src: "zlogout",   dest: "{{ ansible_env.HOME }}/.config/zsh/.zlogout" }
+    - { src: "aliases",   dest: "{{ ansible_env.HOME }}/.config/zsh/aliases" }
+
+- name: Ensure ~/.local/bin exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.local/bin"
+    state: directory
+    mode: '0755'
+
+- name: Install Oh-My-Posh
+  ansible.builtin.shell:
+    cmd: "curl -s https://ohmyposh.dev/install.sh | bash -s -- -d {{ ansible_env.HOME }}/.local/bin"
+    creates: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh"
+
+- name: Install Meslo LGS font
+  ansible.builtin.shell:
+    cmd: oh-my-posh font install meslo
+    creates: "{{ ansible_env.HOME }}/.local/share/fonts/meslolgm-nerd-font-mono"

@@ -1,7 +1,13 @@
-- name: Arch
-  ansible.builtin.include_tasks: "arch.yml"
-  when: ansible_distribution | lower == 'archlinux'
+- name: Ensure config dir exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/ghostty"
+    state: directory
+    mode: '0755'
 
-- name: Ubuntu
-  ansible.builtin.include_tasks: "ubuntu.yml"
-  when: ansible_distribution | lower == 'ubuntu'
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "config", dest: "{{ ansible_env.HOME }}/.config/ghostty/config" }

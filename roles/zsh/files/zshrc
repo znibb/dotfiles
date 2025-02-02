@@ -3,3 +3,6 @@
 
 # Source aliases
 [ -f $ZDOTDIR/aliases ] && source $ZDOTDIR/aliases
+
+# Source oh-my-posh
+eval "$(oh-my-posh init zsh)"
