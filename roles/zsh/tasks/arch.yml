@@ -5,8 +5,24 @@
     shell: /usr/bin/zsh
 
 - name: Set ZDOTDIR
+  become: true
   ansible.builtin.lineinfile:
     path: /etc/zshenv
     state: present
-    line: ~/.config/zsh
+    line: export ZDOTDIR=$HOME/.config/zsh
     create: yes
+
+- name: Ensure config dir exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/zsh"
+    state: directory
+    mode: '0755'
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "zshrc",   dest: "{{ ansible_env.HOME }}/.config/zsh/zshrc" }
+    - { src: "aliases", dest: "{{ ansible_env.HOME }}/.config/zsh/aliases" }

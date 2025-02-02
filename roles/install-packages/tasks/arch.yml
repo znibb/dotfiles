@@ -16,6 +16,8 @@
       - bat
       - zsh
       - man
+      - tmux
+      - neovim
 
       # Desktop
       - ghostty

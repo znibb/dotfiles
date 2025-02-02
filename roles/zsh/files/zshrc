@@ -1,0 +1,5 @@
+# Used for setting user's interactive shell configuration and executing
+# commands, will be read when starting as an interactive shell
+
+# Source aliases
+[ -f $ZDOTDIR/aliases ] && source $ZDOTDIR/aliases
