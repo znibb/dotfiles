@@ -33,7 +33,7 @@
     - { src: "zlogin",      dest: "{{ zsh_config_dir }}/.zlogin" }
     - { src: "zlogout",     dest: "{{ zsh_config_dir }}/.zlogout" }
     - { src: "aliases",     dest: "{{ zsh_config_dir }}/aliases" }
-    - { src: "omp-themes/", dest: "{{ zsh_config_dir }}/omp-themes/"}
+    - { src: "omp-themes",  dest: "{{ zsh_config_dir }}/omp-themes"}
 
 - name: Ensure ~/.local/bin exists
   ansible.builtin.file:
