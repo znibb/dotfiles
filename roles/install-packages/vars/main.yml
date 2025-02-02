@@ -1,2 +1,2 @@
 aur_helper: "yay"
-aur_helper_dir: "/tmp/{{ aur_helper }}"
+aur_helper_dir: "/tmp/.{{ aur_helper }}"

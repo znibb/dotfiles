@@ -30,32 +30,32 @@
 
 - name: Check for yay binary
   ansible.builtin.stat:
-    path: /usr/bin/yay
+    path: "/usr/bin/{{ aur_helper }}"
   register: bin_file
 
 - name: Clone yay source
   ansible.builtin.git:
-    repo: https://aur.archlinux.org/yay.git
-    dest: /tmp/.yay
+    repo: "https://aur.archlinux.org/{{ aur_helper }}.git"
+    dest: "{{ aur_helper_dir }}"
   register: cloned
   when: not bin_file.stat.exists
 
 - name: Build and install yay
   ansible.builtin.command:
-    chdir: /tmp/.yay
+    chdir: "{{ aur_helper_dir }}"
     cmd: makepkg -si --noconfirm
-    creates: /usr/bin/yay
+    creates: "/usr/bin/{{ aur_helper }}"
   when: not bin_file.stat.exists
 
 - name: Remove build files for yay
   ansible.builtin.file:
-    path: /tmp/.yay
+    path: "{{ aur_helper_dir }}"
     state: absent
   when: cloned is defined
 
 - name: Install AUR packages
   kewlfft.aur.aur:
-    use: yay
+    use: "{{ aur_helper }}"
     name:
       - vscodium-bin
     state: present

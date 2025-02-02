@@ -15,21 +15,49 @@
     group: root
     mode: '0644'
 
-- name: Ensure config dir exists
+- name: Ensure zsh config directory exists
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/zsh"
+    path: "{{ zsh_config_dir }}"
     state: directory
     mode: '0755'
 
-- name: Symlink configs
+- name: Symlink zsh configs
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - { src: "zshenv",    dest: "{{ ansible_env.HOME }}/.config/zsh/.zshenv" }
-    - { src: "zprofile",  dest: "{{ ansible_env.HOME }}/.config/zsh/.zprofile" }
-    - { src: "zshrc",     dest: "{{ ansible_env.HOME }}/.config/zsh/.zshrc" }
-    - { src: "zlogin",    dest: "{{ ansible_env.HOME }}/.config/zsh/.zlogin" }
-    - { src: "zlogout",   dest: "{{ ansible_env.HOME }}/.config/zsh/.zlogout" }
-    - { src: "aliases",   dest: "{{ ansible_env.HOME }}/.config/zsh/aliases" }
+    - { src: "zshenv",      dest: "{{ zsh_config_dir }}/.zshenv" }
+    - { src: "zprofile",    dest: "{{ zsh_config_dir }}/.zprofile" }
+    - { src: "zshrc",       dest: "{{ zsh_config_dir }}/.zshrc" }
+    - { src: "zlogin",      dest: "{{ zsh_config_dir }}/.zlogin" }
+    - { src: "zlogout",     dest: "{{ zsh_config_dir }}/.zlogout" }
+    - { src: "aliases",     dest: "{{ zsh_config_dir }}/aliases" }
+    - { src: "omp-themes/", dest: "{{ zsh_config_dir }}/omp-themes/"}
+
+- name: Ensure ~/.local/bin exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.local/bin"
+    state: directory
+    mode: '0755'
+
+- name: Install Oh-My-Posh
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && curl -s https://ohmyposh.dev/install.sh | bash -s -- -d {{ ansible_env.HOME }}/.local/bin"
+    creates: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh"
+
+- name: Install Meslo LGS font
+  ansible.builtin.command:
+    cmd: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh font install meslo"
+    creates: "{{ ansible_env.HOME }}/.local/share/fonts/meslolgm-nerd-font-mono"
+
+- name: Check if a theme is set
+  ansible.builtin.stat:
+    path: "{{ zsh_config_dir }}/oh-my-posh-theme"
+  register: theme_file
+
+- name: Set default theme
+  ansible.builtin.file:
+    src: "{{ zsh_config_dir }}/omp-themes/catppuccin.omp.json"
+    dest: "{{ zsh_config_dir }}/oh-my-posh-theme"
+  when: not theme_file.stat.islnk
