@@ -10,7 +10,10 @@
     path: /etc/zsh/zshenv
     state: present
     line: export ZDOTDIR=$HOME/.config/zsh
-    create: yes
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Ensure config dir exists
   ansible.builtin.file:
@@ -18,11 +21,15 @@
     state: directory
     mode: '0755'
 
-- name: Symlink config
+- name: Symlink configs
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - { src: "zshrc",   dest: "{{ ansible_env.HOME }}/.config/zsh/.zshrc" }
-    - { src: "aliases", dest: "{{ ansible_env.HOME }}/.config/zsh/aliases" }
+    - { src: "zshenv",    dest: "{{ ansible_env.HOME }}/.config/zsh/.zshenv" }
+    - { src: "zprofile",  dest: "{{ ansible_env.HOME }}/.config/zsh/.zprofile" }
+    - { src: "zshrc",     dest: "{{ ansible_env.HOME }}/.config/zsh/.zshrc" }
+    - { src: "zlogin",    dest: "{{ ansible_env.HOME }}/.config/zsh/.zlogin" }
+    - { src: "zlogout",   dest: "{{ ansible_env.HOME }}/.config/zsh/.zlogout" }
+    - { src: "aliases",   dest: "{{ ansible_env.HOME }}/.config/zsh/aliases" }
