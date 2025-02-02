@@ -25,8 +25,8 @@
       - thunderbird
     state: present
 
-- name: "Check for {{ aur_helper }}"
-  stat:
+- name: "Check for {{ aur_helper }} binary"
+  ansible.builtin.stat:
     path: "/usr/bin/{{ aur_helper }}"
   register: bin_file
 
@@ -37,14 +37,14 @@
   register: cloned
   when: not bin_file.stat.exists
 
-- name: "Build and install {{ aur_helper }}"
+- name: "Build and install {{ aur_helper }} binary"
   ansible.builtin.command:
     chdir: "{{ aur_helper_dir }}"
     cmd: makepkg -si --noconfirm
     creates: "/usr/bin/{{ aur_helper_dir }}"
   when: not bin_file.stat.exists
 
-- name: "Remove build files"
+- name: "Remove {{ aur_helper }} build files"
   ansible.builtin.file:
     path: "{{ aur_helper_dir }}"
     state: absent
