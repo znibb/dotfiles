@@ -10,5 +10,5 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-# Source oh-my-posh
-eval "$(oh-my-posh init zsh --config $ZDOTDIR/oh-my-posh-theme)"
+# Load theme
+eval "$(starship init zsh)"
