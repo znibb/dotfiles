@@ -60,4 +60,4 @@
   ansible.builtin.file:
     src: "{{ zsh_config_dir }}/omp-themes/catppuccin.omp.json"
     dest: "{{ zsh_config_dir }}/oh-my-posh-theme"
-  when: not theme_file.stat.islnk
+  when: not theme_file.stat.exists or not theme_file.stat.islnk
