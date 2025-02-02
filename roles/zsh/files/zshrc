@@ -4,5 +4,11 @@
 # Source aliases
 [ -f $ZDOTDIR/aliases ] && source $ZDOTDIR/aliases
 
+# History
+HISTFILE=$ZDOTDIR/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # Source oh-my-posh
-eval "$(oh-my-posh init zsh --config ~/.config/zsh/oh-my-posh-theme)"
+eval "$(oh-my-posh init zsh --config $ZDOTDIR/oh-my-posh-theme)"
