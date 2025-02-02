@@ -41,10 +41,10 @@
     state: directory
     mode: '0755'
 
-- name: Install Oh-My-Posh
-  ansible.builtin.shell:
-    cmd: "set -o pipefail && curl -s https://ohmyposh.dev/install.sh | bash -s -- -d {{ ansible_env.HOME }}/.local/bin"
-    creates: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh"
+# - name: Install Oh-My-Posh
+#   ansible.builtin.shell:
+#     cmd: "set -o pipefail && curl -s https://ohmyposh.dev/install.sh | bash -s -- -d {{ ansible_env.HOME }}/.local/bin"
+#     creates: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh"
 
 - name: Install Meslo LGS font
   ansible.builtin.command:
