@@ -46,10 +46,10 @@
 #     cmd: "set -o pipefail && curl -s https://ohmyposh.dev/install.sh | bash -s -- -d {{ ansible_env.HOME }}/.local/bin"
 #     creates: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh"
 
-- name: Install Meslo LGS font
-  ansible.builtin.command:
-    cmd: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh font install meslo"
-    creates: "{{ ansible_env.HOME }}/.local/share/fonts/meslolgm-nerd-font-mono"
+# - name: Install Meslo LGS font
+#   ansible.builtin.command:
+#     cmd: "{{ ansible_env.HOME }}/.local/bin/oh-my-posh font install meslo"
+#     creates: "{{ ansible_env.HOME }}/.local/share/fonts/meslolgm-nerd-font-mono"
 
 - name: Check if a theme is set
   ansible.builtin.stat:
