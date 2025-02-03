@@ -15,6 +15,7 @@
       - tldr
       - bat
       - zsh
+      - ttf-meslo-nerd
       - man
       - tmux
       - neovim
