@@ -15,7 +15,7 @@
       - tldr
       - bat
       - zsh
-      - ttf-meslo-nerd
+      - ttf-meslo-nerd # Font for Starship prompt
       - man
       - tmux
       - neovim

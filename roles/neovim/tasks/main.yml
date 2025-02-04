@@ -1,0 +1,13 @@
+- name: Ensure Neovim config directory exists
+  ansible.builtin.file:
+    path: "{{ neovim_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink Neovim config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "init.lua", dest: "{{ neovim_config_dir }}/init.lua" }
