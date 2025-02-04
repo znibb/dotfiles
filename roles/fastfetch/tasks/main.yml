@@ -1,0 +1,13 @@
+- name: Ensure fastfetch config directory exists
+  ansible.builtin.file:
+    path: "{{ fastfetch_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink fastfetch config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "neofetch.jsonc", dest: "{{ fastfetch_config_dir }}/config.jsonc" }
