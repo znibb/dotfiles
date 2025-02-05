@@ -1,0 +1,13 @@
+- name: Ensure tmux config directory exists
+  ansible.builtin.file:
+    path: "{{ tmux_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink tmux config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "tmux.conf", dest: "{{ tmux_config_dir }}/tmux.conf" }
