@@ -4,3 +4,4 @@
     update_cache: true
     name:
       - greetd
+    state: present
