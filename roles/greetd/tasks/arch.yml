@@ -7,6 +7,7 @@
     state: present
 
 - name: Enable greetd service
+  become: true
   ansible.builtin.service:
     name: greetd
     enabled: yes
