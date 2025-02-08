@@ -2,10 +2,7 @@
 
 ## Fresh Arch PC install
 ### Archinstall
-1. Locale:
-   1. Keyboard layout: sv-latin1
-   2. Locale language: en_US (default)
-   3. Locale encoding: UTF-8 (default)
+1. Locale -> Keyboard layout: sv-latin1
 2. Mirror -> Mirror region: Sweden
 3. Disk partitioning -> Partitioning: Whatever suits your fancy
 4. Root password: Make sure to set it
@@ -13,10 +10,10 @@
 6. Profile:
    1. Type -> Desktop: Your DE of preference (prefer `polkit` over `seatd`)
    2. Graphics driver: Adjust for your hardware
-   3. Greeter: Personal preference, will assume `lightdm-slick-greeter`
+   3. Greeter: Personal preference, will assume `gmd`
 7. Audio: Pipewire
 8. Network: `Copy ISO network configuration to installation` (assuming you have your desired connectivity at time of setup)
-9.  Additional packages: `git ansible`
+9.  Additional packages: `git ansible vim`
 10. Timezone: `Europe/Berlin`
 11. Install
 
