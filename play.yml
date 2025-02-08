@@ -3,7 +3,7 @@
   gather_facts: true
 
   roles:
-    - greetd
+    # - greetd
     - package-handler-settings
     - install-packages
     - ghostty
