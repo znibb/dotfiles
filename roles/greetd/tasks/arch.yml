@@ -5,3 +5,8 @@
     name:
       - greetd
     state: present
+
+- name: Enable greetd service
+  ansible.builtin.systemd_service:
+    state: started
+    name: greetd
