@@ -27,6 +27,7 @@
       - discord
       - spotify-launcher
       - thunderbird
+      - vlc
     state: present
 
 - name: Check for yay binary

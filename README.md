@@ -10,7 +10,7 @@
 6. Profile:
    1. Type -> Desktop: Your DE of preference (prefer `polkit` over `seatd`)
    2. Graphics driver: Adjust for your hardware
-   3. Greeter: Personal preference, will assume `gmd`
+   3. Greeter: Personal preference, will assume `lightdm-slick-greeter`
 7. Audio: Pipewire
 8. Network: `Copy ISO network configuration to installation` (assuming you have your desired connectivity at time of setup)
 9.  Additional packages: `git ansible vim`
