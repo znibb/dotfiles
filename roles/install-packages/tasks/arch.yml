@@ -53,7 +53,7 @@
   ansible.builtin.file:
     path: "{{ aur_helper_dir }}"
     state: absent
-  when: source_cloned is defined
+  when: source_cloned is changed
 
 - name: Install AUR packages
   kewlfft.aur.aur:

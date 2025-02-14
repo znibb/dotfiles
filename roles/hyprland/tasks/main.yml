@@ -1,0 +1,14 @@
+- name: Ensure hyprland config directory exists
+  ansible.builtin.file:
+    path: "{{ hyprland_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink hyprland config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { src: "hyprland.conf", dest: "{{ hyprland_config_dir }}/hyprland.conf" }

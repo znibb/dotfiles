@@ -2,5 +2,6 @@
     "security.workspace.trust.untrustedFiles": "open",
     "git.openRepositoryInParentFolders": "always",
     "workbench.startupEditor": "none",
-    "editor.fontFamily": "'MesloLGS Nerd Font Mono', 'monospace', monospace"
+    "editor.fontFamily": "'MesloLGS Nerd Font Mono', 'monospace', monospace",
+    "explorer.confirmDelete": false
 }
