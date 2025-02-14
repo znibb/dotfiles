@@ -8,7 +8,7 @@
     - install-packages
     - ghostty
     - zsh
+    - vim
     - vscodium
-    - neovim
     - fastfetch
     - tmux
