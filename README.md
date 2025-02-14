@@ -34,6 +34,7 @@ After the install finishes agree to enter chroot and add your personal user acco
 4. Exit out of the chroot with `exit` and poweroff to remove the booted installation media
 
 ### Setting up dotfiles
+Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`
 Install the required ansible collections: `ansible-galaxy install -r requirements.yml`
 
 ## Help
