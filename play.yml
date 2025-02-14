@@ -6,6 +6,7 @@
     - package-handler-settings
     - install-packages
     - ssh
+    - git
     - ghostty
     - zsh
     - vim
