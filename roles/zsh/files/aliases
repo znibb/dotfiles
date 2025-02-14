@@ -1,5 +1,4 @@
 # general
-alias  vim='nvim'
 alias   ..='cd ..'
 alias grep='grep --color=auto'
 alias  psa='ps aux'
@@ -9,16 +8,16 @@ alias code='vscodium . > /dev/null 2>&1'
 alias  cat='bat --color=always'
 
 # config shortcuts
-alias  cfa='nvim ~/.config/zsh/.aliases'
-alias  cfb='nvim ~/.config/waybar/config'
-alias cfbm='nvim ~/.config/waybar/modules.json'
-alias  cfe='nvim ~/.dotfiles/sway/sway-bootstrap'
-alias  cfs='nvim ~/.config/sway/config'
-alias  cft='nvim ~/.config/alacritty/alacritty.toml'
-alias cftm='nvim ~/.config/tmux/.tmux.conf'
-alias  cfv='nvim ~/.config/nvim/init.lua'
-alias  cfz='nvim ~/.config/zsh/.zshrc'
-alias  cfw='nvim ~/.config/wofi/style.css'
+alias  cfa='vim ~/.config/zsh/.aliases'
+alias  cfb='vim ~/.config/waybar/config'
+alias cfbm='vim ~/.config/waybar/modules.json'
+alias  cfe='vim ~/.dotfiles/sway/sway-bootstrap'
+alias  cfs='vim ~/.config/sway/config'
+alias  cft='vim ~/.config/alacritty/alacritty.toml'
+alias cftm='vim ~/.config/tmux/.tmux.conf'
+alias  cfv='vim ~/.config/nvim/init.lua'
+alias  cfz='vim ~/.config/zsh/.zshrc'
+alias  cfw='vim ~/.config/wofi/style.css'
 
 # dotfiles shortcuts
 alias  dfi='cd ~/.dotfiles/'

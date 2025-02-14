@@ -10,4 +10,4 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - { src: "vimrc", dest: "{{ vim_config_dir }}/.vimrc" }
+    - { src: "vimrc", dest: "{{ vim_config_dir }}/vimrc" }
