@@ -7,19 +7,20 @@
       - base-devel
 
       # System
-      - git
-      - tree
-      - btop
-      - speedtest-cli
-      - fastfetch
-      - tldr
       - bat
-      - zsh
-      - ttf-meslo-nerd # Font for Starship prompt
+      - btop
+      - fastfetch
+      - git
+      - speedtest-cli
       - man
+      - nfs-utils
+      - tldr
       - tmux
-      - vim
+      - tree
+      - ttf-meslo-nerd # Font for Starship prompt
       - unzip
+      - vim
+      - zsh
 
       # Desktop
       - discord
@@ -75,4 +76,5 @@
       - firefox-extension-keepassxc-browser # Keepass Firefox integration
       - starship # prompt customization
       - vscodium-bin
+      - wireguird # Wireguard GUI client
     state: present
