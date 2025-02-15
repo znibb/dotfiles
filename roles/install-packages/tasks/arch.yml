@@ -33,7 +33,7 @@
 
 - name: Installed pacman packages
   debug: msg="{{ pacman_output.packages }}"
-  when: pacman_output.changed == true
+  when: pacman_output.changed
 
 - name: Check for yay binary
   ansible.builtin.stat:
@@ -63,11 +63,8 @@
 - name: Install AUR packages
   kewlfft.aur.aur:
     use: "{{ aur_helper }}"
+    update_cache: true
     name:
       - vscodium-bin
       - starship # prompt customization
     state: present
-
-- name: Installed AUR packages
-  debug: msg="{{ aur_output.packages }}"
-  when: aur_output.changed == true
