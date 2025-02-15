@@ -10,7 +10,9 @@
 
 - name: Installed pacman packages
   debug: msg="{{ pacman_output.packages }}"
-  when: pacman_output.changed
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
 
 - name: Install AUR packages
   kewlfft.aur.aur:
