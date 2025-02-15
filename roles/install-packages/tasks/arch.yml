@@ -29,6 +29,9 @@
       - thunderbird
       - vlc
     state: present
+  register: pacman_output
+
+- debug: msg="{{ pacman_output }}"
 
 - name: Check for yay binary
   ansible.builtin.stat:
@@ -60,5 +63,5 @@
     use: "{{ aur_helper }}"
     name:
       - vscodium-bin
-      - starship
+      - starship # prompt customization
     state: present

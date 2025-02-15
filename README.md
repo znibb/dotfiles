@@ -18,9 +18,9 @@
 5. Root password: Make sure to set it
 6. User account: Create one for yourself but do **not** make it a SuperUser (we want to handle this through the sudo group instead)
 7. Profile:
-   1. Type -> Desktop: Your DE of preference (prefer `polkit` over `seatd`)
+   1. Type -> Desktop: Hyprland (prefer `polkit` over `seatd`)
    2. Graphics driver: Adjust for your hardware
-   3. Greeter: Personal preference, will assume `lightdm-slick-greeter`
+   3. Greeter: sddm (to make initial hyprland install able to start)
 8. Audio: Pipewire
 9. Network: `Copy ISO network configuration to installation` (assuming you have your desired connectivity at time of setup)
 10. Additional packages: `git ansible vim`
@@ -34,7 +34,10 @@ After the install finishes agree to enter chroot and add your personal user acco
 4. Exit out of the chroot with `exit` and poweroff to remove the booted installation media
 
 ### Setting up dotfiles
-Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`
+Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`  
+
+At a later stage set up an ssh key-pair with Github and run `git remote set-url git@github.com:znibb/dotfiles.git` to be able to push to the repo without password (remember to set up ssh config)  
+
 Install the required ansible collections: `ansible-galaxy install -r requirements.yml`
 
 ## Help
