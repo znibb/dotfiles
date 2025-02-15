@@ -11,10 +11,10 @@
 7. `ip a`, to chat that you have an assigned ip
 
 ### Archinstall
-1. Locale -> Keyboard layout: sv-latin1
-2. Mirror -> Mirror region: Sweden
+1. Locale -> Keyboard layout: `sv-latin1`
+2. Mirror -> Mirror region: `Sweden`
 3. Disk partitioning -> Partitioning: Whatever suits your fancy
-4. Bootloader: Grub
+4. Bootloader: `Grub`
 5. Root password: Make sure to set it
 6. User account: Create one for yourself but do **not** make it a SuperUser (we want to handle this through the sudo group instead)
 7. Profile:
