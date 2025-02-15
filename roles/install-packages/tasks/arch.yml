@@ -33,7 +33,7 @@
 
 - name: Installed pacman packages
   debug: msg="{{ pacman_output.packages }}"
-  when: pacman_output.packages == true
+  when: pacman_output.changed == true
 
 - name: Check for yay binary
   ansible.builtin.stat:
@@ -67,3 +67,7 @@
       - vscodium-bin
       - starship # prompt customization
     state: present
+
+- name: Installed AUR packages
+  debug: msg="{{ aur_output.packages }}"
+  when: aur_output.changed == true
