@@ -36,7 +36,7 @@ After the install finishes agree to enter chroot and add your personal user acco
 ### Setting up dotfiles
 Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`  
 
-At a later stage set up an ssh key-pair with Github and run `git remote set-url git@github.com:znibb/dotfiles.git` to be able to push to the repo without password (remember to set up ssh config)  
+At a later stage set up an ssh key-pair with Github and run `git remote set-url origin git@github.com:znibb/dotfiles.git` to be able to push to the repo without password (remember to set up ssh config)  
 
 Install the required ansible collections: `ansible-galaxy install -r requirements.yml`
 
