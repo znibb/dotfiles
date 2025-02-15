@@ -3,7 +3,7 @@
   community.general.pacman:
     update_cache: true
     name:
-      - kdeconnect
+      - power-profiles-daemon
     state: present
   register: pacman_output
 
@@ -13,20 +13,27 @@
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
 
-- name: Allow KDE Connect ports
+- name: Enable power-profiles-daemon
   become: true
-  ansible.builtin.iptables:
-    chain: "{{ item.chain }}"
-    protocol: "{{ item.protocol }}"
-    destination_port: "{{ item.port }}"
-    ctstate: "{{ item.state }}"
-    jump: ACCEPT
-    action: insert
-  loop:
-    - { chain: INPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-    - { chain: INPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-    - { chain: OUTPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-    - { chain: OUTPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+  ansible.builtin.systemd_service:
+    name: power-profiles-daemon
+    enabled: true
+    state: started
+
+# - name: Allow KDE Connect ports
+#   become: true
+#   ansible.builtin.iptables:
+#     chain: "{{ item.chain }}"
+#     protocol: "{{ item.protocol }}"
+#     destination_port: "{{ item.port }}"
+#     ctstate: "{{ item.state }}"
+#     jump: ACCEPT
+#     action: insert
+#   loop:
+#     - { chain: INPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+#     - { chain: INPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+#     - { chain: OUTPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
+#     - { chain: OUTPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
 
 # - name: Install AUR packages
 #   kewlfft.aur.aur:

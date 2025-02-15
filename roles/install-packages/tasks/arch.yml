@@ -22,9 +22,11 @@
       - unzip
 
       # Desktop
-      - ghostty
-      - firefox
       - discord
+      - firefox
+      - ghostty
+      - keepassxc
+      - nextcloud-client
       - spotify-launcher
       - thunderbird
       - vlc
@@ -67,6 +69,7 @@
     use: "{{ aur_helper }}"
     update_cache: true
     name:
-      - vscodium-bin
+      - firefox-extension-keepassxc-browser # Keepass Firefox integration
       - starship # prompt customization
+      - vscodium-bin
     state: present
