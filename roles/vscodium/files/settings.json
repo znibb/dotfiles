@@ -3,5 +3,7 @@
     "git.openRepositoryInParentFolders": "always",
     "workbench.startupEditor": "none",
     "editor.fontFamily": "'MesloLGS Nerd Font Mono', 'monospace', monospace",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "git.confirmSync": false,
+    "git.autofetch": true
 }
