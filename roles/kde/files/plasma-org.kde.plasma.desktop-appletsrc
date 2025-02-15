@@ -4,20 +4,6 @@ RightButton;NoModifier=org.kde.contextmenu
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][1]
-ItemGeometries-1694x1129=
-ItemGeometriesHorizontal=
-activityId=0079fad1-6557-46fc-9db1-b6bc4cc9c123
-formfactor=0
-immutability=1
-lastScreen=0
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][1][General]
-positions={"1694x1129":[]}
-
 [Containments][2]
 activityId=
 formfactor=2
@@ -76,11 +62,25 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][2][Applets][7][Configuration]
-PreloadWeight=60
+PreloadWeight=65
 SystrayContainmentId=8
 
 [Containments][2][General]
 AppletOrder=3;4;5;6;7;20;21
+
+[Containments][22]
+ItemGeometries-1694x1129=
+ItemGeometriesHorizontal=
+activityId=5504e762-7f1f-44b3-bea9-bd72c0d1e528
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][22][General]
+positions={"1694x1129":[]}
 
 [Containments][8]
 activityId=
@@ -154,7 +154,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][8][Applets][23][Configuration]
-PreloadWeight=67
+PreloadWeight=47
 
 [Containments][8][Applets][23][Configuration][General]
 showPercentage=true
@@ -182,9 +182,9 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][8][General]
-extraItems=org.kde.plasma.vault,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.brightness,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.battery
+extraItems=org.kde.plasma.vault,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.brightness,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,KeePassXC
 knownItems=org.kde.plasma.vault,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.brightness,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.battery
-shownItems=org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.battery
+shownItems=org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.battery,KeePassXC
 
 [ScreenMapping]
 itemsOnDisabledScreens=
