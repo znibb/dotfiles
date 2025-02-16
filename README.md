@@ -42,3 +42,16 @@ Install the required ansible collections: `ansible-galaxy install -r requirement
 
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
+
+### Setting up swap
+1. Create file to use as swap, `sudo fallocate -l 30G /swapfile`
+2. Set proper permissions, `sudo chmod 600 /swapfile`
+3. Format file to be used as swap, `sudo mkswap /swapfile`
+4. Enable swap, `sudo swapon /swapfile`
+5. Enable swap no reboot by adding the following to `/etc/fstab`, `/swapfile none swap defaults 0 0`
+6. Find swap file UUID, `findmnt -no UUID -T /swapfile`
+7. Find swap file offset, `sudo filefrag -v /swapfile| awk '$1=="0:" {print substr($4, 1, length($4).2)}'`
+8. Add the following to `GRUB_CMDLINE_LINUX` (not `_DEFAULT`) in `/etc/default/grub`, `resume=UUID=<swap_file_uuid> resume_offset=<swap_file_offset>`
+9. Generate new grub.cfg (and overwrite the old one), `sudo grub-mkconfig -o /boot/grub/grub.cfg`
+10. Edit `/etc/mkinitcpio.conf`and add `resume` to the list of hooks, e.g. `HOOKS=(base udev resume autodetect ...)`
+11. Build new initramfs, `sudo mkinitcpio -P`

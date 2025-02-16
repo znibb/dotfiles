@@ -70,7 +70,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][2][Applets][7][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 SystrayContainmentId=8
 
 [Containments][2][General]
@@ -105,6 +105,9 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
+[Containments][8][Applets][10][Configuration]
+PreloadWeight=55
+
 [Containments][8][Applets][11]
 immutability=1
 plugin=org.kde.kscreen
@@ -128,6 +131,9 @@ plugin=org.kde.plasma.manage-inputmethod
 immutability=1
 plugin=org.kde.plasma.volume
 
+[Containments][8][Applets][15][Configuration]
+PreloadWeight=55
+
 [Containments][8][Applets][15][Configuration][General]
 migrated=true
 
@@ -136,7 +142,7 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][8][Applets][16][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
 [Containments][8][Applets][17]
 immutability=1
@@ -165,7 +171,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][8][Applets][23][Configuration]
-PreloadWeight=67
+PreloadWeight=64
 
 [Containments][8][Applets][23][Configuration][General]
 showPercentage=true
@@ -175,11 +181,11 @@ immutability=1
 plugin=org.kde.plasma.brightness
 
 [Containments][8][Applets][24][Configuration]
-PreloadWeight=42
+PreloadWeight=34
 
 [Containments][8][Applets][25]
 immutability=1
-plugin=org.kde.plasma.bluetooth
+plugin=org.kde.plasma.mediacontroller
 
 [Containments][8][Applets][25][Configuration]
 PreloadWeight=65
@@ -193,9 +199,9 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][8][General]
-extraItems=org.kde.plasma.vault,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.brightness,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,KeePassXC
+extraItems=org.kde.plasma.vault,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.brightness,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,chrome_status_icon_1,Nextcloud,spotify-client
 knownItems=org.kde.plasma.vault,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.brightness,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.battery
-shownItems=org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.battery,KeePassXC
+shownItems=org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.battery,KeePassXC,chrome_status_icon_1,Nextcloud,spotify-client
 
 [ScreenMapping]
 itemsOnDisabledScreens=
