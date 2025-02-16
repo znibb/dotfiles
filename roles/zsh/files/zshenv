@@ -2,6 +2,9 @@
 # commands that produce output or assume the shell is attached to a TTY.
 # When this file exists it will always be read.
 
+# Fix language errors
+LC_ALL=en_US.UTF_8
+
 # Set EDITOR
 EDITOR=nvim
 

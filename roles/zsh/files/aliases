@@ -28,6 +28,10 @@ alias  l='ls -lahH --group-directories-first --color=auto'
 alias la='ls -ahH --group-directories-first --color=auto'
 alias ls='ls -hH --group-directories-first --color=auto'
 
+# ansible
+alias  a='ansible'
+alias ap='ansible-playbook'
+
 # docker
 alias   d='docker'
 alias  dc='docker compose'
