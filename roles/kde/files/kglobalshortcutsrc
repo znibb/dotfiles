@@ -258,7 +258,12 @@ switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
 [services][com.mitchellh.ghostty.desktop]
-_launch=Ctrl+Alt+T
+_launch=Ctrl+Alt+T\tMeta+R
 
 [services][org.kde.konsole.desktop]
 _launch=none
+
+[services][org.kde.spectacle.desktop]
+RecordRegion=Meta+Shift+R
+RectangularRegionScreenShot=Meta+Shift+Print\t
+_launch=Print

@@ -4,6 +4,9 @@
 # Source aliases
 [ -f $ZDOTDIR/aliases ] && source $ZDOTDIR/aliases
 
+# Activate fuzzy-finder
+source <(fzf --zsh)
+
 # History
 HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=10000
