@@ -28,7 +28,7 @@
 
       # Desktop
       - 7zip
-      - bluezutils # bluetoothctl
+      - bluez-utils # bluetoothctl
       - discord
       - firefox
       - ghostty
