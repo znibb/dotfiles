@@ -1,0 +1,14 @@
+- name: Ensure lazygit config directory exists
+  ansible.builtin.file:
+    path: "{{ lazygit_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink lazygit config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { src: "config.yml", dest: "{{ lazygit_config_dir }}/config.yml" }
