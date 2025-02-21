@@ -6,7 +6,7 @@
 LC_ALL=en_US.UTF_8
 
 # Set EDITOR
-EDITOR=nvim
+EDITOR=vim
 
 # Add ~/.local/bin to PATH
 typeset -U path PATH
