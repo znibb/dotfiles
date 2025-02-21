@@ -45,5 +45,5 @@
     src: "{{ zsh_config_dir }}/themes/gruvbox-rainbow.toml"
     dest: "{{ zsh_config_dir }}/starship-theme"
     state: link
-    force: true
-  when: not theme_file.stat.exists or not theme_file.stat.islnk
+    force: yes
+  when: theme_file.stat.islnk is defined and theme_file.stat.islnk == False
