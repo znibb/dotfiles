@@ -1,11 +1,12 @@
 # general
-alias   ..='cd ..'
-alias grep='grep --color=auto'
-alias  psa='ps aux'
-alias  psg='ps aux | grep -v grep | grep '
-alias tree="tree -a -I '.git|__pycache__'"
-alias code='vscodium . > /dev/null 2>&1'
-alias  cat='bat --color=always'
+alias    ..='cd ..'
+alias  grep='grep --color=auto'
+alias   psa='ps aux'
+alias   psg='ps aux | grep -v grep | grep '
+alias  tree="tree -a -I '.git|__pycache__'"
+alias  code='vscodium . > /dev/null 2>&1'
+alias   cat='bat --color=always'
+alias rsync='rsync --progress'
 
 # config shortcuts
 alias  cfa='vim ~/.config/zsh/.aliases'
