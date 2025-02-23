@@ -1,0 +1,35 @@
+- name: Install VirtualBox packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - virtualbox
+      - virtualbox-host-modules-arch
+      - virtualbox-guest-iso
+
+- name: Ensure a vboxusers group exists
+  become: true
+  ansible.builtin.group:
+    name: vboxusers
+    state: present
+    system: true
+
+- name: Add user to vboxusers group
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_env.USER}}"
+    append: true
+    groups:
+      - vboxusers
+
+- name: Ensure VirtualBox config directory exists
+  ansible.builtin.file:
+    path: "{{ virtualbox_config_dir }}"
+    state: directory
+    mode: '0700'
+
+- name: Ensure VirtualBox default machine directory exists
+  ansible.builtin.file:
+    path: "{{ default_machine_dir }}"
+    state: directory
+    mode: '0755'
