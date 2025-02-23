@@ -1,0 +1,41 @@
+- name: Install KiCad package
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - kicad
+      - kicad-library
+
+- name: Clone KiCad library repo
+  ansible.builtin.git:
+    repo: "{{ kicad_lib_url }}"
+    dest: "{{ kicad_lib_dir }}"
+    single_branch: yes
+    version: main
+    accept_newhostkey: true
+
+- name: Ensure KiCad config directory exists
+  ansible.builtin.file:
+    path: "{{ kicad_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink KiCad configs
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { src: "3d_viewer.json", dest: "{{ kicad_config_dir }}/3d_viewer.json"}
+    - { src: "cvpcb.json", dest: "{{ kicad_config_dir }}/cvpcb.json"}
+    - { src: "eeschema.json", dest: "{{ kicad_config_dir }}/eeschema.json"}
+    - { src: "fp-lib-table", dest: "{{ kicad_config_dir }}/fp-lib-table"}
+    - { src: "fpedit.json", dest: "{{ kicad_config_dir }}/fpedit.json"}
+    - { src: "gerbview.json", dest: "{{ kicad_config_dir }}/gerbview.json"}
+    - { src: "kicad_common.json", dest: "{{ kicad_config_dir }}/kicad_common.json"}
+    - { src: "pcbnew.json", dest: "{{ kicad_config_dir }}/pcbnew.json"}
+    - { src: "pl_editor.json", dest: "{{ kicad_config_dir }}/pl_editor.json"}
+    - { src: "sym-lib-table", dest: "{{ kicad_config_dir }}/sym-lib-table"}
+    - { src: "symbol_editor.json", dest: "{{ kicad_config_dir }}/symbol_editor.json"}
+    - { src: "user.hotkeys", dest: "{{ kicad_config_dir }}/user.hotkeys"}

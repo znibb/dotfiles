@@ -1,0 +1,3 @@
+kicad_config_dir: "{{ ansible_env.HOME }}/.config/kicad/8.0"
+kicad_lib_url: "git@github.com:znibb/KiCad-Libraries.git"
+kicad_lib_dir: "{{ ansible_env.HOME }}/git/kicad-libraries"
