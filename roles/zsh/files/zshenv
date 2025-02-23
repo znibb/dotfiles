@@ -3,7 +3,7 @@
 # When this file exists it will always be read.
 
 # Fix language errors
-LC_ALL=en_US.UTF_8
+export LC_ALL=en_US.UTF_8
 
 # Set EDITOR
 EDITOR=vim
