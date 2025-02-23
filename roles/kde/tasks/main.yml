@@ -23,29 +23,6 @@
     enabled: true
     state: started
 
-# - name: Allow KDE Connect ports
-#   become: true
-#   ansible.builtin.iptables:
-#     chain: "{{ item.chain }}"
-#     protocol: "{{ item.protocol }}"
-#     destination_port: "{{ item.port }}"
-#     ctstate: "{{ item.state }}"
-#     jump: ACCEPT
-#     action: insert
-#   loop:
-#     - { chain: INPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-#     - { chain: INPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-#     - { chain: OUTPUT, protocol: tcp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-#     - { chain: OUTPUT, protocol: udp, port: "1714:1764", state: "NEW,ESTABLISHED" }
-
-# - name: Install AUR packages
-#   kewlfft.aur.aur:
-#     use: yay
-#     update_cache: true
-#     name:
-#       - ags-hyprpanel-git
-#     state: present
-
 - name: Ensure KDE config directory exists
   ansible.builtin.file:
     path: "{{ kde_config_dir }}"
