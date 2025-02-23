@@ -18,7 +18,8 @@ export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
 eval "$(starship init zsh)"
 
 # Keybindings
-bindkey "\e[H" beginning-of-line    # Home
-bindkey "\e[F" end-of-line          # End
-bindkey "^[[1;5D" backward-word     # Ctrl+Left
-bindkey "^[[1;5C" forward-word      # Ctrl+Right
+bindkey "^[[3~"     delete-char         # Delete
+bindkey "\e[H"      beginning-of-line   # Home
+bindkey "\e[F"      end-of-line         # End
+bindkey "^[[1;5D"   backward-word       # Ctrl+Left
+bindkey "^[[1;5C"   forward-word        # Ctrl+Right
