@@ -1,0 +1,5 @@
+theme = catppuccin-frappe
+
+keybind = ctrl+t=new_tab
+
+confirm-close-surface = false

@@ -1,0 +1,6 @@
+- name: Setup KDE
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - kde

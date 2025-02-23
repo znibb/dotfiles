@@ -1,0 +1,6 @@
+- name: Setup Steam
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - steam

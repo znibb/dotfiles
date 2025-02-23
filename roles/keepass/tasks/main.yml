@@ -1,0 +1,14 @@
+- name: Ensure KeePass config directory exists
+  ansible.builtin.file:
+    path: "{{ keepass_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink KeePass config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { src: "keepassxc.ini", dest: "{{ keepass_config_dir }}/keepassxc.ini" }

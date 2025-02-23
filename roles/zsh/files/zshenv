@@ -1,0 +1,14 @@
+# Used for setting user's environment variables; it should not contain
+# commands that produce output or assume the shell is attached to a TTY.
+# When this file exists it will always be read.
+
+# Fix language errors
+LC_ALL=en_US.UTF_8
+
+# Set EDITOR
+EDITOR=vim
+
+# Add ~/.local/bin to PATH
+typeset -U path PATH
+path=(~/.local/bin $path)
+export PATH

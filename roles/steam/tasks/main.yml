@@ -1,0 +1,25 @@
+- name: Enable multilib repo stage 1
+  become: true
+  ansible.builtin.lineinfile:
+    dest: "/etc/pacman.conf"
+    state: "present"
+    line: "[multilib]"
+    regexp: "^\\[multilib\\]"
+    insertafter: "^#\\[multilib\\]"
+
+- name: Enable multilib repo stage 2
+  become: true
+  ansible.builtin.lineinfile:
+    dest: "/etc/pacman.conf"
+    state: "present"
+    line: "Include = /etc/pacman.d/mirrorlist"
+    insertafter: "^\\[multilib\\]"
+    regexp: "Include = /etc/pacman.d/mirrorlist"
+
+- name: Install Steam packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - steam # application
+      - ttf-liberation # required fonts

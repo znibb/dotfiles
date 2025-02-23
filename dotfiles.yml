@@ -1,0 +1,17 @@
+- name: Setup packages and dotfiles
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - package-handler-settings
+    - install-packages
+    - ssh
+    - git
+    - ghostty
+    - zsh
+    - vim
+    - vscodium
+    - fastfetch
+    - tmux
+    - keepass
+    - lazygit

@@ -1,0 +1,25 @@
+# Used for setting user's interactive shell configuration and executing
+# commands, will be read when starting as an interactive shell
+
+# Source aliases
+[ -f $ZDOTDIR/aliases ] && source $ZDOTDIR/aliases
+
+# Activate fuzzy-finder
+source <(fzf --zsh)
+
+# History
+HISTFILE=$ZDOTDIR/zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# Load theme
+export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
+eval "$(starship init zsh)"
+
+# Keybindings
+bindkey "^[[3~"     delete-char         # Delete
+bindkey "\e[H"      beginning-of-line   # Home
+bindkey "\e[F"      end-of-line         # End
+bindkey "^[[1;5D"   backward-word       # Ctrl+Left
+bindkey "^[[1;5C"   forward-word        # Ctrl+Right

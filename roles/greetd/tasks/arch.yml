@@ -1,0 +1,13 @@
+- name: Install greetd packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - greetd
+    state: present
+
+# - name: Enable greetd service
+#   become: true
+#   ansible.builtin.service:
+#     name: greetd
+#     enabled: yes
