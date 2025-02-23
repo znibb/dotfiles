@@ -49,5 +49,3 @@
     - { src: "ksmserverrc", dest: "{{ kde_config_dir }}/ksmserverrc" }
     # Virtual desktops
     - { src: "kwinrc", dest: "{{ kde_config_dir }}/kwinrc" }
-    # System tray customization
-    - { src: "plasma-org.kde.plasma.desktop-appletsrc", dest: "{{ kde_config_dir }}/plasma-org.kde.plasma.desktop-appletsrc"}
