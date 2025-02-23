@@ -9,16 +9,10 @@ alias   cat='bat --color=always'
 alias rsync='rsync --progress'
 
 # config shortcuts
-alias  cfa='vim ~/.config/zsh/.aliases'
-alias  cfb='vim ~/.config/waybar/config'
-alias cfbm='vim ~/.config/waybar/modules.json'
-alias  cfe='vim ~/.dotfiles/sway/sway-bootstrap'
-alias  cfs='vim ~/.config/sway/config'
-alias  cft='vim ~/.config/alacritty/alacritty.toml'
-alias cftm='vim ~/.config/tmux/.tmux.conf'
-alias  cfv='vim ~/.config/nvim/init.lua'
+alias  cfa='vim ~/.config/zsh/aliases'
+alias cftm='vim ~/.config/tmux/tmux.conf'
+alias  cfv='vim ~/.config/vim/vimrc'
 alias  cfz='vim ~/.config/zsh/.zshrc'
-alias  cfw='vim ~/.config/wofi/style.css'
 
 # dotfiles shortcuts
 alias  dfi='cd ~/.dotfiles/'
