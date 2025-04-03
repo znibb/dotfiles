@@ -37,7 +37,7 @@
 
 - name: Check if a theme is set
   ansible.builtin.stat:
-    path: "{{ zsh_config_dir }}/theme"
+    path: "{{ zsh_config_dir }}/starship-theme"
   register: theme_file
 
 - name: Set default theme
@@ -46,4 +46,4 @@
     dest: "{{ zsh_config_dir }}/starship-theme"
     state: link
     force: yes
-  when: theme_file.stat.islnk is defined and theme_file.stat.islnk == False
+  when: theme_file.stat.islnk is not defined or theme_file.stat.islnk == False
