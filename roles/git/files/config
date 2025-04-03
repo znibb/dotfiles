@@ -3,3 +3,5 @@
     name = Pontus Berlin
 [init]
     defaultBranch = main
+[core]
+    editor = vim
