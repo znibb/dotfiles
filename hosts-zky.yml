@@ -1,0 +1,21 @@
+- name: Setup baphomet
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - package-handler-settings
+    - install-packages
+    - fastfetch
+    - ghostty
+    - git
+    - kde
+    - keepass
+    - kicad
+    - lazygit
+    - locale
+    - ssh
+    - steam
+    - tmux
+    - vim
+    - vscodium
+    - zsh
