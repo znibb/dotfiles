@@ -1,0 +1,2 @@
+wireguard_config_dir: "{{ ansible_env.HOME }}/.config/wireguard"
+aur_helper: "yay"

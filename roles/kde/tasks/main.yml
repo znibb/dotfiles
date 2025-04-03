@@ -3,6 +3,7 @@
   community.general.pacman:
     update_cache: true
     name:
+      - gwenview  # image viewer
       - power-profiles-daemon
     state: present
   register: pacman_output
@@ -41,11 +42,8 @@
     - { src: "kcminputrc", dest: "{{ kde_config_dir }}/kcminputrc"}
     # System tray module autoloading settings
     - { src: "kded5rc", dest: "{{ kde_config_dir }}/kded5rc"}
-    # Global theme
-    - { src: "kdeglobals", dest: "{{ kde_config_dir }}/kdeglobals" }
     # Global shortcuts
     - { src: "kglobalshortcutsrc", dest: "{{ kde_config_dir }}/kglobalshortcutsrc" }
     # Session settings
     - { src: "ksmserverrc", dest: "{{ kde_config_dir }}/ksmserverrc" }
-    # Virtual desktops
-    - { src: "kwinrc", dest: "{{ kde_config_dir }}/kwinrc" }
+

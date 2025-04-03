@@ -1,0 +1,7 @@
+- name: Ensure locale(s) exist
+  become: true
+  ansible.builtin.locale_gen:
+    name:
+      - en_US.UTF-8
+      - sv_SE.UTF-8
+    state: present
