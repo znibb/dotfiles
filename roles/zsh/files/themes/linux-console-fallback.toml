@@ -1,0 +1,99 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$hostname \
+as \
+$username \
+at \
+$directory \
+on \
+$git_branch\
+$git_status\
+$line_break$character"""
+
+right_format = """
+$cmd_duration"""
+
+
+# continuation_prompt = '[]'
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+
+color_bg0 = 'red'
+color_bg1 = 'yellow'
+color_bg2 = '#d79921'
+color_bg3 = 'green'
+color_bg4 = '#458588'
+color_bg5 = '#665c54'
+color_bg6 = '#3c3836'
+
+color_red = 'red'
+color_green = 'green'
+color_replace = '#b16286'
+
+[hostname]
+disabled = false
+ssh_only = false
+ssh_symbol = "¤"
+trim_at = ""
+detect_env_vars = []
+aliases = {}
+style = "fg:color_bg0"
+format = "[ $ssh_symbol$hostname ]($style)"
+
+[username]
+show_always = true
+style_user = "fg:color_bg1"
+style_root = "fg:color_bg1"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_bg2"
+format = "[ $path ]($style)"
+home_symbol = "~"
+truncation_length = 5
+truncation_symbol = "…/"
+truncate_to_repo = true
+
+[git_branch]
+symbol = ""
+style = ""
+format = '[[ $branch ](fg:color_bg3)]($style)'
+
+[git_status]
+conflicted = "="
+stashed = "$"
+deleted = "x"
+renamed = ">>"
+modified = "!"
+typechanged = ""
+staged = "+"
+untracked = "?"
+diverged = "Y"
+ahead = "^"
+behind = "v"
+up_to_date = ""
+
+style = ""
+format = '[[($all_status$ahead_behind )](fg:color_bg3)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[>](bold fg:color_green)'
+error_symbol = '[>](bold fg:color_bg0)'
+vimcmd_symbol = '[<](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[<](bold fg:color_replace)'
+vimcmd_replace_symbol = '[<](bold fg:color_replace)'
+vimcmd_visual_symbol = '[<](bold fg:color_bg2)'
+
+[cmd_duration]
+min_time = 1
+show_milliseconds = true
+style = 'bold yellow'
+format = 'took [$duration]($style)'
