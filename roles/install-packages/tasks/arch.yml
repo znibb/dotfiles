@@ -9,6 +9,7 @@
       # System
       - bat
       - btop
+      - dosfstools # mkfs.vfat etc
       - fastfetch
       - fzf # fuzzy-finder
       - git
@@ -32,6 +33,7 @@
       - discord
       - firefox
       - ghostty
+      - gparted # Partition management
       - keepassxc
       - libreoffice-still
       - nextcloud-client
