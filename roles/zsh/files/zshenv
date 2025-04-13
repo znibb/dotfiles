@@ -12,3 +12,6 @@ EDITOR=vim
 typeset -U path PATH
 path=(~/.local/bin $path)
 export PATH
+
+# Add docker host env var
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock

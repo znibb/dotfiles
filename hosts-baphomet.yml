@@ -5,6 +5,7 @@
   roles:
     - package-handler-settings
     - install-packages
+    - docker
     - fastfetch
     - ghostty
     - git
