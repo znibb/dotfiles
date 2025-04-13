@@ -1,0 +1,22 @@
+- name: Setup figaro
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - package-handler-settings
+    - install-packages-system
+    - install-packages-desktop
+    - docker
+    - fastfetch
+    - ghostty
+    - git
+    - kde
+    - keepass
+    - kicad
+    - lazygit
+    - locale
+    - ssh
+    - tmux
+    - vim
+    - vscodium
+    - zsh
