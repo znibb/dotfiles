@@ -1,0 +1,38 @@
+- name: Install pacman packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      # Desktop
+      - discord
+      - firefox
+      - ghostty
+      - gparted # Partition management
+      - keepassxc
+      - libreoffice-still
+      - nextcloud-client
+      - signal-desktop
+      - spotify-launcher
+      - thunderbird
+      - protonmail-bridge # For syncing protonmail with Thunderbird
+      - vlc
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Installed pacman packages
+  debug: msg="{{ pacman_output.packages }}"
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - firefox-extension-keepassxc-browser # Keepass Firefox integration
+      - vscodium-bin
+    state: present

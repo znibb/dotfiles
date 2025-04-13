@@ -3,6 +3,7 @@
   community.general.pacman:
     update_cache: true
     name:
+      - bluez-utils # bluetoothctl
       - gwenview  # image viewer
       - power-profiles-daemon
     state: present

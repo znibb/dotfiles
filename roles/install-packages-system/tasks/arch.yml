@@ -7,6 +7,7 @@
       - base-devel
 
       # System
+      - 7zip
       - bat
       - btop
       - dosfstools # mkfs.vfat etc
@@ -27,21 +28,6 @@
       - vim
       - zsh
 
-      # Desktop
-      - 7zip
-      - bluez-utils # bluetoothctl
-      - discord
-      - firefox
-      - ghostty
-      - gparted # Partition management
-      - keepassxc
-      - libreoffice-still
-      - nextcloud-client
-      - signal-desktop
-      - spotify-launcher
-      - thunderbird
-      - protonmail-bridge # For syncing protonmail with Thunderbird
-      - vlc
     state: present
   register: pacman_output
   changed_when:
@@ -84,7 +70,5 @@
     use: "{{ aur_helper }}"
     update_cache: true
     name:
-      - firefox-extension-keepassxc-browser # Keepass Firefox integration
       - starship # prompt customization
-      - vscodium-bin
     state: present

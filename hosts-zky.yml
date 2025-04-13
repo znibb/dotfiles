@@ -4,7 +4,8 @@
 
   roles:
     - package-handler-settings
-    - install-packages
+    - install-packages-system
+    - install-packages-desktop
     - fastfetch
     - ghostty
     - git
