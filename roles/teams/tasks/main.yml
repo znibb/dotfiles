@@ -1,0 +1,7 @@
+- name: Install Microsoft Teams
+  kewlfft.aur.aur:
+    use: yay
+    update_cache: true
+    name:
+      - teams-for-linux
+    state: present

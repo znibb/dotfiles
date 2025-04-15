@@ -16,6 +16,7 @@
     - lazygit
     - locale
     - ssh
+    - teams
     - tmux
     - vim
     - vscodium
