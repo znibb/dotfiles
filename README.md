@@ -55,3 +55,10 @@ To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup
 9. Generate new grub.cfg (and overwrite the old one), `sudo grub-mkconfig -o /boot/grub/grub.cfg`
 10. Edit `/etc/mkinitcpio.conf`and add `resume` to the list of hooks, e.g. `HOOKS=(base udev resume autodetect ...)`
 11. Build new initramfs, `sudo mkinitcpio -P`
+
+### Syncing Office365 calendar with Thunderbird
+1. In Thunderbird go to `Settings->Addons and Themes`, scroll to the bottom and click `Find more add-ons`
+2. Search for and install `TbSync` and `Provider for Exchange ActiveSync`
+3. Go to the Calendar view in Thunderbird and click `TbSync: Idle` at the bottom-right of the window
+4. Click `Account actions->Add new account->Exchange ActiveSync`
+5. Check `Enable and syncronize this account`, tick the `Calendar`checkbox in the list below and then click `Syncronize now`
