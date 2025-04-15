@@ -1,3 +1,11 @@
+- name: Install vscodium
+  kewlfft.aur.aur:
+    use: yay
+    update_cache: true
+    name:
+      - vscodium-bin
+    state: present
+
 - name: Ensure VSCodium config directory exists
   ansible.builtin.file:
     path: "{{ vscodium_config_dir }}"

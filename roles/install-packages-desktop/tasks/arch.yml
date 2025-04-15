@@ -34,5 +34,4 @@
     update_cache: true
     name:
       - firefox-extension-keepassxc-browser # Keepass Firefox integration
-      - vscodium-bin
     state: present
