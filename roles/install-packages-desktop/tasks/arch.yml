@@ -8,7 +8,6 @@
       - firefox
       - ghostty
       - gparted # Partition management
-      - keepassxc
       - libreoffice-still
       - nextcloud-client
       - signal-desktop
@@ -28,10 +27,3 @@
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
 
-- name: Install AUR packages
-  kewlfft.aur.aur:
-    use: "{{ aur_helper }}"
-    update_cache: true
-    name:
-      - firefox-extension-keepassxc-browser # Keepass Firefox integration
-    state: present

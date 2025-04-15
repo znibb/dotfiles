@@ -1,3 +1,23 @@
+- name: Install KeePassXC
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - keepassxc
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Install KeePassXC browser extension
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - firefox-extension-keepassxc-browser # Keepass Firefox integration
+    state: present
+
 - name: Ensure KeePass config directory exists
   ansible.builtin.file:
     path: "{{ keepass_config_dir }}"
