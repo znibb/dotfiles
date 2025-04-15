@@ -6,6 +6,7 @@
     - package-handler-settings
     - install-packages-system
     - install-packages-desktop
+    - bluetooth
     - fastfetch
     - ghostty
     - git
