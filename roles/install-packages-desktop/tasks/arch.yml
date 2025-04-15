@@ -4,6 +4,7 @@
     update_cache: true
     name:
       # Desktop
+      - 7zip
       - discord
       - firefox
       - ghostty
