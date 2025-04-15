@@ -1,0 +1,18 @@
+- name: Install bluetooth utilities
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - bluez-utils # bluetoothctl
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Start/enable bluetooth.service
+  ansible.builtin.systemd_service:
+    name: bluetooth.service
+    scope: user
+    started: true
+    enabled: true
