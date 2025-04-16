@@ -1,0 +1,21 @@
+- name: Install printing utilities
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - cups # Printing
+      - ghostscript
+      - print-manager # KDE compatibility
+      - system-config-printer # CUPS printer configuration
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Enable CUPS socket
+  become: true
+  ansible.builtin.systemd_service:
+    name: docker.socket
+    scope: system
+    enabled: true
