@@ -1,0 +1,30 @@
+- name: Install virtualization packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - dnsmasq
+      - libvirt
+      - qemu-base
+      - virt-manager
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Add user to libvirt group
+  become: true
+  ansible.builtin.user:
+    append: true
+    name: "{{ ansible_user_id }}"
+    groups:
+      - libvirt
+    state: present
+
+- name: Start/enable libvirtd service
+  ansible.builtin.systemd_service:
+    name: libvirtd.socket
+    scope: system
+    enabled: true
+    state: started
