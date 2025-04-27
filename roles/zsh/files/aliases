@@ -9,6 +9,7 @@ alias  code='vscodium . > /dev/null 2>&1'
 alias   cat='bat --color=always'
 alias pacch='sudo pacman -Syu --print-format "%n %v %b"'
 alias rsync='rsync --progress'
+alias   fzf='fzf --preview="cat {}"'
 
 # config shortcuts
 alias  cfa='vim ~/.config/zsh/aliases'
