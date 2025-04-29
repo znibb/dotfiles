@@ -1,7 +1,52 @@
 [user]
     email = pontus@b3rl1n.com
     name = Pontus Berlin
-[init]
-    defaultBranch = main
+
 [core]
     editor = vim
+
+[branch]
+    sort = -committerdate
+
+[init]
+    defaultBranch = main
+
+[log]
+    abbrevCommit = true
+    graphColors = blue,yellow,cyan,magenta,green,red
+
+[push]
+    autoSetupRemote = true
+    default = current
+    followTags = true
+
+[pull]
+    default = current
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
+
+[tag]
+    sort = -taggerdate
+
+[color "branch"]
+    current     = magenta
+    local       = default
+    remote      = yellow
+    upstream    = green
+    plain       = blue
+
+[color "decorate"]
+    HEAD            = red
+    branch          = blue
+    tag             = yellow
+    remoteBranch    = magenta
+
+[url "git@github.com:"]
+    insteadOf = "gh:"
