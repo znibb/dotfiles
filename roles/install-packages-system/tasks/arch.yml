@@ -16,6 +16,7 @@
       - git
       - lazygit
       - man
+      - ncdu # ncurses `du` frontend
       - nfs-utils
       - rsync
       - speedtest-cli
