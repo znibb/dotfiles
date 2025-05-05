@@ -13,6 +13,7 @@
       - signal-desktop
       - spotify-launcher
       - thunderbird
+      - timeshift # System backups
       - protonmail-bridge # For syncing protonmail with Thunderbird
       - vlc
     state: present
