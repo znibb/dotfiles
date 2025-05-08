@@ -11,6 +11,7 @@
       - bat
       - btop
       - dosfstools # mkfs.vfat etc
+      - dysk # `df` but better
       - fastfetch
       - fzf # fuzzy-finder
       - git
