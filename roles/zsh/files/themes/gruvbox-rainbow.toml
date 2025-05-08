@@ -31,6 +31,8 @@ $line_break$character"""
 right_format = """
 $cmd_duration"""
 
+scan_timeout = 30
+command_timeout = 3600000
 
 # continuation_prompt = '[]'
 
