@@ -19,6 +19,7 @@
       - man
       - ncdu # ncurses `du` frontend
       - nfs-utils
+      - powertop # power monitoring
       - rsync
       - speedtest-cli
       - tldr
