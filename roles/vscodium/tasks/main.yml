@@ -19,3 +19,14 @@
     state: link
   loop:
     - { src: "settings.json", dest: "{{ vscodium_config_dir }}/settings.json" }
+
+- name: Get list of installed VSCodium extensions
+  shell: codium --list-extensions
+  register: installed_extensions
+  changed_when: false
+
+- name: Install missing VSCodium extensions
+  shell: codium --install-extension {{ item }}
+  when: item not in installed_extensions.stdout_lines
+  loop:
+    - ms-vscode.makefile-tools

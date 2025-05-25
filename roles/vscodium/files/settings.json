@@ -6,5 +6,6 @@
     "explorer.confirmDelete": false,
     "git.confirmSync": false,
     "git.autofetch": true,
-    "git.suggestSmartCommit": false
+    "git.suggestSmartCommit": false,
+    "makefile.configureOnOpen": true
 }
