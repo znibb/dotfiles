@@ -11,9 +11,10 @@
   ansible.builtin.git:
     repo: "{{ kicad_lib_url }}"
     dest: "{{ kicad_lib_dir }}"
-    single_branch: yes
+    single_branch: true
     version: main
     accept_newhostkey: true
+    update: false
 
 - name: Ensure KiCad config directory exists
   ansible.builtin.file:
