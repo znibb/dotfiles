@@ -5,6 +5,7 @@
     name:
       - kicad
       - kicad-library
+      - kicad-library-3d
 
 - name: Clone KiCad library repo
   ansible.builtin.git:
@@ -27,12 +28,6 @@
     state: link
     force: true
   loop:
-    - { src: "3d_viewer.json", dest: "{{ kicad_config_dir }}/3d_viewer.json"}
-    - { src: "cvpcb.json", dest: "{{ kicad_config_dir }}/cvpcb.json"}
     - { src: "fp-lib-table", dest: "{{ kicad_config_dir }}/fp-lib-table"}
-    - { src: "gerbview.json", dest: "{{ kicad_config_dir }}/gerbview.json"}
-    - { src: "kicad_common.json", dest: "{{ kicad_config_dir }}/kicad_common.json"}
-    - { src: "pl_editor.json", dest: "{{ kicad_config_dir }}/pl_editor.json"}
     - { src: "sym-lib-table", dest: "{{ kicad_config_dir }}/sym-lib-table"}
-    - { src: "symbol_editor.json", dest: "{{ kicad_config_dir }}/symbol_editor.json"}
     - { src: "user.hotkeys", dest: "{{ kicad_config_dir }}/user.hotkeys"}
