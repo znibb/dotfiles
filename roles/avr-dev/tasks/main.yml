@@ -3,10 +3,11 @@
   community.general.pacman:
     update_cache: true
     name:
-      - avr-gcc
-      - avr-libc
-      - avrdude
-      - make
+      - avr-gdb   # debugger
+      - avr-gcc   # compiler
+      - avr-libc  # libraries
+      - avrdude   # firmware download
+      - make      # build system
     state: present
   register: pacman_output
   changed_when:
