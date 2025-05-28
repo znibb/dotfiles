@@ -29,4 +29,5 @@
   shell: codium --install-extension {{ item }}
   when: item not in installed_extensions.stdout_lines
   loop:
-    - ms-vscode.makefile-tools
+    - ms-vscode.makefile-tools  # Makefiles
+    - tamasfe.even-better-toml  # TOML
