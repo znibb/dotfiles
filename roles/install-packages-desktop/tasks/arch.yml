@@ -12,6 +12,7 @@
       - nextcloud-client
       - signal-desktop
       - spotify-launcher
+      - telegram-desktop
       - thunderbird
       - timeshift # System backups
       - protonmail-bridge # For syncing protonmail with Thunderbird
