@@ -8,5 +8,13 @@
     "git.autofetch": true,
     "git.suggestSmartCommit": false,
     "makefile.configureOnOpen": true,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "remote.SSH.remotePlatform": {
+        "host-vscodium": "linux"
+    },
+    "remote.SSH.useLocalServer": false,
+    "remote.SSH.showLoginTerminal": true,
+    "remote.SSH.defaultShell": {
+        "host-vscodium": "/bin/bash"
+    }
 }
