@@ -1,0 +1,199 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](color_bg0)\
+$os\
+$hostname\
+[](fg:color_bg0 bg:color_bg1)\
+$username\
+[](fg:color_bg1 bg:color_bg2)\
+$directory\
+[](fg:color_bg2 bg:color_bg3)\
+$git_branch\
+$git_status\
+[](fg:color_bg3 bg:color_bg4)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:color_bg4 bg:color_bg5)\
+$docker_context\
+$conda\
+[](fg:color_bg5 bg:color_bg6)\
+[ ](fg:color_bg6)\
+$line_break$character"""
+
+right_format = """
+$cmd_duration"""
+
+scan_timeout = 30
+command_timeout = 3600000
+
+palette = 'gruvbox'
+
+# continuation_prompt = '[]'
+
+[os]
+disabled = false
+style = "fg:color_fg0 bg:color_bg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[hostname]
+disabled = false
+ssh_only = false
+ssh_symbol = ""
+trim_at = ""
+detect_env_vars = []
+style = "fg:color_fg0 bg:color_bg0"
+format = "[ $hostname $ssh_symbol ]($style)"
+
+[username]
+show_always = true
+style_user = "fg:color_fg0 bg:color_bg1"
+style_root = "fg:color_fg0 bg:color_bg1"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_fg0 bg:color_bg2"
+format = "[ $path ]($style)"
+home_symbol = "~"
+truncation_length = 5
+truncation_symbol = "…/"
+truncate_to_repo = true
+
+# [directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = "󰝚 "
+# "Pictures" = " "
+# "Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_bg3)]($style)'
+
+[git_status]
+style = "bg:color_bg3"
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_bg3)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[java]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg5"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg5)]($style)'
+
+[conda]
+style = "bg:color_bg5"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg5)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_bg6"
+format = '[[  $time ](fg:color_fg0 bg:color_bg6)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_bg0)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_replace)'
+vimcmd_replace_symbol = '[](bold fg:color_replace)'
+vimcmd_visual_symbol = '[](bold fg:color_bg2)'
+
+[cmd_duration]
+min_time = 1
+show_milliseconds = true
+style = 'bold yellow'
+format = 'took [$duration]($style)'
+
+# Colour theming - Blue
+[palettes.gruvbox]
+color_fg0 = '#fbf1c7'
+
+color_bg0 = '#004d26'
+color_bg1 = '#26734d'
+color_bg2 = '#4d9966'
+color_bg3 = '#73bf8c'
+color_bg4 = '#99d1a3'
+color_bg5 = '#bfe6c1'
+color_bg6 = '#d6f0d4'
+
+color_red = '#cc241d'
+color_green = '#98971a'
+color_replace = '#b16286'
