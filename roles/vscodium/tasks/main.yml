@@ -31,3 +31,4 @@
   loop:
     - ms-vscode.makefile-tools  # Makefiles
     - tamasfe.even-better-toml  # TOML
+    - jeanp413.open-remote-ssh  # Remote SSH
