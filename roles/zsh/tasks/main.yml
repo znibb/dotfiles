@@ -2,7 +2,7 @@
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
-    shell: /usr/bin/zsh
+    shell: /bin/zsh
 
 - name: Set ZDOTDIR
   become: true
