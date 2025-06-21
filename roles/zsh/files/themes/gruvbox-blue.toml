@@ -182,17 +182,17 @@ show_milliseconds = true
 style = 'bold yellow'
 format = 'took [$duration]($style)'
 
-# Colour theming - Rainbow
+# Colour theming - Blue
 [palettes.gruvbox]
 color_fg0 = '#fbf1c7'
 
-color_bg0 = '#cc241d'
-color_bg1 = '#d65d0e'
-color_bg2 = '#d79921'
-color_bg3 = '#689d6a'
-color_bg4 = '#458588'
-color_bg5 = '#665c54'
-color_bg6 = '#3c3836'
+color_bg0 = '#003366'
+color_bg1 = '#264d80'
+color_bg2 = '#4d73b3'
+color_bg3 = '#7399cc'
+color_bg4 = '#99bfff'
+color_bg5 = '#bfdbff'
+color_bg6 = '#cce6ff'
 
 color_red = '#cc241d'
 color_green = '#98971a'

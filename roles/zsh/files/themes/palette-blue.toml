@@ -1,0 +1,16 @@
+
+# Colour theming - Blue
+[palettes.gruvbox]
+color_fg0 = '#fbf1c7'
+
+color_bg0 = '#003366'
+color_bg1 = '#264d80'
+color_bg2 = '#4d73b3'
+color_bg3 = '#7399cc'
+color_bg4 = '#99bfff'
+color_bg5 = '#bfdbff'
+color_bg6 = '#cce6ff'
+
+color_red = '#cc241d'
+color_green = '#98971a'
+color_replace = '#b16286'
