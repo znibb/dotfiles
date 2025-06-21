@@ -1,0 +1,2 @@
+# Set group for a programmer matching with vendor and product IDs
+ SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2104", GROUP="uucp", MODE="0660", SYMLINK+="avrisp"

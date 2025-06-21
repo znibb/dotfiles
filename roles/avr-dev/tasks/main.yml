@@ -21,3 +21,13 @@
     append: true
     groups:
       - uucp
+
+- name: Setup udev rules for programmers
+  become: true
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/99-avrprogrammers.rules"
+    dest: /etc/udev/rules.d/99-avrprogrammers.rules
+    mode: '0755'
+    owner: root
+    group: root
+    force: false
