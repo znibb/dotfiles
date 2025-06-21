@@ -29,6 +29,7 @@
       - unzip
       - usbutils # lsusb etc
       - vim
+      - whois # mkpasswd etc
       - zsh
 
     state: present

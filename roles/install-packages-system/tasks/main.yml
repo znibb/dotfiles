@@ -2,6 +2,6 @@
   ansible.builtin.include_tasks: "arch.yml"
   when: ansible_distribution | lower == 'archlinux'
 
-- name: Ubuntu
-  ansible.builtin.include_tasks: "ubuntu.yml"
-  when: ansible_distribution | lower == 'ubuntu'
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'

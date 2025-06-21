@@ -1,0 +1,27 @@
+- name: Install packages
+  become: true
+  community.general.apk:
+    update_cache: false
+    name:
+      - bat
+      - btop
+      - dysk # `df` but better
+      - fastfetch
+      - fzf # fuzzy-finder
+      - git
+      - lazygit
+      - mandoc
+      - man-pages
+      - ncdu # ncurses `du` frontend
+      - nfs-utils
+      - powertop # power monitoring
+      - rsync
+      - speedtest-cli
+      - starship # prompt theming
+      - tmux
+      - tree
+      - font-meslo-nerd # font for Starship prompt
+      - unzip
+      - vim
+      - zsh
+    state: present

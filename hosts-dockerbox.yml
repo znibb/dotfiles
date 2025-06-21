@@ -1,0 +1,12 @@
+- name: Setup dockerbox
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - install-packages-system
+    - fastfetch
+    - git
+    - lazygit
+    - tmux
+    - vim
+    - zsh
