@@ -6,6 +6,7 @@
       - bluez-utils # bluetoothctl
       - gwenview  # image viewer
       - power-profiles-daemon
+      - wl-clipboard # Wayland clipboard management
     state: present
   register: pacman_output
   changed_when:
