@@ -3,6 +3,7 @@
   community.general.apk:
     update_cache: false
     name:
+      - acl # getfacl, setfacl
       - bat
       - btop
       - dysk # `df` but better
@@ -22,6 +23,7 @@
       - tree
       - font-meslo-nerd # font for Starship prompt
       - unzip
+      - util-linux # findmnt, lsblk, mountpoint, etc
       - vim
       - zsh
     state: present
