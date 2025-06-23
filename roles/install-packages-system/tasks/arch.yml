@@ -10,6 +10,7 @@
       - 7zip
       - bat
       - btop
+      - dnsutils # dig/nslookup
       - dosfstools # mkfs.vfat etc
       - dysk # `df` but better
       - fastfetch
