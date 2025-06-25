@@ -48,6 +48,7 @@ alias  gf='git fetch'
 alias  gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n'"
 alias gll='git log --graph'
 alias glo='git log --graph --oneline'
+alias gsm='git submodule'
 alias  gs='git status'
 alias gss='git status --short'
 alias  gp='git pull'
