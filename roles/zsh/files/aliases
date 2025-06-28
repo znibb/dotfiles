@@ -58,7 +58,7 @@ alias  lg='lazygit'
 # tmux
 alias tma='tmux attach -t '
 alias tmk='tmux kill-session -t '
-alias tml='tmux tmux ls'
+alias tml='tmux ls'
 alias tmn='tmux new -s '
 alias tmr='tmux rename-session -t '
 
