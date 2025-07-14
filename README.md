@@ -62,3 +62,10 @@ To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup
 3. Go to the Calendar view in Thunderbird and click `TbSync: Idle` at the bottom-right of the window
 4. Click `Account actions->Add new account->Exchange ActiveSync`
 5. Check `Enable and syncronize this account`, tick the `Calendar`checkbox in the list below and then click `Syncronize now`
+
+### Add ChatGPT search in KRunner
+1. Go to `System Settings->Plasma Search`, scroll down to `Web Search Keywords` and click `Configure...`
+1. Create a new keyword:
+   Name: `ChatGPT`
+   URL: `https://chatgpt.com/?model=gpt-4o&q=\{@}`
+   Keywords: `ai`
