@@ -19,14 +19,17 @@ set number relativenumber
 set cursorline
 " Enable syntax highlighting
 set modeline
+" Expand tabs to spaces
+set expandtab
+" Enable auto indent
+set autoindent
 " Show a tab as this many spaces
 set tabstop=2
 " How many spaces when autoindenting
 set shiftwidth=2
-" Dont expand tabs to spaces
-set noexpandtab
-" Enable auto indent
-set autoindent
+"  Number of spaces inserted when pressing <Tab>
+set softtabstop=2
+
 " Always show status line
 set laststatus=2
 " Set status line to contain full path to current file
