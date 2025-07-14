@@ -1,7 +1,7 @@
 - name: Install KiCad package
   become: true
   community.general.pacman:
-    update_cache: true
+    update_cache: false
     name:
       - kicad
       - kicad-library
@@ -29,6 +29,4 @@
     state: link
     force: true
   loop:
-    - { src: "fp-lib-table", dest: "{{ kicad_config_dir }}/fp-lib-table"}
-    - { src: "sym-lib-table", dest: "{{ kicad_config_dir }}/sym-lib-table"}
     - { src: "user.hotkeys", dest: "{{ kicad_config_dir }}/user.hotkeys"}
