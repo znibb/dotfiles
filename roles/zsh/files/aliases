@@ -63,6 +63,27 @@ alias tmn='tmux new -s '
 alias tmr='tmux rename-session -t '
 
 # helper functions
+kicad() {
+  local files=(*.kicad_pro)
+
+  if [[ ${#files[@]} -eq 0 ]]; then
+    echo "No .kicad_pro file found in the current directory."
+    return 1
+  elif [[ ${#files[@]} -eq 1 ]]; then
+    command kicad "${files[1]}" > /dev/null 2>&1 & disown
+  else
+    echo "Multiple .kicad_pro files found:"
+    select file in "${files[@]}"; do
+      if [[ -n "$file" ]]; then
+        command kicad "$file" > /dev/null 2>&1 & disown
+        break
+      else
+        echo "Invalid selection."
+      fi
+    done
+  fi
+}
+
 mcd () {
   mkdir -v "$1"
   cd "$1"
