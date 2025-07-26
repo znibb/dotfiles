@@ -7,6 +7,7 @@
     - install-packages-system
     - install-packages-desktop
     - bluetooth
+    - { role: docker, tags: docker }
     - fastfetch
     - ghostty
     - git
