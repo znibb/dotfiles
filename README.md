@@ -43,6 +43,17 @@ Install the required ansible collections: `ansible-galaxy install -r requirement
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
 
+### Running specific roles
+To enable debugging of a certain role it could be benefitial to run just a specific role and not the entire playbook. This can be achieved by editing the relevant playbook and adding a tag for the role in question, e.g. replace:
+```
+   - roleName
+```
+with
+```
+   { role: roleName, tags: roleName }
+```
+will let you invoke only that specific role with `ansible-playbook playbook.yml --tags roleName` (or `--tags "role1,role2" for multiple specific roles)
+
 ### Setting up swap
 1. Create file to use as swap, `sudo fallocate -l 30G /swapfile`
 2. Set proper permissions, `sudo chmod 600 /swapfile`
