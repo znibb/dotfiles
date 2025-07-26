@@ -25,27 +25,3 @@
     name: power-profiles-daemon
     enabled: true
     state: started
-
-- name: Ensure KDE config directory exists
-  ansible.builtin.file:
-    path: "{{ kde_config_dir }}"
-    state: directory
-    mode: '0755'
-
-# https://github.com/shalva97/kde-configuration-files
-- name: Symlink KDE configs
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-    force: true
-  loop:
-    # Input devices, cursors
-    - { src: "kcminputrc", dest: "{{ kde_config_dir }}/kcminputrc"}
-    # System tray module autoloading settings
-    - { src: "kded5rc", dest: "{{ kde_config_dir }}/kded5rc"}
-    # Global shortcuts
-    - { src: "kglobalshortcutsrc", dest: "{{ kde_config_dir }}/kglobalshortcutsrc" }
-    # Session settings
-    - { src: "ksmserverrc", dest: "{{ kde_config_dir }}/ksmserverrc" }
-
