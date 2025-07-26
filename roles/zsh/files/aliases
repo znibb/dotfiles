@@ -10,8 +10,10 @@ alias   cat='bat --color=always'
 alias pacch='sudo pacman -Syu --print-format "%n %v %b"'
 alias rsync='rsync --progress'
 alias   fzf='fzf --preview="cat {}"'
+alias    df='dysk'
 
 # config shortcuts
+alias srca='source ~/.config/zsh/aliases'
 alias  cfa='vim ~/.config/zsh/aliases'
 alias cftm='vim ~/.config/tmux/tmux.conf'
 alias  cfv='vim ~/.config/vim/vimrc'
