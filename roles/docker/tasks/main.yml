@@ -13,7 +13,7 @@
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
 
-- name: "Make sure {{ ansible_env.USER }} is a member of docker group"
+- name: "Make sure user {{ ansible_env.USER }} is a member of docker group"
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"

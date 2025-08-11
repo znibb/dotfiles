@@ -71,7 +71,7 @@
     state: absent
   when: source_cloned is changed
 
-- name: "Allow {{ ansible_env.USER }} to run passwordless pacman/yay"
+- name: "Allow user {{ ansible_env.USER }} to run passwordless pacman/yay"
   become: true
   ansible.builtin.copy:
     dest: "/etc/sudoers.d/{{ ansible_env.USER }}-pacman-yay"
