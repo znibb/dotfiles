@@ -32,4 +32,3 @@
   when:
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
-

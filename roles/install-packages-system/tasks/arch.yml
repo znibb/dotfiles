@@ -7,7 +7,6 @@
       - base-devel
 
       # System
-      - 7zip
       - bat
       - btop
       - dnsutils # dig/nslookup
@@ -27,11 +26,11 @@
       - tmux
       - tree
       - ttf-meslo-nerd # Font for Starship prompt
-      - unzip
       - usbutils # lsusb etc
       - vi # fallback for visudo etc
       - vim
       - whois # mkpasswd etc
+      - zip
       - zsh
 
     state: present
