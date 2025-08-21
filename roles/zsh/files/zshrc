@@ -14,8 +14,14 @@ SAVEHIST=10000
 setopt appendhistory
 setopt HIST_IGNORE_SPACE
 
-# Load theme
+# Initialize Starship
 case ${TERM} in
+    alacritty*)
+        export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
+        ;;
+    tmux*)
+        export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
+        ;;
     xterm*)
         export STARSHIP_CONFIG=$ZDOTDIR/starship-theme
         ;;
@@ -25,7 +31,18 @@ case ${TERM} in
 esac
 eval "$(starship init zsh)"
 
-# Keybindings
+# Attach to tmux session "main" automatically, create it if not already present
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
+    SESSION="main"
+  # Check if session exists
+  if tmux has-session -t "$SESSION" 2>/dev/null; then
+    tmux attach -t "$SESSION"
+  else
+    tmux new-session -s "$SESSION"
+  fi
+fi
+
+# Keybindings for zsh
 bindkey "^[[3~"     delete-char         # Delete
 bindkey "\e[H"      beginning-of-line   # Home
 bindkey "\e[F"      end-of-line         # End
