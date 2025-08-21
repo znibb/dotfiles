@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=FocusOrLaunch
-Comment=Focus existing window or launch application if none exists
-Type=Service
-X-KDE-ServiceTypes=KWin/Script
-X-KDE-KWinScriptVersion=1
