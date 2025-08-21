@@ -22,4 +22,4 @@
     - tmux
     - vim
     - vscodium
-    - zsh
+    - { role: zsh, tags: zsh }

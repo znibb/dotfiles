@@ -1,6 +1,6 @@
 - name: Ensure tmux config directory exists
   ansible.builtin.file:
-    path: "{{ tmux_config_dir }}"
+    path: "{{ tmux_config_dir }}/plugins"
     state: directory
     mode: '0755'
 
@@ -11,3 +11,12 @@
     state: link
   loop:
     - { src: "tmux.conf", dest: "{{ tmux_config_dir }}/tmux.conf" }
+
+- name: Setup Tmux Plugin Manager
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ tmux_config_dir }}/plugins/tpm"
+    version: master
+    single_branch: true
+    depth: 1
+    update: false
