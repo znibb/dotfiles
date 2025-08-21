@@ -1,0 +1,36 @@
+[colors.primary]
+background = "0x1e1e2e"
+foreground = "0xcdd6f4"
+
+[colors.normal]
+black = "0x1e1e2e"
+blue = "0x89b4fa"
+cyan = "0x94e2d5"
+green = "0xa6e3a1"
+magenta = "0xf5c2e7"
+red = "0xf38ba8"
+white = "0xcdd6f4"
+yellow = "0xf9e2af"
+
+[colors.bright]
+black = "0x585b70"
+blue = "0x89b4fa"
+cyan = "0x94e2d5"
+green = "0xa6e3a1"
+magenta = "0xf5c2e7"
+red = "0xf38ba8"
+white = "0xcdd6f4"
+yellow = "0xf9e2af"
+
+[font]
+size = 12.0
+normal = { family = "MesloLGS Nerd Font Mono", style = "Regular" }
+bold   = { family = "MesloLGS Nerd Font Mono", style = "Bold" }
+italic = { family = "MesloLGS Nerd Font Mono", style = "Italic" }
+
+[window]
+dynamic_title = true
+
+[window.padding]
+x = 5
+y = 5

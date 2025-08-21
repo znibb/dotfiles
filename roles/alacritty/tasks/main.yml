@@ -1,0 +1,25 @@
+- name: Install alacritty
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - alacritty
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Ensure config dir exists
+  ansible.builtin.file:
+    path: "{{ alacritty_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "alacritty.toml", dest: "{{ alacritty_config_dir }}/alacritty.toml" }
