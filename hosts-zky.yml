@@ -6,10 +6,10 @@
     - package-handler-settings
     - install-packages-system
     - install-packages-desktop
+    - alacritty
     - bluetooth
     - { role: docker, tags: docker }
     - fastfetch
-    - ghostty
     - git
     - kde
     - keepass

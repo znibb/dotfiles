@@ -10,7 +10,6 @@
     - { role: avr-dev, tags: avr-dev }
     - docker
     - fastfetch
-    - ghostty
     - git
     - kde
     - keepass
