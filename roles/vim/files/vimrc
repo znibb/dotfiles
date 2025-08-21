@@ -39,6 +39,8 @@ set visualbell
 set t_vb=
 " Set colour scheme
 color desert
+" Move .viminfo file to live inside ~/.config/vim instead of in ~/
+set viminfo+=n~/.config/vim/.viminfo
 
 " Set syntax highlighting based on file extension
 au BufNewFile,BufRead,BufReadPost *.conf set syntax=dosini
