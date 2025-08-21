@@ -11,7 +11,7 @@
     - docker
     - fastfetch
     - git
-    - kde
+    - { role: kde, tags: kde }
     - keepass
     - kicad
     - lazygit
