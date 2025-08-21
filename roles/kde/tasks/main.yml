@@ -25,3 +25,42 @@
     name: power-profiles-daemon
     enabled: true
     state: started
+
+# - name: Ensure KWin config directory exists
+#   ansible.builtin.file:
+#     path: "{{ kwin_config_dir }}"
+#     state: directory
+#     mode: '0755'
+
+# - name: Symlink KWin config
+#   ansible.builtin.file:
+#     src: "{{ role_path }}/files/{{ item.src }}"
+#     dest: "{{ item.dest }}"
+#     state: link
+#   loop:
+#     - { src: "focus_or_launch_apps.json", dest: "{{ kwin_config_dir }}/focus_or_launch_apps.json" }
+
+# - name: Ensure KWin script directories exists
+#   ansible.builtin.file:
+#     path: "{{ kwin_scripts_dir }}/{{ item }}"
+#     state: directory
+#     mode: '0755'
+#   loop:
+#     - FocusOrLaunch/contents/code
+
+# - name: Symlink KWin scripts
+#   ansible.builtin.file:
+#     src: "{{ role_path }}/files/{{ item.src }}"
+#     dest: "{{ item.dest }}"
+#     state: link
+#     force: true
+#   loop:
+#     - { src: "focus_or_launch.js",      dest: "{{ kwin_scripts_dir }}/FocusOrLaunch/contents/code/main.js" }
+
+# - name: Copy KWin script metadata.desktop files
+#   ansible.builtin.copy:
+#     src: "{{ role_path }}/files/{{ item.src }}"
+#     dest: "{{ item.dest }}"
+#     force: true
+#   loop:
+#     - { src: "focus_or_launch.desktop",     dest: "{{ kwin_scripts_dir }}/FocusOrLaunch/contents/metadata.desktop" }

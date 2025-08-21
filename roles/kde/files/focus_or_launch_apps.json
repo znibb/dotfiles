@@ -1,0 +1,7 @@
+[
+    { "class": "Alacritty", "command": "alacritty", "shortcut": "Meta+Return" },
+    { "class": "Code", "command": "alacritty", "shortcut": "Meta+Return" },
+    { "class": "Dolphin", "command": "alacritty", "shortcut": "Meta+Return" },
+    { "class": "Firefox", "command": "alacritty", "shortcut": "Meta+Return" },
+    { "class": "Spotify", "command": "alacritty", "shortcut": "Meta+Return" }
+]
