@@ -23,7 +23,6 @@
       - rsync
       - speedtest-cli
       - tldr
-      - tmux
       - tree
       - ttf-meslo-nerd # Font for Starship prompt
       - usbutils # lsusb etc
