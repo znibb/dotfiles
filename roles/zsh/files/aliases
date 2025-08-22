@@ -14,14 +14,11 @@ alias    df='dysk'
 
 # config shortcuts
 alias srca='source ~/.config/zsh/aliases'
+alias srcz='source ~/.config/zsh/.zshrc'
 alias  cfa='vim ~/.config/zsh/aliases'
 alias cftm='vim ~/.config/tmux/tmux.conf'
 alias  cfv='vim ~/.config/vim/vimrc'
 alias  cfz='vim ~/.config/zsh/.zshrc'
-
-# dotfiles shortcuts
-alias  dfi='cd ~/.dotfiles/'
-alias dfiz='cd ~/.dotfiles/zsh'
 
 # ls
 alias  l='ls -lahH --group-directories-first --color=auto'
@@ -63,6 +60,7 @@ alias tmk='tmux kill-session -t '
 alias tml='tmux list-sessions'
 alias tmn='tmux new-session -s '
 alias tmr='tmux rename-session -t '
+alias  tm='tmux attach -t main'
 
 # helper functions
 kicad() {
