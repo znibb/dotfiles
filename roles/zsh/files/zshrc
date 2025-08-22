@@ -49,10 +49,15 @@ bindkey "\e[F"      end-of-line         # End
 bindkey "^[[1;5D"   backward-word       # Ctrl+Left
 bindkey "^[[1;5C"   forward-word        # Ctrl+Right
 
+## Arch
 # Home
-bindkey "^[[H" beginning-of-line   # outside tmux
-bindkey "^[OH" beginning-of-line   # inside tmux
+bindkey "^[[H" beginning-of-line    # outside tmux
+bindkey "^[OH" beginning-of-line    # inside tmux
 
 # End
-bindkey "^[[F" end-of-line         # outside tmux
-bindkey "^[OF" end-of-line         # inside tmux
+bindkey "^[[F" end-of-line          # outside tmux
+bindkey "^[OF" end-of-line          # inside tmux
+
+## Alpine
+bindkey "^[[1~" beginning-of-line   # inside tmux
+bindkey "^[[4~" end-of-line         # inside tmux
