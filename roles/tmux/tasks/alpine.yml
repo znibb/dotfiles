@@ -5,4 +5,7 @@
     name:
       - tmux
       - entr # Run arbitrary commands on file change, needed for tmux-autoreload plugin
+      - ncurses # Required for tmux-256color to be present
+      - ncurses-terminfo
+      - ncurses-terminfo-base
     state: present
