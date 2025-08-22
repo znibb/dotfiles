@@ -40,6 +40,12 @@ At a later stage set up an ssh key-pair with Github and run `git remote set-url 
 
 Install the required ansible collections: `ansible-galaxy install -r requirements.yml`
 
+## Alpine specific
+If you run `sudo apk update` and the output contains warnings about stale repos or if your ansible-playbook runs fails with something like `fatal: [localhost]: FAILED! => {"changed": false, "msg": "could not update package db"` one solution is to run `sudo setupapkrepos -cf` to scan for available/suitable repo mirrors to use
+
+You might need to run `sudo apk update`, check which mirrors it's complaining about and manually remove them from `/etc/apk/repositories`
+
+
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
 
