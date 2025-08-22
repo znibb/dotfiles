@@ -1,0 +1,8 @@
+- name: Install packages
+  become: true
+  community.general.apk:
+    update_cache: false
+    name:
+      - tmux
+      - entr # Run arbitrary commands on file change, needed for tmux-autoreload plugin
+    state: present

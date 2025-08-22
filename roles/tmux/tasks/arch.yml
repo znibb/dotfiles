@@ -1,0 +1,12 @@
+- name: Install tmux
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - tmux
+      - entr # Run arbitrary commands on file change, needed for tmux-autoreload plugin
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
