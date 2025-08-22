@@ -48,3 +48,11 @@ bindkey "\e[H"      beginning-of-line   # Home
 bindkey "\e[F"      end-of-line         # End
 bindkey "^[[1;5D"   backward-word       # Ctrl+Left
 bindkey "^[[1;5C"   forward-word        # Ctrl+Right
+
+# Home
+bindkey "^[[H" beginning-of-line   # outside tmux
+bindkey "^[OH" beginning-of-line   # inside tmux
+
+# End
+bindkey "^[[F" end-of-line         # outside tmux
+bindkey "^[OF" end-of-line         # inside tmux
