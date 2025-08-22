@@ -24,7 +24,7 @@
       - font-meslo-nerd # font for Starship prompt
       - unzip
       - util-linux # findmnt, lsblk, mountpoint, etc
-      - vi # fallback for visudo etc
+      #- vi # installed as part of the base OS
       - vim
       - zsh
     state: present
