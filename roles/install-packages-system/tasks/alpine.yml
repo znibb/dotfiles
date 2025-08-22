@@ -1,7 +1,7 @@
 - name: Install packages
   become: true
   community.general.apk:
-    update_cache: false
+    update_cache: true
     name:
       - acl # getfacl, setfacl
       - bat
