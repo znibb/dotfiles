@@ -3,5 +3,5 @@
     use: yay
     update_cache: true
     name:
-      - teams-for-linux
+      - teams-for-linux-bin
     state: present
