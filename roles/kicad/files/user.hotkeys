@@ -304,7 +304,7 @@ eeschema.InteractiveDrawing.syncSheetPins
 eeschema.InteractiveDrawingLineWireBus.drawBuses	B	
 eeschema.InteractiveDrawingLineWireBus.drawLines	I	
 eeschema.InteractiveDrawingLineWireBus.drawWires	W	
-eeschema.InteractiveDrawingLineWireBus.switchPosture	/	
+eeschema.InteractiveDrawingLineWireBus.switchPosture	Space	
 eeschema.InteractiveDrawingLineWireBus.undoLastSegment	Back	
 eeschema.InteractiveDrawingLineWireBus.unfoldBus	C	
 eeschema.InteractiveEdit.assignNetclass		
