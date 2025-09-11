@@ -1,6 +1,6 @@
 - name: Install Microsoft Teams
   kewlfft.aur.aur:
-    use: yay
+    use: "{{ aur_helper }}"
     update_cache: true
     name:
       - teams-for-linux-bin
