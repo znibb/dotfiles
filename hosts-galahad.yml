@@ -6,6 +6,7 @@
     - package-handler-settings
     - install-packages-system
     - install-packages-desktop
+    - ssh # put early to allow cloning of github repos with ssh config
     - alacritty
     - avr-dev
     - docker
@@ -16,7 +17,6 @@
     - kicad
     - lazygit
     - locale
-    - ssh
     - steam
     - tmux
     - vim
