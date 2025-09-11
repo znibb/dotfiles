@@ -32,3 +32,4 @@
     - ms-vscode.makefile-tools  # Makefiles
     - tamasfe.even-better-toml  # TOML
     - jeanp413.open-remote-ssh  # Remote SSH
+    - mechatroner.rainbow-csv   # CSV/TSV highlighting/queries
