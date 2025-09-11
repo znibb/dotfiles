@@ -44,6 +44,16 @@
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
 
+- name: "Allow user {{ ansible_env.USER }} to run passwordless pacman/yay"
+  become: true
+  ansible.builtin.copy:
+    dest: "/etc/sudoers.d/{{ ansible_env.USER }}-pacman-yay"
+    content: "{{ ansible_env.USER }} ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: '/usr/sbin/visudo -cf %s'
+
 - name: Check for yay binary
   ansible.builtin.stat:
     path: "/usr/bin/{{ aur_helper }}"
@@ -68,16 +78,6 @@
     path: "{{ aur_helper_dir }}"
     state: absent
   when: source_cloned is changed
-
-- name: "Allow user {{ ansible_env.USER }} to run passwordless pacman/yay"
-  become: true
-  ansible.builtin.copy:
-    dest: "/etc/sudoers.d/{{ ansible_env.USER }}-pacman-yay"
-    content: "{{ ansible_env.USER }} ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay"
-    owner: root
-    group: root
-    mode: '0440'
-    validate: '/usr/sbin/visudo -cf %s'
 
 - name: Install AUR packages
   kewlfft.aur.aur:
