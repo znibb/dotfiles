@@ -1,5 +1,5 @@
 - name: Setup baphomet
-  hosts: localhost
+  hosts: baphomet
   gather_facts: true
 
   roles:

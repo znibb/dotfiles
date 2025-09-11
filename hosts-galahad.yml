@@ -1,5 +1,5 @@
-- name: Setup figaro
-  hosts: figaro
+- name: Setup galahad
+  hosts: galahad
   gather_facts: true
 
   roles:
@@ -7,7 +7,7 @@
     - install-packages-system
     - install-packages-desktop
     - alacritty
-    - bluetooth
+    - avr-dev
     - docker
     - fastfetch
     - git
@@ -16,11 +16,9 @@
     - kicad
     - lazygit
     - locale
-    - printer
     - ssh
-    - teams
+    - steam
     - tmux
     - vim
-    - virt-manager
     - vscodium
     - zsh
