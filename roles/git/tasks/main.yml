@@ -4,10 +4,7 @@
     state: directory
     mode: '0755'
 
-- name: Symlink git config
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-  loop:
-    - { src: "config", dest: "{{ git_config_dir }}/config" }
+- name: Deploy config file
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ git_config_dir }}/config"
