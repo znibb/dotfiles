@@ -26,8 +26,9 @@ alias la='ls -ahH --group-directories-first --color=auto'
 alias ls='ls -hH --group-directories-first --color=auto'
 
 # ansible
-alias  a='ansible'
-alias ap='ansible-playbook'
+alias   a='ansible'
+alias  ap='ansible-playbook'
+alias api='ansible-playbook -i inventory/hosts.ini'
 
 # docker
 alias   d='docker'
