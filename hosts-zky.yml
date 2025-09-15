@@ -1,5 +1,5 @@
-- name: Setup baphomet
-  hosts: localhost
+- name: Setup zky
+  hosts: zky
   gather_facts: true
 
   roles:
