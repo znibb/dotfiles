@@ -15,6 +15,7 @@
       - telegram-desktop
       - thunderbird
       - timeshift # System backups
+      - piper # Gaming peripheral settings GUI
       - protonmail-bridge # For syncing protonmail with Thunderbird
       - qpwgraph # Pipewire GUI
       - zathura # Minimalist document viewer
