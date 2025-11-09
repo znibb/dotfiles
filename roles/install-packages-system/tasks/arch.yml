@@ -20,6 +20,8 @@
       - ncdu # ncurses `du` frontend
       - nfs-utils
       - powertop # power monitoring
+      - python-pip
+      - python-virtualenv
       - rsync
       - speedtest-cli
       - tldr
