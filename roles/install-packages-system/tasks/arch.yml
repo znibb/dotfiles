@@ -30,6 +30,7 @@
       - vim
       - whois # mkpasswd etc
       - zip
+      - unzip
       - zsh
 
     state: present
