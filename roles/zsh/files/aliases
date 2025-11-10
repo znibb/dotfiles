@@ -93,6 +93,11 @@ mcd () {
   cd "$1"
 }
 
+gv () {
+  xdg-open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
+}
+
+
 sha256 () {
   # checksum filename
   echo "$1 $2" | sha256sum --check
