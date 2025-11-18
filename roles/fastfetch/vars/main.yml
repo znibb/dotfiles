@@ -1,1 +1,1 @@
-fastfetch_config_dir: "{{ ansible_env.HOME }}/.config/fastfetch"
+fastfetch_config_dir: "{{ ansible_facts.env.HOME }}/.config/fastfetch"

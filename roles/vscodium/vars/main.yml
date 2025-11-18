@@ -1,1 +1,1 @@
-vscodium_config_dir: "{{ ansible_env.HOME }}/.config/VSCodium/User"
+vscodium_config_dir: "{{ ansible_facts.env.HOME }}/.config/VSCodium/User"

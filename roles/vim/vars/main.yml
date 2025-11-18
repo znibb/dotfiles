@@ -1,1 +1,1 @@
-vim_config_dir: "{{ ansible_env.HOME }}/.config/vim"
+vim_config_dir: "{{ ansible_facts.env.HOME }}/.config/vim"

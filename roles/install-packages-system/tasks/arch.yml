@@ -47,11 +47,11 @@
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
 
-- name: "Allow user {{ ansible_env.USER }} to run passwordless pacman/yay"
+- name: "Allow user {{ ansible_facts.env.USER }} to run passwordless pacman/yay"
   become: true
   ansible.builtin.copy:
-    dest: "/etc/sudoers.d/{{ ansible_env.USER }}-pacman-yay"
-    content: "{{ ansible_env.USER }} ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay"
+    dest: "/etc/sudoers.d/{{ ansible_facts.env.USER }}-pacman-yay"
+    content: "{{ ansible_facts.env.USER }} ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay"
     owner: root
     group: root
     mode: '0440'

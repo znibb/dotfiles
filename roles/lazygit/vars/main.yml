@@ -1,1 +1,1 @@
-lazygit_config_dir: "{{ ansible_env.HOME }}/.config/lazygit"
+lazygit_config_dir: "{{ ansible_facts.env.HOME }}/.config/lazygit"

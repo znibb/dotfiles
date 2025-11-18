@@ -1,1 +1,1 @@
-git_config_dir: "{{ ansible_env.HOME }}/.config/git"
+git_config_dir: "{{ ansible_facts.env.HOME }}/.config/git"

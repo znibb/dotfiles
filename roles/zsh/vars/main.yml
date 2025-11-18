@@ -1,1 +1,1 @@
-zsh_config_dir: "{{ ansible_env.HOME }}/.config/zsh"
+zsh_config_dir: "{{ ansible_facts.env.HOME }}/.config/zsh"

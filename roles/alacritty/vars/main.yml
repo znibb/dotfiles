@@ -1,1 +1,1 @@
-alacritty_config_dir: "{{ ansible_env.HOME }}/.config/alacritty"
+alacritty_config_dir: "{{ ansible_facts.env.HOME }}/.config/alacritty"
