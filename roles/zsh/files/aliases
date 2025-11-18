@@ -93,7 +93,7 @@ mcd () {
   cd "$1"
 }
 
-gv () {
+gh () {
   xdg-open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
 }
 
