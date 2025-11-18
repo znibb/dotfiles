@@ -107,6 +107,7 @@ common.Control.showContextMenu
 common.Control.showDatasheet	D	
 common.Control.showFootprintBrowser		
 common.Control.showFootprintEditor		
+common.Control.showLibraryTable		
 common.Control.showLibraryTree		
 common.Control.showProjectManager		
 common.Control.showProperties		
