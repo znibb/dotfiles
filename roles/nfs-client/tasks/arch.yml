@@ -1,0 +1,13 @@
+- name: Enable and start nfs-client.target
+  become: true
+  ansible.builtin.systemd:
+    name: nfs-client.target
+    enabled: true
+    state: started
+
+- name: Enable and start nfs-idmapd.service # Required for NFSv4
+  become: true
+  ansible.builtin.systemd:
+    name: nfs-idmapd.service
+    enabled: true
+    state: started

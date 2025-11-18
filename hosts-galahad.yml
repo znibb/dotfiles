@@ -17,6 +17,7 @@
     - kicad
     - lazygit
     - locale
+    - nfs-client
     - steam
     - tmux
     - vim

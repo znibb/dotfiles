@@ -1,0 +1,7 @@
+- name: Arch
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux'
+
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
