@@ -11,6 +11,7 @@ alias pacch='sudo pacman -Syu --print-format "%n %v %b"'
 alias rsync='rsync --progress'
 alias   fzf='fzf --preview="cat {}"'
 alias    df='dysk'
+alias    ff='fastfetch'
 
 # config shortcuts
 alias srca='source ~/.config/zsh/aliases'
