@@ -18,7 +18,7 @@
   become: true
   ansible.builtin.user:
     append: true
-    name: "{{ ansible_user_id }}"
+    name: "{{ ansible_facts.user_id }}"
     groups:
       - libvirt
     state: present
