@@ -1,5 +1,6 @@
 # general
 alias    ..='cd ..'
+alias agrep='alias | grep'
 alias  grep='grep --color=auto'
 alias   psa='ps aux'
 alias   psg='ps aux | grep -v grep | grep '
