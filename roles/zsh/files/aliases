@@ -68,6 +68,9 @@ alias tmn='tmux new-session -s '
 alias tmr='tmux rename-session -t '
 alias  tm='tmux attach -t main'
 
+# yt-dlp
+alias ytmp3='yt-dlp --config-location ~/.config/yt-dlp/mp3.conf'
+
 # helper functions
 kicad() {
   local files=(*.kicad_pro)

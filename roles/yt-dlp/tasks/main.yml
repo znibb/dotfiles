@@ -1,0 +1,23 @@
+# Distro-specific package install
+- name: Arch
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux'
+
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
+
+# Config
+- name: Ensure yt-dlp config directory exists
+  ansible.builtin.file:
+    path: "{{ ytdlp_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink yt-dlp configs
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "mp3.conf", dest: "{{ ytdlp_config_dir }}/mp3.conf" }

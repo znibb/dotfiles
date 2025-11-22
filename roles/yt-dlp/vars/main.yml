@@ -1,0 +1,1 @@
+ytdlp_config_dir: "{{ ansible_facts.env.HOME }}/.config/yt-dlp"
