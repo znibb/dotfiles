@@ -4,6 +4,7 @@
     update_cache: false
     name:
       - yt-dlp
+      - yt-dlp-ejs
     state: present
   register: pacman_output
   changed_when:
