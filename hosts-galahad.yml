@@ -9,6 +9,7 @@
     - ssh # put early to allow cloning of github repos with ssh config
     - alacritty
     - avr-dev
+    - bluetooth
     - docker
     - fastfetch
     - git
