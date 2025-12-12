@@ -12,6 +12,7 @@
     - bluetooth
     - docker
     - fastfetch
+    - fractal-scape # headset drivers+udev
     - git
     - kde
     - keepass

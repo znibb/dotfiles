@@ -1,0 +1,17 @@
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - fractal-udev
+    state: present
+
+- name: Setup udev rules for headset
+  become: true
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/50-fractal.rules"
+    dest: /etc/udev/rules.d/50-fractal.rules
+    mode: '0755'
+    owner: root
+    group: root
+    force: false
