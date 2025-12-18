@@ -100,7 +100,8 @@ mcd () {
 }
 
 gh () {
-  xdg-open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
+  # use `gio open` instead of `xdg-open` to bypass KDE portal
+  gio open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
 }
 
 
