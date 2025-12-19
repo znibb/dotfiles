@@ -13,8 +13,6 @@ alias rsync='rsync --progress'
 alias   fzf='fzf --preview="cat {}"'
 alias    df='dysk'
 alias    ff='fastfetch'
-alias  sshh='grep -iE "^[[:space:]]*Host[[:space:]]+" ~/.ssh/config | awk "{for (i=2; i<=NF; i++) if (\$i !~ /[*?]/) print \$i}"'
-
 
 # config shortcuts
 alias srca='source ~/.config/zsh/aliases'
@@ -28,6 +26,10 @@ alias  cfz='vim ~/.config/zsh/.zshrc'
 alias  l='ls -lahH --group-directories-first --color=auto'
 alias la='ls -ahH --group-directories-first --color=auto'
 alias ls='ls -hH --group-directories-first --color=auto'
+
+# ssh
+alias  sshh='grep -iE "^[[:space:]]*Host[[:space:]]+" ~/.ssh/config | awk "{for (i=2; i<=NF; i++) if (\$i !~ /[*?]/) print \$i}"'
+alias  sshc='cat ~/.ssh/config'
 
 # ansible
 alias   a='ansible'
