@@ -29,4 +29,6 @@
     state: link
     force: true
   loop:
-    - { src: "user.hotkeys", dest: "{{ kicad_config_dir }}/user.hotkeys"}
+    - { src: "fp-lib-table",  dest: "{{ kicad_config_dir }}/fp-lib-table"}
+    - { src: "sym-lib-table", dest: "{{ kicad_config_dir }}/sym-lib-table"}
+    - { src: "user.hotkeys",  dest: "{{ kicad_config_dir }}/user.hotkeys"}
