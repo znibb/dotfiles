@@ -13,6 +13,8 @@ alias rsync='rsync --progress'
 alias   fzf='fzf --preview="cat {}"'
 alias    df='dysk'
 alias    ff='fastfetch'
+alias  sshh='grep -iE "^[[:space:]]*Host[[:space:]]+" ~/.ssh/config | awk "{for (i=2; i<=NF; i++) if (\$i !~ /[*?]/) print \$i}"'
+
 
 # config shortcuts
 alias srca='source ~/.config/zsh/aliases'
