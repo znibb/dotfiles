@@ -13,7 +13,7 @@
 - name: Install KeePassXC browser extension
   kewlfft.aur.aur:
     use: "{{ aur_helper }}"
-    update_cache: true
+    update_cache: false
     name:
       - firefox-extension-keepassxc-browser # Keepass Firefox integration
     state: present

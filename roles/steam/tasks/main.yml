@@ -19,7 +19,7 @@
 - name: Install Steam packages
   become: true
   community.general.pacman:
-    update_cache: true
+    update_cache: false
     name:
       - steam # application
       - ttf-liberation # required fonts

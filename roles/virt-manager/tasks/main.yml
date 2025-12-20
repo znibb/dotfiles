@@ -1,7 +1,7 @@
 - name: Install virtualization packages
   become: true
   community.general.pacman:
-    update_cache: true
+    update_cache: false
     name:
       - dnsmasq
       - libvirt

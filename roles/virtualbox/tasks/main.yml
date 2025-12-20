@@ -1,7 +1,7 @@
 - name: Install VirtualBox packages
   become: true
   community.general.pacman:
-    update_cache: true
+    update_cache: false
     name:
       - virtualbox
       - virtualbox-host-modules-arch

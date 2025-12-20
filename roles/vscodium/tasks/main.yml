@@ -1,7 +1,7 @@
 - name: Install vscodium
   kewlfft.aur.aur:
-    use: yay
-    update_cache: true
+    use: "{{ aur_helper }}"
+    update_cache: false
     name:
       - vscodium-bin
     state: present

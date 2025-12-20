@@ -1,7 +1,7 @@
 - name: Install Plex for Desktop
   kewlfft.aur.aur:
     use: "{{ aur_helper }}"
-    update_cache: true
+    update_cache: false
     name:
       - plex-desktop
     state: present

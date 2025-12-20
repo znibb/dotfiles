@@ -1,7 +1,7 @@
 - name: Install pacman packages
   become: true
   community.general.pacman:
-    update_cache: true
+    update_cache: false
     name:
       - brightnessctl
       - swww
@@ -16,8 +16,8 @@
 
 - name: Install AUR packages
   kewlfft.aur.aur:
-    use: yay
-    update_cache: true
+    use: "{{ aur_helper }}"
+    update_cache: false
     name:
       - ags-hyprpanel-git
     state: present

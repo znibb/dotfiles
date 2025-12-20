@@ -1,7 +1,7 @@
 - name: Install Wireguard GUI client
   kewlfft.aur.aur:
     use: "{{ aur_helper }}"
-    update_cache: true
+    update_cache: false
     name:
       - wireguird # Wireguard GUI client
     state: present
