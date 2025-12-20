@@ -16,6 +16,7 @@
     - keepass
     - kicad
     - lazygit
+    - { role: librewolf, tags: librewolf }
     - locale
     - steam
     - tmux

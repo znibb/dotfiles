@@ -1,0 +1,1 @@
+librewolf_config_dir: "{{ ansible_facts.env.HOME }}/.librewolf"

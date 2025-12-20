@@ -1,0 +1,29 @@
+- name: Install librewolf
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: false
+    name:
+      - librewolf
+      - librewolf-extension-keepassxc-browser
+    state: present
+
+- name: Symlink librewolf config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "librewolf.overrides.cfg", dest: "{{ librewolf_config_dir }}/librewolf.overrides.cfg" }
+
+- name: Set up user native messaging
+  ansible.builtin.file:
+    src: "{{ ansible_facts.env.HOME }}/.mozilla/native-messaging-hosts"
+    dest: "{{ ansible_facts.env.HOME }}/.librewolf/native-messaging-hosts"
+    state: link
+
+- name: Set up system native messaging
+  become: true
+  ansible.builtin.file:
+    src: "/usr/lib/mozilla/native-messaging-hosts"
+    dest: "/usr/lib/librewolf/native-messaging-hosts"
+    state: link
