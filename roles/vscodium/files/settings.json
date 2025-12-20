@@ -16,5 +16,6 @@
     "remote.SSH.showLoginTerminal": true,
     "remote.SSH.defaultShell": {
         "host-vscodium": "/bin/bash"
-    }
+    },
+    "update.showReleaseNotes": false
 }
