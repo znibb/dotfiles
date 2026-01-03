@@ -10,6 +10,7 @@
       - fastfetch
       - fzf # fuzzy-finder
       - git
+      - jq # command line JSON processor
       - lazygit
       - mandoc
       - man-pages
