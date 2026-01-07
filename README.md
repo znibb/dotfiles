@@ -79,6 +79,15 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
 1. Click `Account actions->Add new account->Exchange ActiveSync`
 1. Check `Enable and syncronize this account`, tick the `Calendar`checkbox in the list below and then click `Syncronize now`
 
+### Locale overrides in Thunderbird
+1. In Thunderbird go to `Settings->General`, scroll to the bottom and click `Config Editor`
+1. Search for the override string name, select `String` and click `Add` (the plus sign to the right), enter the corresponding `Value` and click `Save`:
+
+| String | Value | Example output |
+| :----- | :---- | :------------- |
+| intl.date_time.pattern_override.date_short | yyyy-MM-dd | 2025-12-31 |
+| intl.date_time.pattern_override.time_short | HH:mm | 09:59 |
+
 ### Add ChatGPT search in KRunner
 1. Go to `System Settings->Plasma Search`, scroll down to `Web Search Keywords` and click `Configure...`
 1. Create a new keyword:
