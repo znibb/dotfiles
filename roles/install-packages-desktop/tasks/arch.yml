@@ -14,6 +14,8 @@
       - spotify-launcher
       - telegram-desktop
       - thunderbird
+      - thunderbird-i18n-en-gb # EN_GB language pack
+      - thunderbird-i18n-sv-se # SV_SE language pack
       - timeshift # System backups
       - piper # Gaming peripheral settings GUI
       - protonmail-bridge # For syncing protonmail with Thunderbird
