@@ -31,17 +31,6 @@ case ${TERM} in
 esac
 eval "$(starship init zsh)"
 
-# Attach to tmux session "main" automatically, create it if not already present
-if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
-    SESSION="main"
-  # Check if session exists
-  if tmux has-session -t "$SESSION" 2>/dev/null; then
-    tmux attach -t "$SESSION"
-  else
-    tmux new-session -s "$SESSION"
-  fi
-fi
-
 # Keybindings for zsh
 bindkey "^[[3~"     delete-char         # Delete
 bindkey "\e[H"      beginning-of-line   # Home
@@ -61,3 +50,6 @@ bindkey "^[OF" end-of-line          # inside tmux
 ## Alpine
 bindkey "^[[1~" beginning-of-line   # inside tmux
 bindkey "^[[4~" end-of-line         # inside tmux
+
+# Create/attach to tmux session "main" automatically
+source $HOME/.config/tmux/tmux-create-attach-session-main.sh
