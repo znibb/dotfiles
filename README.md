@@ -18,9 +18,9 @@
 1. Root password: Make sure to set it
 1. User account: Create one for yourself but do **not** make it a SuperUser (we want to handle this through the sudo group instead)
 1. Profile:
-   1. Type -> Desktop: Hyprland (prefer `polkit` over `seatd`)
+   1. Type -> Desktop: KDE
    1. Graphics driver: Adjust for your hardware
-   1. Greeter: sddm (to make initial hyprland install able to start)
+   1. Greeter: sddm
 1. Audio: Pipewire
 1. Network: `Copy ISO network configuration to installation` (assuming you have your desired connectivity at time of setup)
 1. Additional packages: `git ansible vim`
@@ -43,7 +43,6 @@ After the install finishes agree to enter chroot and add your personal user acco
 If you run `sudo apk update` and the output contains warnings about stale repos or if your ansible-playbook runs fails with something like `fatal: [localhost]: FAILED! => {"changed": false, "msg": "could not update package db"` one solution is to run `sudo setupapkrepos -cf` to scan for available/suitable repo mirrors to use
 
 You might need to run `sudo apk update`, check which mirrors it's complaining about and manually remove them from `/etc/apk/repositories`
-
 
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
@@ -94,3 +93,6 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
    Name: `ChatGPT`
    URL: `https://chatgpt.com/?model=gpt-4o&q=\{@}`
    Keywords: `ai`
+
+### Install/update tmux plugins
+Use `prefix` + `I` (capital i) to fetch new plugins or use `prefix` + `U` (capital u) to update installed plugins
