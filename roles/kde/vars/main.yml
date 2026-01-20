@@ -1,3 +1,4 @@
-kde_config_dir: "{{ ansible_env.HOME }}/.config"
-kwin_scripts_dir: "{{ ansible_env.HOME }}/.local/share/kwin/scripts"
-kwin_config_dir: "{{ ansible_env.HOME }}/.config/kwin"
+kde_config_dir: "{{ ansible_facts.env.HOME }}/.config"
+kwin_scripts_dir: "{{ ansible_facts.env.HOME }}/.local/share/kwin/scripts"
+kwin_config_dir: "{{ ansible_facts.env.HOME }}/.config/kwin"
+user_scripts_dir: "{{ ansible_facts.env.HOME }}/.scripts"

@@ -5,6 +5,7 @@
     name:
       - bluez-utils # bluetoothctl
       - gwenview  # image viewer
+      - kdialog # GUI popups in shell scripts
       - power-profiles-daemon
       - wl-clipboard # Wayland clipboard management
     state: present
@@ -25,3 +26,17 @@
     name: power-profiles-daemon
     enabled: true
     state: started
+
+- name: Ensure ~/.scripts directory exists
+  ansible.builtin.file:
+    path: "{{ user_scripts_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink KDE user scripts
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "toggle_headset_speaker.sh",   dest: "{{ user_scripts_dir }}/toggle_headset_speaker.sh" }
