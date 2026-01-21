@@ -21,6 +21,7 @@
     - locale
     - nfs-client
     - steam
+    - teams
     - tmux
     - vim
     - vscodium
