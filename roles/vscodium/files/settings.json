@@ -17,5 +17,6 @@
     "remote.SSH.defaultShell": {
         "host-vscodium": "/bin/bash"
     },
-    "update.showReleaseNotes": false
+    "update.showReleaseNotes": false,
+    "claudeCode.preferredLocation": "panel"
 }
