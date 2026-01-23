@@ -27,16 +27,20 @@
     enabled: true
     state: started
 
-- name: Ensure ~/.scripts directory exists
+- name: Ensure KDE-relevant directories exists
   ansible.builtin.file:
-    path: "{{ user_scripts_dir }}"
+    path: "{{ item.path }}"
     state: directory
     mode: '0755'
+  loop:
+    - { path: "{{ user_scripts_dir }}" }
+    - { path: "{{ kde_config_dir }}" }
 
-- name: Symlink KDE user scripts
+- name: Symlink KDE-relevant files
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
     - { src: "toggle_headset_speaker.sh",   dest: "{{ user_scripts_dir }}/toggle_headset_speaker.sh" }
+    - { src: "kxkbrc",                      dest: "{{ kde_config_dir }}/kxkbrc" }
