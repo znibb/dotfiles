@@ -1,3 +1,4 @@
 aur_helper: "yay"
 aur_helper_dir: "/tmp/.{{ aur_helper }}"
 git_contact_email: "pontus@b3rl1n.com"
+user_scripts_dir: "{{ ansible_facts.env.HOME }}/.scripts"
