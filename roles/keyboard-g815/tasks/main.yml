@@ -1,0 +1,34 @@
+- name: Install pacman packages
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - libratbag # DBus daemon to configure gaming peripherals, contains `ratbagctl`
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Installed pacman packages
+  debug: msg="{{ pacman_output.packages }}"
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Ensure relevant directories exists
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - { path: "{{ user_scripts_dir }}" }
+
+- name: Symlink relevant files
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "g815_change_profile.sh",  dest: "{{ user_scripts_dir }}/g815_change_profile.sh" }
+    - { src: "g815_set_config.sh",      dest: "{{ user_scripts_dir }}/g815_set_config.sh" }
