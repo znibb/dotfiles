@@ -98,17 +98,20 @@ kicad() {
   fi
 }
 
+# Create and cd into a directory in one go
 mcd () {
   mkdir -v "$1"
   cd "$1"
 }
 
-gh () {
+# Open Github page for the active git repo
+ghb () {
   # use `gio open` instead of `xdg-open` to bypass KDE portal
   gio open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
 }
 
 
+# Compre sha256 checksums
 sha256 () {
   # checksum filename
   echo "$1 $2" | sha256sum --check
