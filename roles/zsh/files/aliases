@@ -77,6 +77,36 @@ alias  tm='tmux attach -t main'
 alias ytmp3='yt-dlp --config-location ~/.config/yt-dlp/mp3.conf'
 
 # helper functions
+# Fetch external IP
+extip () {
+  # list service urls
+  local service_urls=(
+    "icanhazip.com"
+    "ipinfo.io/ip"
+    "api.ipify.org"
+  )
+
+  local index="$1"
+  local max_index=$(( ${#service_urls[@]}))
+
+  # if no argument was given use first item in list
+  if [[ -z "$index" ]]; then
+    index="1"
+  fi
+
+  # check that index is a number between 0 and max_index
+  if ! [[ "$index" =~ ^[0-9]+$ ]] || (( index > max_index )); then
+    echo "Error: index must be a number between 1 and $max_index"
+    return 1
+  fi
+
+  # prevent zsh from adding a trailing newline if the curl response lacks one
+  unsetopt PROMPT_CR
+
+  echo "Fetching external IP via ${service_urls[$index]}"
+  curl -s "${service_urls[$index]}"
+}
+
 ## Open Github page for the active git repo
 ghb () {
   # use `gio open` instead of `xdg-open` to bypass KDE portal
