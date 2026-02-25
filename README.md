@@ -98,6 +98,10 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
       - Name: `Claude`
       - URL: `https://claude.ai/new?q=\{@}`
       - Keywords: `cl`
+   * Digikey
+      - Name: `Digikey`
+      - URL: `https://www.digikey.se/en/products/result?keywords=\{@}`
+      - Keywords: `dk`
 
 ### Install/update tmux plugins
 Use `prefix` + `I` (capital i) to fetch new plugins or use `prefix` + `U` (capital u) to update installed plugins
