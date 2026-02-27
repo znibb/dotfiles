@@ -13,3 +13,10 @@
     search_string: ILoveCandy
     line: ILoveCandy
     insertafter: Color
+
+- name: Enable verbose package list
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/pacman.conf
+    search_string: '#VerbosePkgLists'
+    line: VerbosePkgLists
