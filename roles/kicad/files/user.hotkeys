@@ -75,7 +75,7 @@ common.Control.leftJustify
 common.Control.libraryTreeSearch	Ctrl+L	
 common.Control.magneticSnapActiveLayer		
 common.Control.magneticSnapAllLayers		
-common.Control.magneticSnapToggle	Shift+S	
+common.Control.magneticSnapToggle		
 common.Control.metricUnits		
 common.Control.mils		
 common.Control.new	Ctrl+N	
@@ -610,8 +610,8 @@ pcbnew.EditorControl.trackWidthDec	Shift+W
 pcbnew.EditorControl.trackWidthInc	W	
 pcbnew.EditorControl.ungroup		
 pcbnew.EditorControl.unlock		
-pcbnew.EditorControl.viaSizeDec	\	
-pcbnew.EditorControl.viaSizeInc	'	
+pcbnew.EditorControl.viaSizeDec	Shift+S	
+pcbnew.EditorControl.viaSizeInc	S	
 pcbnew.EditorControl.zoneDuplicate		
 pcbnew.EditorControl.zoneMerge		
 pcbnew.Generator.genPushEdit		
@@ -698,7 +698,7 @@ pcbnew.InteractiveEdit.rotateCw	Shift+R
 pcbnew.InteractiveEdit.simplifyPolygons		
 pcbnew.InteractiveEdit.skip	Tab	
 pcbnew.InteractiveEdit.subtractPolygons		
-pcbnew.InteractiveEdit.swap	S	
+pcbnew.InteractiveEdit.swap		
 pcbnew.InteractiveMove.copyWithReference		
 pcbnew.InteractiveMove.move	M	
 pcbnew.InteractiveMove.moveIndividually	Ctrl+M	
