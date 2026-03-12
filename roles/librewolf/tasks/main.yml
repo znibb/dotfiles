@@ -24,6 +24,7 @@
 - name: Set up system native messaging
   become: true
   ansible.builtin.file:
-    src: "/usr/lib/mozilla/native-messaging-hosts"
-    dest: "/usr/lib/librewolf/native-messaging-hosts"
+    src: "/usr/lib/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json"
+    dest: "/usr/lib/librewolf/native-messaging-hosts/org.kde.plasma.browser_integration.json"
     state: link
+    force: true
