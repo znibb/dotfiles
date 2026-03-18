@@ -1,3 +1,18 @@
-- name: Arch
+- name: Check for Artix-specific release file
+  stat:
+    path: /etc/artix-release
+  register: artix_release
+
+- name: Set fact if system is Artix
+  set_fact:
+    is_artix: true
+    ansible_distribution: "Artix Linux"
+  when: artix_release.stat.exists
+
+- name: Artix-specific
+  ansible.builtin.include_tasks: "artix.yml"
+  when: ansible_distribution | lower == 'artix linux'
+
+- name: Arch/Artix
   ansible.builtin.include_tasks: "arch.yml"
-  when: ansible_distribution | lower == 'archlinux'
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'

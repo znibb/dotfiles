@@ -39,33 +39,37 @@ After the install finishes agree to enter chroot and add your personal user acco
 1. Enter the dotfiles directory and install the required ansible collections: `ansible-galaxy install -r requirements.yml`
 1. Run the ansible playbook: `ansible-playbook -i inventory/hosts.ini hosts-HOSTNAME.yml`
 
-## Artix base install
-Instructions will assume a UEFI system (as opposed to one using BIOS)
-### Using virt-manager
-1. Open a web browser, go to `https://artixlinux.org/download.php` and download the `base` version of the ISO corresponding to your desired init system, we'll assume `openrc`
+## Artix
+Instructions will assume a UEFI system (as opposed to one using BIOS).  
+
+Start with going to `https://artixlinux.org/download.php` and download either the `base` ISO or the one corresponding to your desired Desktop Environment
+
+### Setting up the machine
+#### Using virt-manager
 1. Start `virt-manager` and go to `File->New Virtual Machine`
 1. Select `Local install media` and click `Forward`
 1. Under `Choose ISO or CDROM install media` click `Browse...`
 1. Select the previously downloaded ISO file, if not visible click `Browse Local` and locate it that way
 1. Under `Choose the operating system you are installing` select `Generic Linux 2024 (linux2024)`, click `Forward`
 1. Enter your desired amount of RAM and CPU core allocation, click `Forward`
-1. Make sure `Enable storage for this virutal machine` is enabled, enter your desired amount of VM storage and click `Forward`
+1. Make sure `Enable storage for this virtual machine` is enabled, enter your desired amount of VM storage and click `Forward`
 1. Enter a suitable name for the VM, enable `Customize configuration before install` and click `Finish`
 1. In the `Overview` section go to `Hypervisor Details->Firmware` and select `UEFI`
 1. Click `Apply` in the bottom right and then `Begin Installation` in the top left
 
-### Bare metal
+#### Bare metal
 1. Insert install media
 1. ???
 1. Profit?
 
 ### Artix install
-#### Getting started
+#### Base install
+##### Getting started
 1. Select your desired `timezone`, `keytable` and `lang`, then select `From Stick/HDD: artix.x86_64`
 1. When prompted log in as root//artix
 1. Check available keyboard layouts with `ls -R /usr/share/kbd/keymaps` and load your preferred one with e.g. `loadkeys sv-latin1`
 
-#### Disk partitioning
+##### Disk partitioning
 1. Check your available block devices with `lsblk`
 1. Run `fdisk /dev/<device_name>`
 1. Print the current partition table by entering `p`
@@ -87,11 +91,11 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 - /dev/xxx2 of type `Linux filesystem` containing the remainder of the disk
 1. Enter `w` to write to disk and exit
 
-#### Format partitions
+##### Format partitions
 1. Format the intended EFI system partition as fat32: `mkfs.fat -F 32 /dev/xxx1 && fatlabel /dev/xxx1 ESP`
 1. Format the intended root partition as ext4: `mkfs.ext4 -L ROOT /dev/xxx2`
 
-#### Mount the target file system
+##### Mount the target file system
 1. Mount the root partition: `mount /dev/xxx2 /mnt`
 1. Create the `/mnt/boot/efi` directory: `mkdir -p /mnt/boot/efi`
 1. Mount the EFI system partition: `mount /dev/xxx1 /mnt/boot/efi`
@@ -103,15 +107,15 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Generate fstab: `fstabgen -U /mnt >> /mnt/etc/fstab`
 1. Verify that fstab contains entries for `/`, `/boot/efi` and the swapfile
 
-#### Verify internet connection
+##### Verify internet connection
 1. Check connectivity by pinging e.g. `Google Public DNS`: `ping 8.8.8.8`
 1. Wired connection should setup automatically, see [ArchWiki](https://wiki.archlinux.org/title/Network_configuration/Wireless) for instrucitons on how to get wireless working
 
-#### Update system clock
+##### Update system clock
 1. Start the NTP daemon: `rc-service ntpd start`
 
-#### Install and configure base system
-1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc git vim`
+##### Install and configure base system
+1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc vi git ansible`
 1. Chroot into the target system: `artix-chroot /mnt`
 1. Set the time zone: `ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime`
 1. Generate `/etc/adjtime`: `hwclock --systohc`
@@ -123,18 +127,69 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Make keyboard layout settings persistent on target system: `sed -i 's/^keymap=.*/keymap=sv-latin1/' /etc/conf.d/keymaps`
 1. Install GRUB into the target system: `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub`
 1. Generate GRUB config: `grub-mkconfig -o /boot/grub/grub.cfg`
+1. Create hostname file: `echo "<hostname>" | tee /etc/hostname`
+1. Also update openrc hostname fallback file: `sed -i 's/^hostname="localhost"/hostname="<hostname>"/' /etc/conf.d/hostname`
 1. Set `root` password: `passwd`
 1. Create `sudo` system group: `groupadd -r sudo`
 1. Enable members of the `sudo` group to user the `sudo` command: `echo "%sudo ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers.d/sudo_grp`
 1. Create user account and add it to the `sudo` group: `useradd -m -G sudo <user>`
 1. Set `<user>` password: `passwd <user>`
-1. Create hostname file: `echo "<hostname>" | tee /etc/hostname`
-1. Also update openrc hostname fallback file: `sed -i 's/^hostname="localhost"/hostname="<hostname>"/' /etc/conf.d/hostname`
+1. Disable `root` login: `sed -i 's/root:\/usr\/bin\/bash/root:\/sbin\/nologin/' /etc/passwd`
 
-#### Finishing up
+##### Finishing up
 1. Exit chroot: `exit`
 1. Unmount partitions: `umount -R /mnt`
 1. Reboot: `reboot`
+
+#### Plasma install
+1. Select your desired `timezone`, `keytable` and `lang`, then select `From Stick/HDD: artix.x86_64`
+1. When the desktop environment boots up double-click on the `Install Artix` shortcut on the desktop
+1. Select `offline` and click `OK`
+1. In the `Welcome` section of the installer let the language settings remain as `American English`, we will override appropriate sections of it later, click `Next`
+1. In the `Location` section select your desired `Region` and `Zone`, update `numbers and dates locale` to `sv_SE.UTF_8`, click `Next`
+1. In the `Keyboard` section select `Swedish->Default`
+1. In the `Partitions` section select the intended storage device, select `Manual partitioning` and click `Next`
+1. Click `New Partition Table`, `GUID Partition Table (GPT)` and click `OK`
+1. Create the following partitions (in order):
+- Size: 300 MiB, File System: `fat32`, Mount Point: `/boot/efi`, FS Label: `EFI`, Flags: `boot`
+- Size: Default/remainder, File System: `ext4`, Mount Point: `/`, FS Label: `ROOT`
+1. In the `Users` section set your name, username, hostname, password and root password, click `Next`
+1. In the `Summary` section double check your config and click `Install`
+1. When the install is finished and you end up in the `Finish` section, select `Restart now` and click `Done`
+
+#### Setting up dotfiles
+1. Log in with the credentials you set up during the Plasma install and open a terminal window (`Konsole`)
+1. Since `linux-firmware` was split into separate vendor-specific packages we need to start with removing the old one (`Rdd` to not check dependencies): `sudo pacman -Rdd linux-firmware`
+1. Install new `linux-firmware` meta-package: `sudo pacman -Sy linux-firmware`
+1. Since this is a fresh boot, upgrade all packages: `sudo pacman -Syu`
+1. Install git and ansible: `sudo pacman -S git ansible`
+1. Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`
+1. Enter dotfiles directory and install required ansible collections: `cd .dotfiles && ansible-galaxy install -r requirements.yml`
+1. Run the appropriate playbook: `ansible-playbook -i inventory/hosts.yml <playbook>`
+1. Start `Alacritty` and start a `tmux` session: `tmux new-session -s main`
+1. Install `tmux` plugins by pressing <Ctrl+a> followed by `I` (capital `i`)
+1. Update `tmux` plugins by pressing <Ctrl+a> followed by `U` (capital `u`) and then typing `all` and pressing <Enter>
+1. Reboot the system: `sudo reboot`
+
+#### Theming
+##### GRUB
+1. Install `grub-customizer`: `sudo pacman -S grub-customizer`
+1. Open `grub-customizer`, go to `General settings` tab and uncheck `look for other operating systems` and lower the  `Boot default entry after` count to `0`
+1. Click `Save` and exit the program
+
+##### SDDM
+Go to `System Settings->Colors & Themes->Login Screen (SDDM)`, add `SilentSDDM` select it and `Apply`
+
+##### KDE
+1. Disable splash sceen by going to `System Settings->Colors & Themes->Global Theme->Splash Screen`, select `None` and press `Apply`
+1. Set Plasma Style by going to `System Settings->Colors & Themes->Global Theme->Plasma Style`, adding `Nordic darker KDE`, select it and `Apply`
+1. Enable clock seconds display by right-clicking the clock in the bottom right and selecting `Configure Digital Clock...`, then change `Show seconds` to `always` and click `OK`
+1. Enable Icons-Only Task Manager by right-clicking on the bottom panel, selecting `Show Alternatives...` and clicking `Icons-Only Task Manager`
+1. Disable task bar panel floating by right-clicking on the bottom panel and selecting `Show Panel Configuration`, then changing `Floating` to `Disabled` and pressing `Exit Edit Mode`
+
+#### Cleanup
+1. Remove default installed browser `falkon`: `sudo pacman -R falkon`
+1. Remove `modemmanager`: `sudo pacman -Rdd modemmanager modemmanager-qt libmm-glib`
 
 ## Alpine specific
 If you run `sudo apk update` and the output contains warnings about stale repos or if your ansible-playbook runs fails with something like `fatal: [localhost]: FAILED! => {"changed": false, "msg": "could not update package db"` one solution is to run `sudo setupapkrepos -cf` to scan for available/suitable repo mirrors to use

@@ -1,31 +1,41 @@
-- name: Install pacman packages
-  become: true
-  community.general.pacman:
-    update_cache: false
-    name:
-      - bluez-utils # bluetoothctl
-      - gwenview  # image viewer
-      - kdialog # GUI popups in shell scripts
-      - power-profiles-daemon
-      - wl-clipboard # Wayland clipboard management
-    state: present
-  register: pacman_output
-  changed_when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+- name: Artix-specific
+  ansible.builtin.include_tasks: "artix.yml"
+  when: ansible_distribution | lower == 'artix linux'
 
-- name: Installed pacman packages
-  debug: msg="{{ pacman_output.packages }}"
-  when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+- name: Arch/Artix
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
 
-- name: Enable power-profiles-daemon
+# - name: Enable sddm
+#   become: true
+#   ansible.builtin.service:
+#     name: sddm
+#     enabled: true
+
+- name: Enable/start power-profiles-daemon
   become: true
-  ansible.builtin.systemd_service:
+  ansible.builtin.service:
     name: power-profiles-daemon
     enabled: true
     state: started
+
+- name: Ensure relevant system directories exists
+  become: true
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - { path: /etc/sddm.conf.d }
+
+# - name: Create relevant system files
+#   become: true
+#   ansible.builtin.file:
+#     src: "{{ role_path }}/files/{{ item.src }}"
+#     dest: "{{ item.dest }}"
+#     state: file
+#   loop:
+#     - { src: 10-wayland.conf, dest: /etc/sddm.conf.d/10-wayland.conf}
 
 - name: Ensure KDE-relevant directories exists
   ansible.builtin.file:

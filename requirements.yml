@@ -1,3 +1,4 @@
 collections:
+  - ansible.posix     # For acl
   - community.general # For pacman
   - kewlfft.aur       # For yay

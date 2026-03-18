@@ -1,19 +1,7 @@
-- name: Install bluetooth utilities
-  become: true
-  community.general.pacman:
-    update_cache: false
-    name:
-      - bluez-utils # bluetoothctl
-    state: present
-  register: pacman_output
-  changed_when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+- name: Artix
+  ansible.builtin.include_tasks: "artix.yml"
+  when: ansible_distribution | lower == 'artix linux'
 
-- name: Start/enable bluetooth.service
-  become: true
-  ansible.builtin.systemd_service:
-    name: bluetooth.service
-    scope: system
-    state: started
-    enabled: true
+- name: Arch
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux'

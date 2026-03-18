@@ -1,0 +1,2 @@
+sddm_config_dir: "{{ ansible_facts.env.HOME }}/.config/sddm"
+sddm_themes_dir: /usr/share/sddm/themes
