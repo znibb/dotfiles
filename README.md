@@ -111,7 +111,7 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Start the NTP daemon: `rc-service ntpd start`
 
 #### Install and configure base system
-1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc git vim`
+1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc vi git ansible`
 1. Chroot into the target system: `artix-chroot /mnt`
 1. Set the time zone: `ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime`
 1. Generate `/etc/adjtime`: `hwclock --systohc`
@@ -123,13 +123,14 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Make keyboard layout settings persistent on target system: `sed -i 's/^keymap=.*/keymap=sv-latin1/' /etc/conf.d/keymaps`
 1. Install GRUB into the target system: `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub`
 1. Generate GRUB config: `grub-mkconfig -o /boot/grub/grub.cfg`
+1. Create hostname file: `echo "<hostname>" | tee /etc/hostname`
+1. Also update openrc hostname fallback file: `sed -i 's/^hostname="localhost"/hostname="<hostname>"/' /etc/conf.d/hostname`
 1. Set `root` password: `passwd`
 1. Create `sudo` system group: `groupadd -r sudo`
 1. Enable members of the `sudo` group to user the `sudo` command: `echo "%sudo ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers.d/sudo_grp`
 1. Create user account and add it to the `sudo` group: `useradd -m -G sudo <user>`
 1. Set `<user>` password: `passwd <user>`
-1. Create hostname file: `echo "<hostname>" | tee /etc/hostname`
-1. Also update openrc hostname fallback file: `sed -i 's/^hostname="localhost"/hostname="<hostname>"/' /etc/conf.d/hostname`
+1. Disable `root` login: `sed -i 's/root:\/usr\/bin\/bash/root:\/sbin\/nologin/' /etc/passwd`
 
 #### Finishing up
 1. Exit chroot: `exit`
