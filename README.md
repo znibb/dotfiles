@@ -88,8 +88,8 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Enter `w` to write to disk and exit
 
 #### Format partitions
-1. Format the intended root partition as ext4: `mkfs.ext4 -L ROOT /dev/xxx2`
 1. Format the intended EFI system partition as fat32: `mkfs.fat -F 32 /dev/xxx1 && fatlabel /dev/xxx1 ESP`
+1. Format the intended root partition as ext4: `mkfs.ext4 -L ROOT /dev/xxx2`
 
 #### Mount the target file system
 1. Mount the root partition: `mount /dev/xxx2 /mnt`
@@ -111,11 +111,11 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Start the NTP daemon: `rc-service ntpd start`
 
 #### Install and configure base system
-1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc`
+1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc git vim`
 1. Chroot into the target system: `artix-chroot /mnt`
 1. Set the time zone: `ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime`
 1. Generate `/etc/adjtime`: `hwclock --systohc`
-1. Uncomment desired locales in `/etc/locale.gen`, e.g. using `sed`: `sed -i 's/^#en_US.UTF-8/en_US.UTF-8/; s/^#sv_SE.UTF-8/sv_SE.UTF-8/' /etc/locale.gen
+1. Uncomment desired locales in `/etc/locale.gen`, e.g. using `sed`: `sed -i 's/^#en_US.UTF-8/en_US.UTF-8/; s/^#sv_SE.UTF-8/sv_SE.UTF-8/' /etc/locale.gen`
 1. Generate locales: `locale-gen`
 1. Set system-wide locale:
 - echo `echo 'export LANG="en_US.UTF-8"' | tee -a /etc/locale.conf`
@@ -125,10 +125,16 @@ Instructions will assume a UEFI system (as opposed to one using BIOS)
 1. Generate GRUB config: `grub-mkconfig -o /boot/grub/grub.cfg`
 1. Set `root` password: `passwd`
 1. Create `sudo` system group: `groupadd -r sudo`
+1. Enable members of the `sudo` group to user the `sudo` command: `echo "%sudo ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers.d/sudo_grp`
 1. Create user account and add it to the `sudo` group: `useradd -m -G sudo <user>`
 1. Set `<user>` password: `passwd <user>`
-1. Create hostname file: `echo "<hostname>" | tee /etc/hostname
+1. Create hostname file: `echo "<hostname>" | tee /etc/hostname`
 1. Also update openrc hostname fallback file: `sed -i 's/^hostname="localhost"/hostname="<hostname>"/' /etc/conf.d/hostname`
+
+#### Finishing up
+1. Exit chroot: `exit`
+1. Unmount partitions: `umount -R /mnt`
+1. Reboot: `reboot`
 
 ## Alpine specific
 If you run `sudo apk update` and the output contains warnings about stale repos or if your ansible-playbook runs fails with something like `fatal: [localhost]: FAILED! => {"changed": false, "msg": "could not update package db"` one solution is to run `sudo setupapkrepos -cf` to scan for available/suitable repo mirrors to use
