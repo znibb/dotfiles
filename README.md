@@ -154,7 +154,7 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
 1. Set proper permissions, `sudo chmod 600 /swapfile`
 1. Format file to be used as swap, `sudo mkswap /swapfile`
 1. Enable swap, `sudo swapon /swapfile`
-1. Enable swap no reboot by adding the following to `/etc/fstab`, `/swapfile none swap defaults 0 0`
+1. Enable swap on reboot by adding the following to `/etc/fstab`, `/swapfile none swap defaults 0 0`
 1. Find swap file UUID, `findmnt -no UUID -T /swapfile`
 1. Find swap file offset, `sudo filefrag -v /swapfile| awk '$1=="0:" {print substr($4, 1, length($4).2)}'`
 1. Add the following to `GRUB_CMDLINE_LINUX` (not `_DEFAULT`) in `/etc/default/grub`, `resume=UUID=<swap_file_uuid> resume_offset=<swap_file_offset>`
@@ -178,7 +178,7 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
 | intl.date_time.pattern_override.date_short | yyyy-MM-dd | 2025-12-31 |
 | intl.date_time.pattern_override.time_short | HH:mm | 09:59 |
 
-### Add AI search in KRunner
+### Add search options in KRunner
 1. Go to `System Settings->Plasma Search`, scroll down to `Web Search Keywords` and click `Configure...`
 1. Create a new keyword:
    * ChatGPT
