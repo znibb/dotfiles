@@ -15,11 +15,13 @@
       - fastfetch
       - fzf # fuzzy-finder
       - git
+      - git-zsh-completion
       - jq # command line JSON processor
       - lazygit
       - man
       - ncdu # ncurses `du` frontend
       - nfs-utils
+      - openssh # ssh-keygen etc
       - powertop # power monitoring
       - python-pip
       - python-virtualenv
