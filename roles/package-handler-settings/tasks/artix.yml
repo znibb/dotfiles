@@ -1,0 +1,30 @@
+- name: Install arch compatibility package
+  become: true
+  community.general.pacman:
+    update_cache: true
+    name:
+      - artix-archlinux-support
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Installed pacman packages
+  debug: msg="{{ pacman_output.packages }}"
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Ensure [extra] repo is enabled
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/pacman.conf
+    block: "{{ pacman_extra_block }}"
+    marker: "# {mark} ARTIX EXTRA REPO"
+    insertafter: EOF
+
+- name: Populate package database with extra arch packages
+  become: true
+  ansible.builtin.command: pacman-key --populate archlinux
+  changed_when: false

@@ -1,0 +1,14 @@
+- name: Set up SDDM user icon (avatar)
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/znibb.png"
+    dest: "{{ ansible_facts.env.HOME }}/.face.icon"
+    state: link
+    force: yes
+
+- name: Ensure SDDM can access icon file
+  ansible.posix.acl:
+    path: "{{ ansible_facts.env.HOME }}/.face.icon"
+    entity: sddm
+    etype: user
+    permissions: r
+    state: present

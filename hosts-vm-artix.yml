@@ -1,0 +1,21 @@
+- name: Setup artix-vm
+  hosts: artix-vm
+  gather_facts: true
+
+  roles:
+    - { role: package-handler-settings, tags: package-handler-settings }
+    - { role: install-packages-system, tags: install-packages-system }
+    - { role: kde, tags: kde }
+    - { role: sddm, tags: sddm }
+    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
+    - { role: alacritty, tags: alacritty }
+    - { role: docker, tags: docker }
+    - { role: fastfetch, tags: fastfetch }
+    - { role: git, tags: git }
+    - { role: lazygit, tags: lazygit }
+    - { role: locale, tags: locale }
+    - { role: tmux, tags: tmux }
+    - { role: vim, tags: vim }
+    - { role: vscodium, tags: vscodium }
+    - { role: zsh, tags: zsh }

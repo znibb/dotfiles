@@ -1,0 +1,3 @@
+pacman_extra_block: |
+  [extra]
+  Include = /etc/pacman.d/mirrorlist-arch

@@ -2,8 +2,11 @@
 # commands that produce output or assume the shell is attached to a TTY.
 # When this file exists it will always be read.
 
-# Fix language errors
-export LC_ALL=en_US.UTF-8
+# Set system langage
+export LANG=en_US.UTF-8
+
+# Override time locale
+export LC_TIME=sv_SE.UTF-8
 
 # Set EDITOR
 EDITOR=vim

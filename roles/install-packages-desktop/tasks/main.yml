@@ -1,6 +1,6 @@
 - name: Arch
   ansible.builtin.include_tasks: "arch.yml"
-  when: ansible_distribution | lower == 'archlinux'
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
 
 - name: Ubuntu
   ansible.builtin.include_tasks: "ubuntu.yml"
