@@ -190,6 +190,10 @@ Go to `System Settings->Colors & Themes->Login Screen (SDDM)`, add `SilentSDDM` 
 #### Cleanup
 1. Remove default installed browser `falkon`: `sudo pacman -R falkon`
 1. Remove `modemmanager`: `sudo pacman -Rdd modemmanager modemmanager-qt libmm-glib`
+1. Go to `~/.ssh` and create an ssh key-pair for use with GitHub: `cd ~/.ssh && ssh-keygen -t ed25519 -C "USER@HOST" -f github-USERNAME`
+1. Log into your GitHub account and add the public key to `Authentication keys`
+1. Change the `dotfiles` repo remote url to allow pushing via ssh: `cd ~/.dotfiles && git remote set-url origin git@github.com:znibb/dotfiles.git`
+1. Double-check that the `github.com` host is set up in `~/.ssh/config`: `cat ~/.ssh/config`
 
 ## Alpine specific
 If you run `sudo apk update` and the output contains warnings about stale repos or if your ansible-playbook runs fails with something like `fatal: [localhost]: FAILED! => {"changed": false, "msg": "could not update package db"` one solution is to run `sudo setupapkrepos -cf` to scan for available/suitable repo mirrors to use
