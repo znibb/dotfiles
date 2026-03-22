@@ -18,7 +18,7 @@
     - git
     - keepass
     - keyboard-g815
-    - kicad
+    - { role: kicad, tags: kicad }
     - lazygit
     - locale
     - mouse-g600
