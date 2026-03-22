@@ -5,6 +5,8 @@
   roles:
     - package-handler-settings
     - install-packages-system
+    - { role: kde, tags: kde }
+    - sddm
     - install-packages-desktop
     - ssh # put early to allow cloning of github repos with ssh config
     - { role: alacritty, tags: alacritty }
@@ -12,7 +14,6 @@
     - docker
     - fastfetch
     - git
-    - { role: kde, tags: kde }
     - keepass
     - kicad
     - lazygit
