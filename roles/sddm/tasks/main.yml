@@ -5,6 +5,14 @@
     state: link
     force: yes
 
+- name: Ensure SDDM can access ~/
+  ansible.posix.acl:
+    path: "{{ ansible_facts.env.HOME }}/"
+    entity: sddm
+    etype: user
+    permissions: x
+    state: present
+
 - name: Ensure SDDM can access icon file
   ansible.posix.acl:
     path: "{{ ansible_facts.env.HOME }}/.face.icon"
