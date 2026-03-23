@@ -7,6 +7,12 @@
       - librewolf-extension-keepassxc-browser
     state: present
 
+- name: Ensure librewolf config directory exists
+  ansible.builtin.file:
+    path: "{{ librewolf_config_dir }}"
+    state: directory
+    mode: '0755'
+
 - name: Symlink librewolf config
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
