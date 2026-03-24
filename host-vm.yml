@@ -1,5 +1,5 @@
 - name: Setup VM
-  hosts: arch-vm, artix-vm
+  hosts: vm
   gather_facts: true
 
   roles:
