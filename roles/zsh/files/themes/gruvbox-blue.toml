@@ -1,5 +1,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+## Select palette
+palette = 'gruvbox'
+
+## Prompt assembly
 format = """
 [](color_bg0)\
 $os\
@@ -28,16 +32,34 @@ $conda\
 [ ](fg:color_bg6)\
 $line_break$character"""
 
+## Formatting
 right_format = """
 $cmd_duration"""
 
 scan_timeout = 30
 command_timeout = 3600000
 
-palette = 'gruvbox'
-
 # continuation_prompt = '[]'
 
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_bg0)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_replace)'
+vimcmd_replace_symbol = '[](bold fg:color_replace)'
+vimcmd_visual_symbol = '[](bold fg:color_bg2)'
+
+[cmd_duration]
+min_time = 1
+show_milliseconds = true
+style = 'bold yellow'
+format = 'took [$duration]($style)'
+
+## Core modules
 [os]
 disabled = false
 style = "fg:color_fg0 bg:color_bg0"
@@ -104,28 +126,28 @@ format = '[[ $symbol $branch ](fg:color_fg0 bg:color_bg3)]($style)'
 style = "bg:color_bg3"
 format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_bg3)]($style)'
 
-[nodejs]
-symbol = ""
-style = "bg:color_bg4"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
-
+## Extra modules
 [c]
 symbol = " "
 style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
-[rust]
-symbol = ""
-style = "bg:color_bg4"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+[conda]
+style = "bg:color_bg5"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg5)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg5"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg5)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
-[php]
-symbol = ""
+[haskell]
+symbol = ""
 style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
@@ -139,8 +161,13 @@ symbol = ""
 style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
-[haskell]
-symbol = ""
+[nodejs]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+
+[php]
+symbol = ""
 style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
@@ -149,38 +176,16 @@ symbol = ""
 style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
-[docker_context]
-symbol = ""
-style = "bg:color_bg5"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg5)]($style)'
-
-[conda]
-style = "bg:color_bg5"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg5)]($style)'
+[rust]
+symbol = ""
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
 style = "bg:color_bg6"
 format = '[[  $time ](fg:color_fg0 bg:color_bg6)]($style)'
-
-[line_break]
-disabled = false
-
-[character]
-disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_bg0)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_replace)'
-vimcmd_replace_symbol = '[](bold fg:color_replace)'
-vimcmd_visual_symbol = '[](bold fg:color_bg2)'
-
-[cmd_duration]
-min_time = 1
-show_milliseconds = true
-style = 'bold yellow'
-format = 'took [$duration]($style)'
 
 # Colour theming - Blue
 [palettes.gruvbox]
