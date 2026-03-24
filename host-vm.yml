@@ -1,5 +1,5 @@
-- name: Setup artix-vm
-  hosts: artix-vm
+- name: Setup VM
+  hosts: arch-vm, artix-vm
   gather_facts: true
 
   roles:
@@ -10,7 +10,6 @@
     - { role: install-packages-desktop, tags: install-packages-desktop }
     - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
     - { role: alacritty, tags: alacritty }
-    - { role: docker, tags: docker }
     - { role: fastfetch, tags: fastfetch }
     - { role: git, tags: git }
     - { role: lazygit, tags: lazygit }
