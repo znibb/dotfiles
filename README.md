@@ -73,3 +73,26 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
 
 ### Install/update tmux plugins
 Use `prefix` + `I` (capital i) to fetch new plugins or use `prefix` + `U` (capital u) to update installed plugins
+
+### Set up directory sharing with virt-manager
+#### Host actions
+1. Make sure the intended target VM is turned off
+1. Create a host source directory, e.g.: `mkdir ~/vm-share`
+1. Set liberal file permissions (in case VM user doesn't map well to the host user): `chmod 777 ~/vm-share`
+1. Open `virt-manager`, open the intended target VM and click `View->Details`
+1. Go to `Memory` and make sure `Enable shared memory` is checked
+1. Click the `Add Hardware` button in the bottom left
+1. Select `Filesystem` and enter:
+- Driver: `virtiofs`
+- Source path: Full path to the directory created above (can also use `Browse...` to find it)
+- Target path: `share` (not actually a path but a label)
+1. Click `Finish` and then `Apply`
+1. Start the VM
+
+#### VM actions
+1. Create a target directory, e.g.: `~/vm-share`
+1. Mount the host directory into the VM: `sudo mount -t virtiofs share /home/<user>/vm-share`  
+
+The `~/vm-share` directory is now shared between the host and VM.  
+
+To make the shared directory auto mount on boot make the following addition to `/etc/fstab`: `share /home/<user>/vm-share virtiofs defaults 0 0`
