@@ -6,12 +6,6 @@
   ansible.builtin.include_tasks: "arch.yml"
   when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
 
-# - name: Enable sddm
-#   become: true
-#   ansible.builtin.service:
-#     name: sddm
-#     enabled: true
-
 - name: Enable/start power-profiles-daemon
   become: true
   ansible.builtin.service:
@@ -27,15 +21,6 @@
     mode: '0755'
   loop:
     - { path: /etc/sddm.conf.d }
-
-# - name: Create relevant system files
-#   become: true
-#   ansible.builtin.file:
-#     src: "{{ role_path }}/files/{{ item.src }}"
-#     dest: "{{ item.dest }}"
-#     state: file
-#   loop:
-#     - { src: 10-wayland.conf, dest: /etc/sddm.conf.d/10-wayland.conf}
 
 - name: Ensure KDE-relevant directories exists
   ansible.builtin.file:
