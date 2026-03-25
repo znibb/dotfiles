@@ -1,4 +1,4 @@
-- name: Install nix packages
+- name: Install nix package
   become: true
   community.general.pacman:
     update_cache: false
@@ -15,6 +15,14 @@
   when:
     - pacman_output.packages is defined
     - pacman_output.packages | length > 0
+
+- name: Install zsh nix integration
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - zsh-nix-shell
+    state: present    
 
 - name: Enable nix flakes feature
   become: true
