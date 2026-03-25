@@ -29,7 +29,7 @@ $python\
 $docker_context\
 $conda\
 [](fg:color_bg5 bg:color_bg6)\
-$nix_shell
+$nix_shell\
 [ ](fg:color_bg6)\
 $line_break$character"""
 
@@ -164,12 +164,12 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
 [nix_shell]
 disabled = false
-impure_msg = '[impure shell](bold red)'
-pure_msg = '[pure shell](bold green)'
-unknown_msg = '[unknown shell](bold yellow)'
-symbol ="❄️  "
+impure_msg = 'impure'
+pure_msg = 'pure'
+unknown_msg = 'unknown'
+symbol ="❄️ "
 style = 'bold blue'
-format = 'via [$symbol$state( \($name\))]($style) '
+format = '[ via $symbol$state( \($name\))](fg:color_fg0 bg:color_bg6)'
 
 [nodejs]
 symbol = ""
