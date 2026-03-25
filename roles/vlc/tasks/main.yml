@@ -1,0 +1,10 @@
+- name: Arch
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
+
+- name: Disable saving of recently played items
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ vlc_config_dir }}/vlcrc"
+    search_string: qt-recentplay=
+    line: qt-recentplay=0

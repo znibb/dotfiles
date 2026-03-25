@@ -28,6 +28,7 @@
     - tmux
     - vim
     - virt-manager
+    - { role: vlc, tags: vlc }
     - vscodium
     - yt-dlp
     - zsh
