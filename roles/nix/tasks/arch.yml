@@ -1,0 +1,32 @@
+- name: Install nix packages
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - nix
+    state: present
+  register: pacman_output
+  changed_when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Installed pacman packages
+  debug: msg="{{ pacman_output.packages }}"
+  when:
+    - pacman_output.packages is defined
+    - pacman_output.packages | length > 0
+
+- name: Enable nix flakes feature
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/nix/nix.conf
+    block: experimental-features = nix-command flakes
+    marker: "# {mark} ENABLE FLAKES"
+    insertafter: EOF
+
+- name: Start nix-daemon
+  become: true
+  ansible.builtin.service:
+    name: nix-daemon
+    state: started
+    enabled: true

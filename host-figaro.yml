@@ -19,6 +19,7 @@
     - kicad
     - lazygit
     - locale
+    - { role: nix, tags: nix }
     - printer
     - steam
     - teams
