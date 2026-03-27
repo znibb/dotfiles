@@ -27,7 +27,7 @@
 1. Enter `w` to write to disk and exit
 
 ##### Format partitions
-1. Format the intended EFI system partition as fat32: `mkfs.fat -F 32 /dev/xxx1 && fatlabel /dev/xxx1 ESP`
+1. Format the intended EFI system partition as fat32: `mkfs.fat -F 32 -n ESP /dev/xxx1`
 1. Format the intended root partition as ext4: `mkfs.ext4 -L ROOT /dev/xxx2`
 
 ##### Mount the target file system
