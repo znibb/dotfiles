@@ -65,6 +65,9 @@ alias  gt='git tag'
 alias  lg='lazygit'
 alias  gk='gitk'
 
+# pacman
+alias pm='sudo pacman --needed'
+
 # tmux
 alias tma='tmux attach -t '
 alias tmk='tmux kill-session -t '
