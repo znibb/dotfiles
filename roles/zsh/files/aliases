@@ -8,7 +8,6 @@ alias   due="du --exclude='.git'"
 alias  tree="tree -a -I '.git|__pycache__'"
 alias  code='vscodium . > /dev/null 2>&1'
 alias   cat='bat --color=always'
-alias pacch='sudo pacman -Syu --print-format "%n %v %b"'
 alias rsync='rsync --progress'
 alias   fzf='fzf --preview="cat {}"'
 alias    df='dysk'
@@ -66,7 +65,8 @@ alias  lg='lazygit'
 alias  gk='gitk'
 
 # pacman
-alias pm='sudo pacman --needed'
+alias pacch='sudo pacman -Syu --print-format "%n %v %b"'
+alias    pm='sudo pacman --needed'
 
 # tmux
 alias tma='tmux attach -t '
