@@ -1,0 +1,8 @@
+- name: Install packages
+  become: true
+  community.general.apk:
+    update_cache: true
+    name:
+      - qemu-guest-agent
+      - qemu-guest-agent-openrc
+    state: present
