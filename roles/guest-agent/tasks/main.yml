@@ -1,0 +1,10 @@
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
+
+- name: Start/enable qemu-guest-agent
+  become: true
+  ansible.builtin.service:
+    name: qemu-guest-agent
+    state: started
+    enabled: true

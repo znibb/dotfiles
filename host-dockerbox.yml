@@ -4,6 +4,7 @@
 
   roles:
     - install-packages-system
+    - guest-agent
     - fastfetch
     - git
     - lazygit
