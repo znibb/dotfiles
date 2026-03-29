@@ -183,8 +183,11 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 
 [python]
 symbol = ""
+detect_extensions = [] # prevent triggering on presence of .py files
+detect_files = [] # prevent triggering on pyproject.toml, requirements.txt etc
+detect_folders = [] # prevent triggering on .venv presence
 style = "bg:color_bg4"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
+format = '([[ $symbol( $version)( \($virtualenv\))](fg:color_fg0 bg:color_bg4)]($style))' # only show when a venv is active
 
 [rust]
 symbol = ""
