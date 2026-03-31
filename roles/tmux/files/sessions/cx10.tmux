@@ -12,4 +12,5 @@ WINDOWS=(
     "usb:cx10_usb_connector"
     "clamp:cx10_voltage_clamp"
     "led:CX10_led_armature"
+    "lib:Documents/Kicad/easyeda2kicad"
 )

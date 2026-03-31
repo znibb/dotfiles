@@ -6,4 +6,5 @@ WINDOWS=(
     "pdb:pdb"
     "led:led_armature"
     "ext_conn:external_connector"
+    "lib:Documents/Kicad/easyeda2kicad"
 )
