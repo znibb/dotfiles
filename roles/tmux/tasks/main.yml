@@ -12,14 +12,15 @@
     state: directory
     mode: '0755'
 
-- name: Symlink tmux config files
+- name: Symlink tmux files
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
     - { src: "tmux.conf", dest: "{{ tmux_config_dir }}/tmux.conf" }
-    - { src: "tmux-create-attach-session-main.sh", dest: "{{ tmux_config_dir }}/tmux-create-attach-session-main.sh" }
+    - { src: "create_tmux_session.sh", dest: "{{ tmux_config_dir }}/create_tmux_session.sh" }
+    - { src: "sessions", dest: "{{ tmux_config_dir }}/sessions" }
 
 - name: Setup Tmux Plugin Manager
   ansible.builtin.git:

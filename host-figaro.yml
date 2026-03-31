@@ -10,6 +10,7 @@
     - install-packages-desktop
     - ssh # put early to allow cloning of github repos with ssh config
     - alacritty
+    - avr-dev
     - bluetooth
     - docker
     - fastfetch
@@ -23,7 +24,7 @@
     - printer
     - steam
     - teams
-    - tmux
+    - { role: tmux, tags: tmux }
     - vim
     - virt-manager
     - vscodium

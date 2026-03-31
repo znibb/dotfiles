@@ -50,6 +50,3 @@ bindkey "^[OF" end-of-line          # inside tmux
 ## Alpine
 bindkey "^[[1~" beginning-of-line   # inside tmux
 bindkey "^[[4~" end-of-line         # inside tmux
-
-# Create/attach to tmux session "main" automatically
-source $HOME/.config/tmux/tmux-create-attach-session-main.sh
