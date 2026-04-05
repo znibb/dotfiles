@@ -31,12 +31,22 @@ case ${TERM} in
 esac
 eval "$(starship init zsh)"
 
+# Define a no-op widget
+noop() {}
+zle -N noop
+
 # Keybindings for zsh
 bindkey "^[[3~"     delete-char         # Delete
 bindkey "\e[H"      beginning-of-line   # Home
 bindkey "\e[F"      end-of-line         # End
 bindkey "^[[1;5D"   backward-word       # Ctrl+Left
 bindkey "^[[1;5C"   forward-word        # Ctrl+Right
+
+# Ignore F13-F24 (to detect, press Ctrl+V followed by the key, replace the leading '^[' with '\e')
+bindkey "\e[1;2S"   noop    # G2/F14 (Shift+F4)
+bindkey "\e[15;2~"  noop    # G3/F15 (Shift+F5)
+bindkey "\e[17;2~"  noop    # G4/F16 (Shift+F6)
+bindkey "\e[18;2~"  noop    # G5/F17 (Shift+F7)
 
 ## Arch
 # Home
