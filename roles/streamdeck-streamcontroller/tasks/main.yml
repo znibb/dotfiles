@@ -1,0 +1,3 @@
+- name: Arch/Artix
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'

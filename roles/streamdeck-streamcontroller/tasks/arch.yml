@@ -1,0 +1,29 @@
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - streamcontroller # Stream Deck control software
+      - kdotool # Window detection dependancy
+    state: present
+  register: aur_result
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "Installed packages: {{ aur_result.packages }}"
+  when: aur_result.changed
+
+- name: Ensure StreamController static config directory exists
+  ansible.builtin.file:
+    path: "{{ static_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Write StreamController static settings
+  ansible.builtin.copy:
+    content: |
+      {
+        "data-path": "{{ StreamController_config_dir }}"
+      }
+    dest: "{{ static_config_dir }}/settings.json"
+    mode: '0644'

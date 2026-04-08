@@ -24,6 +24,7 @@
     - mouse-g600
     - nfs-client
     - steam
+    - { role: streamdeck-streamcontroller, tags: streamdeck-streamcontroller }
     - teams
     - tmux
     - vim
