@@ -23,6 +23,7 @@
     - locale
     - mouse-g600
     - nfs-client
+    - { role: signal, tags: signal }
     - steam
     - { role: streamdeck-streamcontroller, tags: streamdeck-streamcontroller }
     - teams

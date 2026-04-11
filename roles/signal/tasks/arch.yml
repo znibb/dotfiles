@@ -1,0 +1,13 @@
+- name: Install pacman packages
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - signal-desktop
+    state: present
+  register: pacman_result
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "Installed packages: {{ pacman_result.packages }}"
+  when: pacman_result.changed

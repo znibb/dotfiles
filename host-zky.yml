@@ -19,6 +19,7 @@
     - lazygit
     - { role: librewolf, tags: librewolf }
     - locale
+    - { role: signal, tags: signal }
     - steam
     - tmux
     - vim
