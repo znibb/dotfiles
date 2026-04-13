@@ -1,0 +1,30 @@
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: true
+    name:
+      - spotify
+    state: present
+  register: aur_result
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "Installed packages: {{ aur_result.packages }}"
+  when: aur_result.changed
+
+- name: Ensure ~/.local/bin exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.local/bin"
+    state: directory
+    mode: '0755'
+
+- name: Symlink xdg-open wrapper
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/xdg-open"
+    dest: "{{ ansible_facts.env.HOME }}/.local/bin/xdg-open"
+    state: link
+
+- name: Ensure xdg-open wrapper is executable
+  ansible.builtin.file:
+    path: "{{ role_path }}/files/xdg-open"
+    mode: '0755'

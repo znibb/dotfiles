@@ -24,6 +24,7 @@
     - mouse-g600
     - nfs-client
     - { role: signal, tags: signal }
+    - { role: spotify, tags: spotify }
     - steam
     - { role: streamdeck-streamcontroller, tags: streamdeck-streamcontroller }
     - teams

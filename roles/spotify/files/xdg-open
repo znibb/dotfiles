@@ -1,0 +1,11 @@
+#!/bin/bash
+# Intercept open.spotify.com URLs and open them in the Spotify client.
+# All other URLs/files are passed through to the real xdg-open.
+
+if [[ "$1" == https://open.spotify.com/* ]]; then
+    path="${1#https://open.spotify.com/}"
+    path="${path%%\?*}"
+    exec spotify --uri="spotify:${path//\//:}"
+else
+    exec /usr/bin/xdg-open "$@"
+fi
