@@ -112,8 +112,8 @@ extip () {
 
 ## Open Github page for the active git repo
 ghb () {
-  # use `gio open` instead of `xdg-open` to bypass KDE portal
-  gio open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
+  # use `kde-open` instead of `xdg-open` to bypass KDE portal, and for Wayland compatibility
+  kde-open "$(git config --get remote.origin.url | sed -E 's#^git@([^:]+):#https://\1/#; s#\.git$##')"
 }
 
 ## Open KiCad in the current directory
