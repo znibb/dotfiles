@@ -10,8 +10,6 @@
       - gparted # Partition management
       - libreoffice-still
       - nextcloud-client
-      - signal-desktop
-      - spotify-launcher
       - telegram-desktop
       - thunderbird
       - thunderbird-i18n-en-gb # EN_GB language pack
