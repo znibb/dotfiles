@@ -31,7 +31,7 @@ $conda\
 [](fg:color_bg5 bg:color_bg6)\
 $nix_shell\
 [ ](fg:color_bg6)\
-$line_break$character"""
+$line_break$status$character"""
 
 ## Formatting
 right_format = """
@@ -44,6 +44,10 @@ command_timeout = 3600000
 
 [line_break]
 disabled = false
+
+[status]
+disabled = false
+format = '[$status ](bold fg:color_red)'
 
 [character]
 disabled = false

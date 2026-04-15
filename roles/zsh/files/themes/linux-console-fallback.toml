@@ -9,7 +9,7 @@ $directory \
 on \
 $git_branch\
 $git_status\
-$line_break$character"""
+$line_break$status$character"""
 
 right_format = """
 $cmd_duration"""
@@ -82,6 +82,10 @@ format = '[[($all_status$ahead_behind )](fg:color_bg3)]($style)'
 
 [line_break]
 disabled = false
+
+[status]
+disabled = false
+format = '[$status ](bold fg:color_red)'
 
 [character]
 disabled = false
