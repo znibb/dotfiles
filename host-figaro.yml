@@ -22,6 +22,7 @@
     - locale
     - { role: nix, tags: nix }
     - printer
+    - signal
     - steam
     - teams
     - { role: tmux, tags: tmux }
