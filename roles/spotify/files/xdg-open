@@ -1,11 +1,22 @@
 #!/bin/bash
-# Intercept open.spotify.com URLs and open them in the Spotify client.
+# Intercept Spotify URLs and open them in the Spotify client.
 # All other URLs/files are passed through to the real xdg-open.
 
-if [[ "$1" == https://open.spotify.com/* ]]; then
-    path="${1#https://open.spotify.com/}"
+open_in_spotify() {
+    local path="${1#https://open.spotify.com/}"
     path="${path%%\?*}"
     exec spotify --uri="spotify:${path//\//:}"
+}
+
+if [[ "$1" == https://open.spotify.com/* ]]; then
+    open_in_spotify "$1"
+elif [[ "$1" == https://spotify.link/* ]]; then
+    resolved=$(curl -s "$1" | grep -oP '(?<=<meta property="og:url" content=")[^"]+')
+    if [[ "$resolved" == https://open.spotify.com/* ]]; then
+        open_in_spotify "$resolved"
+    else
+        exec /usr/bin/xdg-open "$@"
+    fi
 else
     exec /usr/bin/xdg-open "$@"
 fi
