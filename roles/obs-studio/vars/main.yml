@@ -1,0 +1,1 @@
+obs-studio_config_dir: "{{ ansible_facts.env.HOME }}/.config/obs-studio"

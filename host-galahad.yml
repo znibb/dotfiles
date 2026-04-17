@@ -23,6 +23,7 @@
     - locale
     - mouse-g600
     - nfs-client
+    - obs-studio
     - { role: signal, tags: signal }
     - { role: spotify, tags: spotify }
     - steam
