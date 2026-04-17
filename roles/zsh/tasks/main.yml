@@ -1,3 +1,11 @@
+- name: Arch/Artix package install
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
+
+- name: Alpine package install
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
+
 - name: Set user shell to zsh
   become: true
   ansible.builtin.user:

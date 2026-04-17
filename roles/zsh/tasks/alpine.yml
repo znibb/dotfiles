@@ -1,0 +1,7 @@
+- name: Install packages
+  become: true
+  community.general.apk:
+    update_cache: false
+    name:
+      - zsh
+    state: present
