@@ -27,13 +27,13 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
 #### Pacman install
 ```
 - name: Install pacman packages
-   become: true
-   community.general.pacman:
-      update_cache: false
-      name:
-         - package
-      state: present
-   register: pkg_output
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+        - package
+    state: present
+  register: pkg_output
 ```
 
 #### AUR install
