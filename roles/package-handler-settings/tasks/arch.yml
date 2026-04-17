@@ -1,6 +1,8 @@
 - name: Update package cache
+  become: true
   community.general.pacman:
     update_cache: true
+  changed_when: false
 
 - name: Enable colour in pacman output
   become: true
