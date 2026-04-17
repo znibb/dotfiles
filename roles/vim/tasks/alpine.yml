@@ -1,10 +1,9 @@
-- name: Install tmux
+- name: Install vim
   become: true
-  community.general.pacman:
+  community.general.apk:
     update_cache: false
     name:
-      - tmux
-      - entr # Run arbitrary commands on file change, needed for tmux-autoreload plugin
+      - vim
     state: present
   register: pkg_output
 

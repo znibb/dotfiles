@@ -9,3 +9,9 @@
       - ncurses-terminfo
       - ncurses-terminfo-base
     state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed

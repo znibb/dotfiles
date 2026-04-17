@@ -1,7 +1,7 @@
 - name: Install packages
   become: true
   community.general.apk:
-    update_cache: true
+    update_cache: false
     name:
       - acl # getfacl, setfacl
       - bat
@@ -25,6 +25,11 @@
       - font-meslo-nerd # font for Starship prompt
       - unzip
       - util-linux # findmnt, lsblk, mountpoint, etc
-      - vim
       - zsh
     state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed

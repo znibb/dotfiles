@@ -1,3 +1,7 @@
+- name: Update package cache
+  community.general.pacman:
+    update_cache: true
+
 - name: Enable colour in pacman output
   become: true
   ansible.builtin.lineinfile:

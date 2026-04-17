@@ -9,10 +9,12 @@
       - avrdude   # firmware download
       - make      # build system
     state: present
-  register: pacman_output
-  changed_when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
 
 - name: "Ensure {{ ansible_facts.user_id }} is a member of uucp group"
   become: true

@@ -5,6 +5,12 @@
     name:
       - fractal-udev
     state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
 
 - name: Setup udev rules for headset
   become: true

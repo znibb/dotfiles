@@ -10,9 +10,9 @@
       - zsh-completions
       - zsh-syntax-highlighting
     state: present
-  register: pacman_output
+  register: pkg_output
 
 - name: Show installed packages
   ansible.builtin.debug:
-    msg: "Installed packages: {{ pacman_output.packages }}"
-  when: pacman_output.changed
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed

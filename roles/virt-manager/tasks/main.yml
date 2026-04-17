@@ -9,10 +9,12 @@
       - virt-manager
       - qemu-hw-usb-host # Needed for USB passthrough to guest
     state: present
-  register: pacman_output
-  changed_when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
 
 - name: Add user to libvirt group
   become: true

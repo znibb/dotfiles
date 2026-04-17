@@ -1,3 +1,11 @@
+- name: Arch/Artix
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
+
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
+
 - name: Ensure vim config directory exists
   ansible.builtin.file:
     path: "{{ vim_config_dir }}"

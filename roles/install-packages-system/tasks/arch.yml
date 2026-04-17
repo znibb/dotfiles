@@ -1,7 +1,7 @@
 - name: Install pacman packages
   become: true
   community.general.pacman:
-    update_cache: true
+    update_cache: false
     name:
       # Yay prereqs
       - base-devel
@@ -12,12 +12,9 @@
       - dnsutils # dig/nslookup
       - dosfstools # mkfs.vfat etc
       - dysk # `df` but better
-      - fastfetch
       - fzf # fuzzy-finder
       - git
-      - git-zsh-completion
       - jq # command line JSON processor
-      - lazygit
       - man
       - ncdu # ncurses `du` frontend
       - nfs-utils
@@ -32,23 +29,16 @@
       - ttf-meslo-nerd # Font for Starship prompt
       - usbutils # lsusb etc
       - vi # fallback for visudo etc
-      - vim
       - whois # mkpasswd etc
       - zip
       - unzip
-      - zsh
-
     state: present
-  register: pacman_output
-  changed_when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+  register: pkg_output
 
-- name: Installed pacman packages
-  debug: msg="{{ pacman_output.packages }}"
-  when:
-    - pacman_output.packages is defined
-    - pacman_output.packages | length > 0
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
 
 - name: "Allow user {{ ansible_facts.env.USER }} to run passwordless pacman/yay"
   become: true
@@ -92,3 +82,9 @@
     name:
       - starship # prompt customization
     state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed

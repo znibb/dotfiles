@@ -23,6 +23,62 @@ with
 ```
 will let you invoke only that specific role with `ansible-playbook playbook.yml --tags roleName` (or `--tags "role1,role2" for multiple specific roles)
 
+### Role boilerplate
+#### Pacman install
+```
+- name: Install pacman packages
+   become: true
+   community.general.pacman:
+      update_cache: false
+      name:
+         - package
+      state: present
+   register: pkg_output
+```
+
+#### AUR install
+```
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: false
+    name:
+      - package
+    state: present
+  register: pkg_output
+```
+
+#### Apk install
+```
+- name: Install packages
+  become: true
+  community.general.apk:
+    update_cache: false
+    name:
+      - package
+    state: present
+  register: pkg_output
+```
+
+#### List installed packages
+```
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
+```
+
+#### Main
+```
+- name: Arch/Artix
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
+
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
+```
+
 ### Setting up swap
 #### Swapfile
 1. Create file to use as swap, `sudo fallocate -l 30G /swapfile`

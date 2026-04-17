@@ -5,9 +5,9 @@
     name:
       - signal-desktop
     state: present
-  register: pacman_result
+  register: pkg_output
 
 - name: Show installed packages
   ansible.builtin.debug:
-    msg: "Installed packages: {{ pacman_result.packages }}"
-  when: pacman_result.changed
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed

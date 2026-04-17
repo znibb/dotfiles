@@ -1,3 +1,17 @@
+- name: Install neovim
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - neovim
+    state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
+
 - name: Ensure Neovim config directory exists
   ansible.builtin.file:
     path: "{{ neovim_config_dir }}"

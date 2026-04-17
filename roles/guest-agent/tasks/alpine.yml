@@ -1,8 +1,14 @@
 - name: Install packages
   become: true
   community.general.apk:
-    update_cache: true
+    update_cache: false
     name:
       - qemu-guest-agent
       - qemu-guest-agent-openrc
     state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed

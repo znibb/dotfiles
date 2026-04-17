@@ -1,16 +1,16 @@
-- name: Install AUR packages
+- name: Install Spotify
   kewlfft.aur.aur:
     use: "{{ aur_helper }}"
     update_cache: true
     name:
       - spotify
     state: present
-  register: aur_result
+  register: pkg_output
 
 - name: Show installed packages
   ansible.builtin.debug:
-    msg: "Installed packages: {{ aur_result.packages }}"
-  when: aur_result.changed
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
 
 - name: Ensure ~/.local/bin exists
   ansible.builtin.file:
