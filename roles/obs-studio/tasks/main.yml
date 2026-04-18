@@ -12,3 +12,17 @@
   ansible.builtin.debug:
     msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
   when: pkg_output.changed
+
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: false
+    name:
+      - obs-pipewire-audio-capture
+    state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
