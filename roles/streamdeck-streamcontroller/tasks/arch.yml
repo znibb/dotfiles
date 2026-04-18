@@ -27,3 +27,19 @@
       }
     dest: "{{ static_config_dir }}/settings.json"
     mode: '0644'
+
+- name: Find cv2 config-3.py in StreamController Python environment
+  ansible.builtin.find:
+    paths: /usr/local/lib/streamcontroller
+    patterns: "config-3.py"
+    recurse: true
+  register: cv2_config_files
+
+- name: Disable cv2 Qt plugin path overrides to prevent system Qt5 apps (e.g. VLC) from crashing
+  ansible.builtin.replace:
+    path: "{{ item.path }}"
+    regexp: 'ci_and_not_headless = ci_build and not headless'
+    replace: 'ci_and_not_headless = False  # Disabled: bundled Qt plugins incompatible with system Qt5'
+  loop: "{{ cv2_config_files.files }}"
+  when: cv2_config_files.files | length > 0
+  become: true
