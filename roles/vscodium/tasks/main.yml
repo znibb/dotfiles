@@ -9,7 +9,7 @@
 
 - name: Show installed packages
   ansible.builtin.debug:
-    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+    msg: "{{ ['Installed packages:'] + pkg_output.installed }}"
   when: pkg_output.changed
 
 - name: Ensure VSCodium config directory exists
