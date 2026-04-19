@@ -1,3 +1,7 @@
+- name: Artix-specific
+  ansible.builtin.include_tasks: "artix.yml"
+  when: ansible_distribution | lower == 'artix linux'
+
 - name: Set up SDDM user icon (avatar)
   ansible.builtin.file:
     src: "{{ role_path }}/files/znibb.png"

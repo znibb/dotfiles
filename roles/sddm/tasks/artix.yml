@@ -1,0 +1,20 @@
+- name: Install openrc-related packages
+  become: true
+  community.general.pacman:
+    update_cache: false
+    name:
+      - sddm-openrc
+    state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
+
+- name: Enable/start sddm
+  become: true
+  ansible.builtin.service:
+    name: sddm
+    enabled: true
+    state: started
