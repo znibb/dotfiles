@@ -21,7 +21,6 @@
     - nix
     - { role: signal, tags: signal }
     - spotify
-    - steam
     - tmux
     - vim
     - virt-manager
