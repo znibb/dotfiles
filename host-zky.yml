@@ -19,10 +19,14 @@
     - lazygit
     - { role: librewolf, tags: librewolf }
     - locale
+    - nix
     - { role: signal, tags: signal }
+    - spotify
     - steam
     - tmux
     - vim
     - virt-manager
+    - vlc
     - vscodium
+    - yt-dlp
     - zsh
