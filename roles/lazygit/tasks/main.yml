@@ -1,4 +1,5 @@
 - name: Install lazygit
+  become: true
   community.general.pacman:
     update_cache: false
     name:
