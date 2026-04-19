@@ -9,6 +9,12 @@ See [docs/artix.md](docs/artix.md)
 ## Alpine
 See [docs/alpine.md](docs/alpine.md)
 
+## Setting up dotfiles
+1. Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`
+1. Enter dotfiles directory and install required ansible collections: `cd .dotfiles && ansible-galaxy install -r requirements.yml`
+1. Run the appropriate playbook: `ansible-playbook -i inventory/hosts.yml <playbook>`
+
+
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
 
@@ -34,6 +40,11 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
         - package
     state: present
   register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
+  when: pkg_output.changed
 ```
 
 #### AUR install
@@ -46,6 +57,11 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
       - package
     state: present
   register: pkg_output
+
+- name: Show installed packages
+    ansible.builtin.debug:
+      msg: "{{ ['Installed packages:'] + pkg_output.installed }}"
+    when: pkg_output.changed
 ```
 
 #### Apk install
@@ -58,14 +74,6 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
       - package
     state: present
   register: pkg_output
-```
-
-#### List installed packages
-```
-- name: Show installed packages
-  ansible.builtin.debug:
-    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
-  when: pkg_output.changed
 ```
 
 #### Main

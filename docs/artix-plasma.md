@@ -14,15 +14,7 @@
 1. In the `Summary` section double check your config and click `Install`
 1. When the install is finished and you end up in the `Finish` section, select `Restart now` and click `Done`
 
-#### Setting up dotfiles
-1. Log in with the credentials you set up during the Plasma install and open a terminal window (`Konsole`)
-1. Since `linux-firmware` was split into separate vendor-specific packages we need to start with removing the old one (`Rdd` to not check dependencies): `sudo pacman -Rdd linux-firmware`
-1. Install new `linux-firmware` meta-package: `sudo pacman -Sy linux-firmware`
-1. Since this is a fresh boot, upgrade all packages: `sudo pacman -Syu`
-1. Install git and ansible: `sudo pacman -S git ansible`
-1. Clone dotfiles repo: `git clone https://github.com/znibb/dotfiles .dotfiles`
-1. Enter dotfiles directory and install required ansible collections: `cd .dotfiles && ansible-galaxy install -r requirements.yml`
-1. Run the appropriate playbook: `ansible-playbook -i inventory/hosts.yml <playbook>`
+#### Post-install cleanup
 1. Start `Alacritty` and start a `tmux` session: `tmux new-session -s main`
 1. Install `tmux` plugins by pressing <Ctrl+a> followed by `I` (capital `i`)
 1. Update `tmux` plugins by pressing <Ctrl+a> followed by `U` (capital `u`) and then typing `all` and pressing <Enter>
