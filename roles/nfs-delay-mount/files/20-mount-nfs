@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Mount NFS shares when a network connection comes up
+# Runs after 10-openrc-status so NetworkManager is marked started first
+
+INTERFACE=$1
+ACTION=$2
+
+case "$INTERFACE" in
+	lo|docker*|br-*|veth*) exit 0 ;;
+esac
+
+if [ "$ACTION" = "up" ]; then
+	mount -a -t nfs,nfs4 2>/dev/null
+fi

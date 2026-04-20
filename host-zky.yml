@@ -19,6 +19,7 @@
     - lazygit
     - { role: librewolf, tags: librewolf }
     - locale
+    - nfs-delay-mount # for using NFS over wifi
     - nix
     - { role: signal, tags: signal }
     - spotify

@@ -1,0 +1,3 @@
+- name: Artix
+  ansible.builtin.include_tasks: "artix.yml"
+  when: ansible_distribution | lower == 'artix linux'

@@ -1,0 +1,8 @@
+- name: Copy NM dispatcher script for NFS delay mount
+  become: true
+  ansible.builtin.copy:
+    src: 20-mount-nfs
+    dest: /etc/NetworkManager/dispatcher.d/20-mount-nfs
+    owner: root
+    group: root
+    mode: '0755'
