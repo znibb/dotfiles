@@ -4,7 +4,8 @@
     update_cache: false
     name:
       # kde-plasma meta package
-      - plasma-desktop
+      - plasma
+      - kde-system
 
       # Fallback/dependency
       - sddm-kcm # KDE config module for SDDM
