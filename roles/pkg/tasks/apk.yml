@@ -1,0 +1,12 @@
+- name: Install apk packages
+  become: true
+  community.general.apk:
+    update_cache: "{{ pkg_update_cache | default(false) }}"
+    name: "{{ packages }}"
+    state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ pkg_output.packages }}"
+  when: pkg_output.changed

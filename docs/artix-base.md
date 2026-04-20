@@ -44,13 +44,15 @@
 
 ##### Verify internet connection
 1. Check connectivity by pinging e.g. `Google Public DNS`: `ping 8.8.8.8`
-1. Wired connection should setup automatically, see [ArchWiki](https://wiki.archlinux.org/title/Network_configuration/Wireless) for instrucitons on how to get wireless working
+1. Wired connection should setup automatically, for wifi use NetworkManager
+1. Show available wlans: `nmcli device wifi list`
+1. Connect: `nmcli device wifi connect <SSID> password <password>`
 
 ##### Update system clock
 1. Start the NTP daemon: `rc-service ntpd start`
 
 ##### Install and configure base system
-1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager networkmanager-openrc vi git ansible`
+1. Install base system package groups, kernel, firmware and (system) packages: `basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware grub efibootmgr networkmanager-openrc vi git ansible`
 1. Chroot into the target system: `artix-chroot /mnt`
 1. Set the time zone: `ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime`
 1. Generate `/etc/adjtime`: `hwclock --systohc`
@@ -66,7 +68,7 @@
 1. Also update openrc hostname fallback file: `sed -i 's/^hostname="localhost"/hostname="<hostname>"/' /etc/conf.d/hostname`
 1. Set `root` password: `passwd`
 1. Create `sudo` system group: `groupadd -r sudo`
-1. Enable members of the `sudo` group to user the `sudo` command: `echo "%sudo ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers.d/sudo_grp`
+1. Enable members of the `sudo` group to user the `sudo` command: `echo "%sudo ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers.d/sudo-grp`
 1. Create user account and add it to the `sudo` group: `useradd -m -G sudo <user>`
 1. Set `<user>` password: `passwd <user>`
 1. Disable `root` login: `sed -i 's/root:\/usr\/bin\/bash/root:\/sbin\/nologin/' /etc/passwd`

@@ -1,19 +1,12 @@
-- name: Install printing utilities
-  become: true
-  community.general.pacman:
-    update_cache: false
-    name:
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    packages:
       - cups # Printing
       - ghostscript
       - print-manager # KDE compatibility
       - system-config-printer # CUPS printer configuration
-    state: present
-  register: pkg_output
-
-- name: Show installed packages
-  ansible.builtin.debug:
-    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
-  when: pkg_output.changed
 
 - name: Enable CUPS socket
   become: true

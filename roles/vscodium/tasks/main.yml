@@ -1,16 +1,9 @@
-- name: Install vscodium
-  kewlfft.aur.aur:
-    use: "{{ aur_helper }}"
-    update_cache: false
-    name:
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: aur
+  vars:
+    packages:
       - vscodium-bin
-    state: present
-  register: pkg_output
-
-- name: Show installed packages
-  ansible.builtin.debug:
-    msg: "{{ ['Installed packages:'] + pkg_output.installed }}"
-  when: pkg_output.changed
 
 - name: Ensure VSCodium config directory exists
   ansible.builtin.file:

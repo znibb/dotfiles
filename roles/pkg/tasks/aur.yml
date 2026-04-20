@@ -1,0 +1,12 @@
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: "{{ aur_helper }}"
+    update_cache: "{{ pkg_update_cache | default(false) }}"
+    name: "{{ packages }}"
+    state: present
+  register: pkg_output
+
+- name: Show installed packages
+  ansible.builtin.debug:
+    msg: "{{ pkg_output.installed }}"
+  when: pkg_output.changed

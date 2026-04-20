@@ -1,12 +1,13 @@
 # Dotfiles
 
-## Arch
+## System install
+### Arch
 See [docs/arch.md](docs/arch.md)
 
-## Artix
+### Artix
 See [docs/artix.md](docs/artix.md)
 
-## Alpine
+### Alpine
 See [docs/alpine.md](docs/alpine.md)
 
 ## Setting up dotfiles
@@ -17,6 +18,10 @@ See [docs/alpine.md](docs/alpine.md)
 To allow pushing to the repo:
 1. Create an ssh key-pair by going go `~/.ssh` and running `ssh-keygen -t ed25519 -C "USER@HOST" -f github-USERNAME` and then log into your GitHub account and add the public key to `Authentication keys`.
 1. Change the repo remote: `git remote set-url origin git@github.com:znibb/dotfiles` (requires key to be set up in `~/.ssh/config`)
+
+### tmux
+1. Go to `~/.config/tmux` and link session templates to be autostarted with tmux server on boot: `cd ~/.config/tmux && ln -s sessions/main.tmux .`
+1. Create/attach-to a tmux session and install/update tmux plugins with `Ctrl+a -> I` and `Ctrl+a -> U`
 
 
 ## Help
