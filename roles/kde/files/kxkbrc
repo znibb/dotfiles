@@ -1,3 +1,5 @@
 [Layout]
+LayoutList=se
 Options=fkeys:basic_13-24,kpdl:dot
 ResetOldOptions=true
+Use=true
