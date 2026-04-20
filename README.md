@@ -14,6 +14,10 @@ See [docs/alpine.md](docs/alpine.md)
 1. Enter dotfiles directory and install required ansible collections: `cd .dotfiles && ansible-galaxy install -r requirements.yml`
 1. Run the appropriate playbook: `ansible-playbook -i inventory/hosts.yml <playbook>`
 
+To allow pushing to the repo:
+1. Create an ssh key-pair by going go `~/.ssh` and running `ssh-keygen -t ed25519 -C "USER@HOST" -f github-USERNAME` and then log into your GitHub account and add the public key to `Authentication keys`.
+1. Change the repo remote: `git remote set-url origin git@github.com:znibb/dotfiles` (requires key to be set up in `~/.ssh/config`)
+
 
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`

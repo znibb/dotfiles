@@ -30,9 +30,3 @@ After the install finishes agree to enter chroot and add your personal user acco
 1. Add user to the group: `usermod -aG sudo <USERNAME>`
 1. Use `visudo` to enable members of the `sudo` group to use the sudo command (check for the row `%sudo ALL=(ALL:ALL) ALL`)
 1. Exit out of the chroot with `exit` and poweroff to remove the booted installation media
-
-### Setting up dotfiles
-1. On your new machine, create an ssh key-pair by going go `~/.ssh` and running `ssh-keygen -t ed25519 -C "USER@HOST" -f github-USERNAME` and then log into your GitHub account and add the public key to `Authentication keys`.
-1. Clone dotfiles repo: `git clone git@github.com:znibb/dotfiles.git ~/.dotfiles`
-1. Enter the dotfiles directory and install the required ansible collections: `ansible-galaxy install -r requirements.yml`
-1. Run the ansible playbook: `ansible-playbook -i inventory/hosts.ini hosts-HOSTNAME.yml`
