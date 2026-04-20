@@ -15,7 +15,7 @@
     - fastfetch
     - git
     - keepass
-    - kicad
+    - { role: kicad, tags: kicad }
     - lazygit
     - { role: librewolf, tags: librewolf }
     - locale
