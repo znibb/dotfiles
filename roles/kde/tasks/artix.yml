@@ -4,3 +4,46 @@
   vars:
     packages:
       - power-profiles-daemon-openrc
+      - pipewire-openrc
+      - pipewire-pulse-openrc
+      - wireplumber-openrc
+      - libdbusmenu-qt5
+
+- name: Ensure autostart directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.config/autostart"
+    state: directory
+    mode: '0755'
+
+- name: Create PipeWire autostart entry
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/autostart/pipewire.desktop"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=PipeWire
+      Exec=/usr/bin/pipewire
+      X-KDE-autostart-phase=1
+    mode: '0644'
+
+- name: Create PipeWire PulseAudio autostart entry
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/autostart/pipewire-pulse.desktop"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=PipeWire PulseAudio
+      Exec=/usr/bin/pipewire-pulse
+      X-KDE-autostart-phase=1
+    mode: '0644'
+
+- name: Create WirePlumber autostart entry
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/autostart/wireplumber.desktop"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=WirePlumber
+      Exec=/usr/bin/wireplumber
+      X-KDE-autostart-phase=1
+    mode: '0644'
