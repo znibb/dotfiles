@@ -23,7 +23,6 @@ To allow pushing to the repo:
 1. Go to `~/.config/tmux` and link session templates to be autostarted with tmux server on boot: `cd ~/.config/tmux && ln -s sessions/main.tmux .`
 1. Create/attach-to a tmux session and install/update tmux plugins with `Ctrl+a -> I` and `Ctrl+a -> U`
 
-
 ## Help
 To see all available ansible_facts: `ansible <hostname> -m ansible.builtin.setup`
 

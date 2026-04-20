@@ -3,9 +3,9 @@
     tasks_from: pacman
   vars:
     packages:
-      # kde-plasma meta package
-      - plasma
-      - kde-system
+      # kde
+      - plasma # kde-plasma meta package
+      - kde-system # kde system utils
 
       # Fallback/dependency
       - sddm-kcm # KDE config module for SDDM

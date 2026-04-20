@@ -58,10 +58,6 @@
 1. Generate `/etc/adjtime`: `hwclock --systohc`
 1. Uncomment desired locales in `/etc/locale.gen`, e.g. using `sed`: `sed -i 's/^#en_US.UTF-8/en_US.UTF-8/; s/^#sv_SE.UTF-8/sv_SE.UTF-8/' /etc/locale.gen`
 1. Generate locales: `locale-gen`
-1. Set system-wide locale:
-- echo `echo 'export LANG="en_US.UTF-8"' | tee -a /etc/locale.conf`
-- echo `echo 'export LC_COLLATE="C"' | tee -a /etc/locale.conf`
-1. Make keyboard layout settings persistent on target system: `sed -i 's/^keymap=.*/keymap=sv-latin1/' /etc/conf.d/keymaps`
 1. Install GRUB into the target system: `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub`
 1. Generate GRUB config: `grub-mkconfig -o /boot/grub/grub.cfg`
 1. Create hostname file: `echo "<hostname>" | tee /etc/hostname`

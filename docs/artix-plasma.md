@@ -35,6 +35,7 @@ Go to `System Settings->Colors & Themes->Login Screen (SDDM)`, add `SilentSDDM` 
 1. Enable clock seconds display by right-clicking the clock in the bottom right and selecting `Configure Digital Clock...`, then change `Show seconds` to `always` and click `OK`
 1. Enable Icons-Only Task Manager by right-clicking on the bottom panel, selecting `Show Alternatives...` and clicking `Icons-Only Task Manager`
 1. Disable task bar panel floating by right-clicking on the bottom panel and selecting `Show Panel Configuration`, then changing `Floating` to `Disabled` and pressing `Exit Edit Mode`
+1. Set keyboard language by going to `System Settings->Keyboard` and adding the preferred layout(s) to the list
 
 #### Cleanup
 1. Remove default installed browser `falkon`: `sudo pacman -R falkon`
