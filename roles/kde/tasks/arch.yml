@@ -3,9 +3,8 @@
   community.general.pacman:
     update_cache: false
     name:
-      # kde-plasma meta package and default applications
+      # kde-plasma meta package
       - plasma-desktop
-      - kde-applications
 
       # Fallback/dependency
       - sddm-kcm # KDE config module for SDDM
