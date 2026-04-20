@@ -5,6 +5,7 @@
     name: "{{ packages }}"
     state: present
   register: pkg_output
+  changed_when: pkg_output.packages | length > 0
 
 - name: Show installed packages
   ansible.builtin.debug:
