@@ -4,5 +4,3 @@
   vars:
     packages:
       - power-profiles-daemon-openrc
-      - snixembed # StatusNotifierItems fix for systemtray icons
-      - libdbusmenu-qt5 # StatusNotifierItems fix for systemtray icons
