@@ -37,53 +37,6 @@ with
 ```
 will let you invoke only that specific role with `ansible-playbook playbook.yml --tags roleName` (or `--tags "role1,role2" for multiple specific roles)
 
-### Role boilerplate
-#### Pacman install
-```
-- name: Install pacman packages
-  become: true
-  community.general.pacman:
-    update_cache: false
-    name:
-        - package
-    state: present
-  register: pkg_output
-
-- name: Show installed packages
-  ansible.builtin.debug:
-    msg: "{{ ['Installed packages:'] + pkg_output.packages }}"
-  when: pkg_output.changed
-```
-
-#### AUR install
-```
-- name: Install AUR packages
-  kewlfft.aur.aur:
-    use: "{{ aur_helper }}"
-    update_cache: false
-    name:
-      - package
-    state: present
-  register: pkg_output
-
-- name: Show installed packages
-    ansible.builtin.debug:
-      msg: "{{ ['Installed packages:'] + pkg_output.installed }}"
-    when: pkg_output.changed
-```
-
-#### Apk install
-```
-- name: Install packages
-  become: true
-  community.general.apk:
-    update_cache: false
-    name:
-      - package
-    state: present
-  register: pkg_output
-```
-
 #### Main
 ```
 - name: Arch/Artix
@@ -168,3 +121,14 @@ Use `prefix` + `I` (capital i) to fetch new plugins or use `prefix` + `U` (capit
 The `~/vm-share` directory is now shared between the host and VM.  
 
 To make the shared directory auto mount on boot make the following addition to `/etc/fstab`: `share /home/<user>/vm-share virtiofs defaults 0 0`
+
+### Soundboard with virtual mic
+1. Include the `soundboard` role
+1. After running the playbook execute `~/.scripts/setup-virt-mic.sh` to create:
+- An audio sink called `virt_mic`
+- An audio sink called `combined_mic`
+- An audio source called `combined_mic_source` with the description `CombinedMic`
+
+The `virt_mic`sink is used to output sound to. The `combined_mic` sink merges the input from the regular mic with the audio from `virt_mic`. The `combined_mic` sink is then forwarded to an audio source called `CombinedMic` that can be selected instead of the raw microphone device to allow audio injection via `virt_mic`.
+
+The setpu also includes loopback of `virt_mic` to the default speaker.

@@ -25,6 +25,7 @@
     - nfs-client
     - obs-studio
     - { role: signal, tags: signal }
+    - { role: soundboard, tags: soundboard }
     - { role: spotify, tags: spotify }
     - steam
     - { role: streamdeck-streamcontroller, tags: streamdeck-streamcontroller }
