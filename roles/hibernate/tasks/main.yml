@@ -1,0 +1,13 @@
+# Setup hibernate to swapfile
+
+- name: Ensure scripts directory exists
+  ansible.builtin.file:
+    path: "{{ user_scripts_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Symlink hibernate setup script
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/setup-hibernate-from-swap.sh"
+    dest: "{{ user_scripts_dir }}/setup-hibernate-from-swap.sh"
+    state: link

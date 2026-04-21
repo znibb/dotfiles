@@ -14,6 +14,7 @@
     - { role: docker, tags: docker }
     - fastfetch
     - git
+    - hibernate
     - keepass
     - { role: kicad, tags: kicad }
     - lazygit
