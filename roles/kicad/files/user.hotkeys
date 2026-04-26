@@ -246,6 +246,7 @@ eeschema.EditorControl.editLibSymbolWithSymbolEditor	Ctrl+Shift+E
 eeschema.EditorControl.editPageNumber		
 eeschema.EditorControl.editSymbolFields		
 eeschema.EditorControl.editSymbolLibraryLinks		
+eeschema.EditorControl.editVariantDescription		
 eeschema.EditorControl.editWithSymbolEditor	Ctrl+E	
 eeschema.EditorControl.exportNetlist		
 eeschema.EditorControl.exportSymbolsToLibrary		
@@ -257,6 +258,7 @@ eeschema.EditorControl.highlightNet	H
 eeschema.EditorControl.highlightNetTool		
 eeschema.EditorControl.importFPAssignments		
 eeschema.EditorControl.importGraphics	Ctrl+Shift+F	
+eeschema.EditorControl.importNonKicadSchematic		
 eeschema.EditorControl.incrementAnnotations		
 eeschema.EditorControl.lineMode45		
 eeschema.EditorControl.lineModeFree		
