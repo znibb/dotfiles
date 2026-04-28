@@ -6,7 +6,6 @@
     state: present
   register: pkg_output
 
-- name: Show installed packages
-  ansible.builtin.debug:
-    msg: "{{ pkg_output.installed }}"
-  when: pkg_output.changed
+# kewlfft.aur.aur doesn't return a list of what packages were actually
+# installed so instead of printing ALL requested packages it instead
+# lacks explicit listing of installed packages and only shows as "changed"
