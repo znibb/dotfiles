@@ -15,6 +15,7 @@
     - docker
     - fastfetch
     - git
+    - github-cli
     - keepass
     - keyboard-g815
     - kicad

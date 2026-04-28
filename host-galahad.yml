@@ -16,6 +16,7 @@
     - fastfetch
     - fractal-scape # headset drivers+udev
     - git
+    - github-cli
     - keepass
     - keyboard-g815
     - { role: kicad, tags: kicad }
