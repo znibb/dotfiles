@@ -19,6 +19,7 @@
     - keyboard-g815
     - kicad
     - lazygit
+    - { role: librewolf, tags: librewolf }
     - locale
     - { role: nix, tags: nix }
     - printer
