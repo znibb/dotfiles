@@ -3,7 +3,7 @@
     tasks_from: aur
   vars:
     packages:
-      - librewolf
+      - librewolf-bin
       - librewolf-extension-keepassxc-browser
 
 - name: Ensure librewolf config directory exists
