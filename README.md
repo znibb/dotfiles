@@ -37,7 +37,7 @@ with
 ```
 will let you invoke only that specific role with `ansible-playbook playbook.yml --tags roleName` (or `--tags "role1,role2" for multiple specific roles)
 
-#### Main
+### Distribution-specific execution
 ```
 - name: Arch/Artix
   ansible.builtin.include_tasks: "arch.yml"
@@ -46,6 +46,16 @@ will let you invoke only that specific role with `ansible-playbook playbook.yml 
 - name: Alpine
   ansible.builtin.include_tasks: "alpine.yml"
   when: ansible_distribution | lower == 'alpine'
+```
+
+### Package installation
+```
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: (apk/aur/pacman)
+  vars:
+    packages:
+      - package_name
 ```
 
 ### Setting up swap
