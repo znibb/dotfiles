@@ -7,7 +7,7 @@ WINDOWS=(
     "immich:docker/immich"
     "inventree:docker/inventree"
     "motakwiki:docker/motakwiki"
-    "netboot:docker/netboot"
+    "netboot:docker/netbootxyz"
     "nextcloud:docker/nextcloud"
     "servarr:docker/servarr"
     "traefik:docker/traefik"
