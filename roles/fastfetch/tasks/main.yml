@@ -1,9 +1,10 @@
-- ansible.builtin.include_role:
-    name: pkg
-    tasks_from: pacman
-  vars:
-    packages:
-      - fastfetch
+- name: Arch/Artix
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
+
+- name: Alpine
+  ansible.builtin.include_tasks: "alpine.yml"
+  when: ansible_distribution | lower == 'alpine'
 
 - name: Ensure fastfetch config directory exists
   ansible.builtin.file:
