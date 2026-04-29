@@ -1,0 +1,6 @@
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: apk
+  vars:
+    packages:
+      - lazygit
