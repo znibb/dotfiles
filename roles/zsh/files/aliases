@@ -12,6 +12,7 @@ alias rsync='rsync --progress'
 alias   fzf='fzf --preview="cat {}"'
 alias    df='dysk'
 alias    ff='fastfetch'
+alias ports="netstat -tulpn | grep -v ':::' | { read h1; read h2; printf '%s\n%s\n' \"\$h1\"\"\$h2\"; sort -t: -k2 -n; }"
 
 # config shortcuts
 alias srca='source ~/.config/zsh/aliases'
