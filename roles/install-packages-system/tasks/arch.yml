@@ -17,6 +17,7 @@
       - jq # command line JSON processor
       - man
       - ncdu # ncurses `du` frontend
+      - net-tools # netstat etc
       - nfs-utils
       - openssh # ssh-keygen etc
       - powertop # power monitoring
