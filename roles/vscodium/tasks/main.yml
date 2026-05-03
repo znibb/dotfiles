@@ -28,8 +28,9 @@
   ansible.builtin.shell: codium --install-extension {{ item }}
   when: item not in installed_extensions.stdout_lines
   loop:
-    - ms-vscode.makefile-tools  # Makefiles
-    - tamasfe.even-better-toml  # TOML
-    - jeanp413.open-remote-ssh  # Remote SSH
-    - mechatroner.rainbow-csv   # CSV/TSV highlighting/queries
-    - anthropic.claude-code     # Claude Code
+    - ms-vscode.makefile-tools    # Makefiles
+    - tamasfe.even-better-toml    # TOML
+    - jeanp413.open-remote-ssh    # Remote SSH
+    - mechatroner.rainbow-csv     # CSV/TSV highlighting/queries
+    - anthropic.claude-code       # Claude Code
+    - yzhang.markdown-all-in-one  # Markdown toc etc

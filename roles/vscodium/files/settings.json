@@ -18,5 +18,7 @@
         "host-vscodium": "/bin/bash"
     },
     "update.showReleaseNotes": false,
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "window.confirmSaveUntitledWorkspace": false,
+    "markdown.extension.toc.omittedFromToc": {}
 }
