@@ -1,10 +1,10 @@
-- ansible.builtin.include_role:
-    name: pkg
-    tasks_from: aur
-  vars:
-    packages:
-      - librewolf-bin
-      - librewolf-extension-keepassxc-browser
+- name: Arch
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux'
+
+- name: Artix
+  ansible.builtin.include_tasks: "artix.yml"
+  when: ansible_distribution | lower == 'artix'
 
 - name: Ensure librewolf config directory exists
   ansible.builtin.file:

@@ -1,0 +1,7 @@
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: aur
+  vars:
+    packages:
+      - librewolf-bin
+      - librewolf-extension-keepassxc-browser

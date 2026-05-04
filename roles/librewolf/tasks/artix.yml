@@ -1,0 +1,13 @@
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    packages:
+      - librewolf
+
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: aur
+  vars:
+    packages:
+      - librewolf-extension-keepassxc-browser
