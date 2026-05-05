@@ -21,6 +21,7 @@
     - keyboard-g815
     - { role: kicad, tags: kicad }
     - lazygit
+    - librewolf
     - locale
     - mouse-g600
     - nfs-client
