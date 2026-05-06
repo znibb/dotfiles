@@ -12,6 +12,7 @@
     - alacritty
     - avr-dev
     - bluetooth
+    - claude-code
     - docker
     - fastfetch
     - git

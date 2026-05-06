@@ -11,6 +11,7 @@
     - ssh # put early to allow cloning of github repos with ssh config
     - alacritty
     - bluetooth
+    - claude-code
     - { role: docker, tags: docker }
     - fastfetch
     - git

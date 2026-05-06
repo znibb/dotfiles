@@ -12,6 +12,7 @@
     - alacritty
     - avr-dev
     - bluetooth
+    - {role: claude-code, tags: claude-code }
     - docker
     - fastfetch
     - fractal-scape # headset drivers+udev

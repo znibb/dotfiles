@@ -1,0 +1,61 @@
+- name: Arch/Artix
+  ansible.builtin.include_tasks: "arch.yml"
+  when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
+
+- name: "Ensure {{ claude_code_config_dir }} exists"
+  ansible.builtin.file:
+    path: "{{ claude_code_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Check ~/.claude status
+  ansible.builtin.stat:
+    path: "{{ ansible_facts.env.HOME }}/.claude"
+  register: claude_dot
+
+# If ~/.claude exists and isn't already a symlink
+- name: Move contents of ~/.claude into ~/.config/claude (migration)
+  ansible.builtin.shell:
+    cmd: mv {{ ansible_facts.env.HOME }}/.claude/* {{ claude_code_config_dir }}/ 2>/dev/null || true
+  when: claude_dot.stat.exists and not claude_dot.stat.islnk
+
+- name: Remove ~/.claude directory (migration)
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.claude"
+    state: absent
+  when: claude_dot.stat.exists and not claude_dot.stat.islnk
+# -----------------------------------------------
+
+- name: "Symlink ~/.claude to {{ claude_code_config_dir }}"
+  ansible.builtin.file:
+    src: "{{ claude_code_config_dir }}"
+    dest: "{{ ansible_facts.env.HOME }}/.claude"
+    state: link
+  when: not claude_dot.stat.exists or not claude_dot.stat.islnk
+
+- name: "Ensure {{ claude_code_config_dir }}/skills exists"
+  ansible.builtin.file:
+    path: "{{ claude_code_config_dir }}/skills"
+    state: directory
+    mode: '0755'
+
+- name: Find skills files
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/skills"
+    file_type: file
+  register: skills_files
+
+- name: Symlink skills to ~/.config/claude/skills
+  ansible.builtin.file:
+    src: "{{ item.path }}"
+    dest: "{{ claude_code_config_dir }}/skills/{{ item.path | basename }}"
+    state: link
+  loop: "{{ skills_files.files }}"
+  loop_control:
+    label: "{{ item.path | basename }}"
+
+- name: Symlink skill setup scripts
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/setup-claude-ntfy.sh"
+    dest: "{{ claude_code_config_dir }}/setup-claude-ntfy.sh"
+    state: link
