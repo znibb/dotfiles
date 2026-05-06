@@ -15,7 +15,7 @@ test -f ~/.config/claude/ntfy.env || echo "MISSING_CONFIG"
 ```
 
 If the output is `MISSING_CONFIG`, tell the user:
-> Config file `~/.config/claude/ntfy.env` not found. Run `setup-ntfy.sh` to create it.
+> Config file `~/.config/claude/ntfy.env` not found. Run `~/.config/claude/setup-claude-ntfy.sh` to create it.
 
 Otherwise, send the notification by substituting the user's arguments into the curl command:
 
