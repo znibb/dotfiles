@@ -66,8 +66,8 @@ alias  lg='lazygit'
 alias  gk='gitk'
 
 # pacman
-alias pacch='sudo pacman -Syu --print-format "%n %v %b"'
-alias    pm='sudo pacman --needed'
+alias pmn='sudo pacman --needed'
+alias  pm='sudo pacman'
 
 # tmux
 alias tma='tmux attach -t '
