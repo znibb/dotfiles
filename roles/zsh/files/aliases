@@ -79,6 +79,7 @@ alias  tm='tmux attach -t main'
 
 # yt-dlp
 alias ytmp3='yt-dlp --config-location ~/.config/yt-dlp/mp3.conf'
+alias ytmkv='yt-dlp --config-location ~/.config/yt-dlp/mkv.conf'
 
 # helper functions
 # Fetch external IP

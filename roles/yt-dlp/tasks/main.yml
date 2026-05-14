@@ -21,3 +21,4 @@
     state: link
   loop:
     - { src: "mp3.conf", dest: "{{ ytdlp_config_dir }}/mp3.conf" }
+    - { src: "mkv.conf", dest: "{{ ytdlp_config_dir }}/mkv.conf" }
