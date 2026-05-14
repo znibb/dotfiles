@@ -60,3 +60,8 @@ bindkey "^[OF" end-of-line          # inside tmux
 ## Alpine
 bindkey "^[[1~" beginning-of-line   # inside tmux
 bindkey "^[[4~" end-of-line         # inside tmux
+
+# Reset mouse reporting before each prompt (guards against tmux leaving it
+# enabled on exit, which causes clicks to print raw escape sequences)
+_reset_mouse() { printf '\e[?1000l\e[?1002l\e[?1003l\e[?1006l' }
+precmd_functions+=(_reset_mouse)
