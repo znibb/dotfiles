@@ -45,10 +45,19 @@
     file_type: file
   register: skills_files
 
-- name: Symlink skills to ~/.config/claude/skills
+- name: Ensure skill subdirectories exists
+  ansible.builtin.file:
+    path: "{{ claude_code_config_dir }}/skills/{{ item.path | basename | splitext | first }}"
+    state: directory
+    mode: '0755'
+  loop: "{{ skills_files.files }}"
+  loop_control:
+    label: "{{ item.path | basename }}"
+
+- name: Symlink skills as SKILL.md into subdirectory
   ansible.builtin.file:
     src: "{{ item.path }}"
-    dest: "{{ claude_code_config_dir }}/skills/{{ item.path | basename }}"
+    dest: "{{ claude_code_config_dir }}/skills/{{ item.path | basename | splitext | first }}/SKILL.md"
     state: link
   loop: "{{ skills_files.files }}"
   loop_control:
