@@ -3,11 +3,11 @@
   gather_facts: true
 
   roles:
-    - install-packages-system
-    - guest-agent
-    - fastfetch
-    - git
-    - lazygit
-    - tmux
-    - vim
-    - zsh
+    - { role: install-packages-system, tags: install-packages-system }
+    - { role: guest-agent, tags: guest-agent }
+    - { role: fastfetch, tags: fastfetch }
+    - { role: git, tags: git }
+    - { role: lazygit, tags: lazygit }
+    - { role: tmux, tags: tmux }
+    - { role: vim, tags: vim }
+    - { role: zsh, tags: zsh }

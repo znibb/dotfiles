@@ -3,31 +3,31 @@
   gather_facts: true
 
   roles:
-    - package-handler-settings
-    - install-packages-system
-    - kde
-    - sddm
-    - install-packages-desktop
-    - ssh # put early to allow cloning of github repos with ssh config
-    - alacritty
-    - bluetooth
-    - claude-code
+    - { role: package-handler-settings, tags: package-handler-settings }
+    - { role: install-packages-system, tags: install-packages-system }
+    - { role: kde, tags: kde }
+    - { role: sddm, tags: sddm }
+    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
+    - { role: alacritty, tags: alacritty }
+    - { role: bluetooth, tags: bluetooth }
+    - { role: claude-code, tags: claude-code }
     - { role: docker, tags: docker }
-    - fastfetch
-    - git
-    - hibernate
-    - keepass
+    - { role: fastfetch, tags: fastfetch }
+    - { role: git, tags: git }
+    - { role: hibernate, tags: hibernate }
+    - { role: keepass, tags: keepass }
     - { role: kicad, tags: kicad }
-    - lazygit
+    - { role: lazygit, tags: lazygit }
     - { role: librewolf, tags: librewolf }
-    - locale
-    - nfs-delay-mount # for using NFS over wifi
-    - nix
+    - { role: locale, tags: locale }
+    - { role: nfs-delay-mount, tags: nfs-delay-mount } # for using NFS over wifi
+    - { role: nix, tags: nix }
     - { role: signal, tags: signal }
-    - spotify
-    - tmux
-    - vim
-    - vlc
-    - vscodium
-    - yt-dlp
-    - zsh
+    - { role: spotify, tags: spotify }
+    - { role: tmux, tags: tmux }
+    - { role: vim, tags: vim }
+    - { role: vlc, tags: vlc }
+    - { role: vscodium, tags: vscodium }
+    - { role: yt-dlp, tags: yt-dlp }
+    - { role: zsh, tags: zsh }

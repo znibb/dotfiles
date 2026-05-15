@@ -3,33 +3,33 @@
   gather_facts: true
 
   roles:
-    - package-handler-settings
-    - install-packages-system
-    - kde
-    - sddm
-    - install-packages-desktop
-    - ssh # put early to allow cloning of github repos with ssh config
-    - alacritty
-    - avr-dev
-    - bluetooth
-    - claude-code
-    - docker
-    - fastfetch
-    - git
-    - github-cli
-    - keepass
-    - keyboard-g815
-    - kicad
-    - lazygit
+    - { role: package-handler-settings, tags: package-handler-settings }
+    - { role: install-packages-system, tags: install-packages-system }
+    - { role: kde, tags: kde }
+    - { role: sddm, tags: sddm }
+    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
+    - { role: alacritty, tags: alacritty }
+    - { role: avr-dev, tags: avr-dev }
+    - { role: bluetooth, tags: bluetooth }
+    - { role: claude-code, tags: claude-code }
+    - { role: docker, tags: docker }
+    - { role: fastfetch, tags: fastfetch }
+    - { role: git, tags: git }
+    - { role: github-cli, tags: github-cli }
+    - { role: keepass, tags: keepass }
+    - { role: keyboard-g815, tags: keyboard-g815 }
+    - { role: kicad, tags: kicad }
+    - { role: lazygit, tags: lazygit }
     - { role: librewolf, tags: librewolf }
-    - locale
+    - { role: locale, tags: locale }
     - { role: nix, tags: nix }
-    - printer
-    - signal
-    - steam
-    - teams
+    - { role: printer, tags: printer }
+    - { role: signal, tags: signal }
+    - { role: steam, tags: steam }
+    - { role: teams, tags: teams }
     - { role: tmux, tags: tmux }
-    - vim
-    - virt-manager
-    - vscodium
+    - { role: vim, tags: vim }
+    - { role: virt-manager, tags: virt-manager }
+    - { role: vscodium, tags: vscodium }
     - { role: zsh, tags: zsh }

@@ -3,24 +3,24 @@
   gather_facts: true
 
   roles:
-    - package-handler-settings
-    - install-packages-system
+    - { role: package-handler-settings, tags: package-handler-settings }
+    - { role: install-packages-system, tags: install-packages-system }
     - { role: kde, tags: kde }
-    - sddm
-    - install-packages-desktop
-    - ssh # put early to allow cloning of github repos with ssh config
+    - { role: sddm, tags: sddm }
+    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
     - { role: alacritty, tags: alacritty }
     - { role: avr-dev, tags: avr-dev }
-    - docker
-    - fastfetch
-    - git
-    - keepass
-    - kicad
-    - lazygit
-    - locale
-    - plex
-    - steam
-    - tmux
-    - vim
-    - vscodium
+    - { role: docker, tags: docker }
+    - { role: fastfetch, tags: fastfetch }
+    - { role: git, tags: git }
+    - { role: keepass, tags: keepass }
+    - { role: kicad, tags: kicad }
+    - { role: lazygit, tags: lazygit }
+    - { role: locale, tags: locale }
+    - { role: plex, tags: plex }
+    - { role: steam, tags: steam }
+    - { role: tmux, tags: tmux }
+    - { role: vim, tags: vim }
+    - { role: vscodium, tags: vscodium }
     - { role: zsh, tags: zsh }

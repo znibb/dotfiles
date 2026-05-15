@@ -3,40 +3,40 @@
   gather_facts: true
 
   roles:
-    - package-handler-settings
-    - install-packages-system
-    - kde
-    - sddm
-    - install-packages-desktop
-    - ssh # put early to allow cloning of github repos with ssh config
-    - alacritty
-    - avr-dev
-    - bluetooth
-    - {role: claude-code, tags: claude-code }
-    - docker
-    - fastfetch
-    - fractal-scape # headset drivers+udev
-    - git
-    - github-cli
-    - keepass
-    - keyboard-g815
+    - { role: package-handler-settings, tags: package-handler-settings }
+    - { role: install-packages-system, tags: install-packages-system }
+    - { role: kde, tags: kde }
+    - { role: sddm, tags: sddm }
+    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
+    - { role: alacritty, tags: alacritty }
+    - { role: avr-dev, tags: avr-dev }
+    - { role: bluetooth, tags: bluetooth }
+    - { role: claude-code, tags: claude-code }
+    - { role: docker, tags: docker }
+    - { role: fastfetch, tags: fastfetch }
+    - { role: fractal-scape, tags: fractal-scape } # headset drivers+udev
+    - { role: git, tags: git }
+    - { role: github-cli, tags: github-cli }
+    - { role: keepass, tags: keepass }
+    - { role: keyboard-g815, tags: keyboard-g815 }
     - { role: kicad, tags: kicad }
-    - lazygit
-    - librewolf
-    - locale
-    - mouse-g600
-    - nfs-client
-    - obs-studio
+    - { role: lazygit, tags: lazygit }
+    - { role: librewolf, tags: librewolf }
+    - { role: locale, tags: locale }
+    - { role: mouse-g600, tags: mouse-g600 }
+    - { role: nfs-client, tags: nfs-client }
+    - { role: obs-studio, tags: obs-studio }
     - { role: signal, tags: signal }
     - { role: soundboard, tags: soundboard }
     - { role: spotify, tags: spotify }
-    - steam
+    - { role: steam, tags: steam }
     - { role: streamdeck-streamcontroller, tags: streamdeck-streamcontroller }
-    - teams
-    - tmux
-    - vim
-    - virt-manager
+    - { role: teams, tags: teams }
+    - { role: tmux, tags: tmux }
+    - { role: vim, tags: vim }
+    - { role: virt-manager, tags: virt-manager }
     - { role: vlc, tags: vlc }
-    - vscodium
-    - yt-dlp
-    - zsh
+    - { role: vscodium, tags: vscodium }
+    - { role: yt-dlp, tags: yt-dlp }
+    - { role: zsh, tags: zsh }
