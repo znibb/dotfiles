@@ -1,4 +1,5 @@
 ---
+name: notify
 description: Send an ntfy push notification. Usage: /notify <message> [title] [priority]. Priority: max, high, default, low, min. Reads config from ~/.config/claude/ntfy.env. Use after long-running tasks complete.
 ---
 
