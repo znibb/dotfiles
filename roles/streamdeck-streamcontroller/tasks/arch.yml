@@ -35,5 +35,7 @@
     regexp: 'ci_and_not_headless = ci_build and not headless'
     replace: 'ci_and_not_headless = False  # Disabled: bundled Qt plugins incompatible with system Qt5'
   loop: "{{ cv2_config_files.files }}"
+  loop_control:
+    label: "{{ item.path }}"
   when: cv2_config_files.files | length > 0
   become: true
