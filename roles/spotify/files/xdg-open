@@ -1,11 +1,57 @@
 #!/bin/bash
 # Intercept Spotify URLs and open them in the Spotify client.
+# Intercept http/https URLs and open them via the default browser with correct display env.
 # All other URLs/files are passed through to the real xdg-open.
 
 open_in_spotify() {
     local path="${1#https://open.spotify.com/}"
     path="${path%%\?*}"
     exec spotify --uri="spotify:${path//\//:}"
+}
+
+open_in_browser() {
+    local url="$1"
+    local runtime_dir="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+
+    # Discover Wayland socket if not already set
+    local wayland_name="${WAYLAND_DISPLAY}"
+    if [[ -z "$wayland_name" ]]; then
+        local w; w=$(ls "${runtime_dir}"/wayland-? 2>/dev/null | head -1)
+        [[ -n "$w" ]] && wayland_name=$(basename "$w")
+    fi
+
+    # Discover X11 display if not set, using the running browser's display as source of truth
+    local x_display="${DISPLAY}"
+    if [[ -z "$x_display" ]]; then
+        local default_app
+        default_app=$(xdg-mime query default x-scheme-handler/https 2>/dev/null)
+        local browser_pid
+        browser_pid=$(pgrep -u "$(id -u)" "${default_app%.desktop}" 2>/dev/null | head -1)
+        if [[ -n "$browser_pid" ]]; then
+            x_display=$(tr '\0' '\n' < "/proc/$browser_pid/environ" 2>/dev/null | grep "^DISPLAY=" | cut -d= -f2)
+        fi
+    fi
+
+    local default_app
+    default_app=$(xdg-mime query default x-scheme-handler/https 2>/dev/null)
+    default_app="${default_app%.desktop}"
+
+    # Extract the browser binary from its desktop file
+    local browser_bin
+    browser_bin=$(grep "^Exec=" "/usr/share/applications/${default_app}.desktop" 2>/dev/null \
+        | head -1 | sed 's/^Exec=//; s/ .*//')
+
+    # If the browser supports --new-instance (Firefox-based), use it to bypass
+    # X11 inter-instance IPC which fails when the existing instance is Wayland-native.
+    # A separate profile is required to avoid the "already running" profile lock.
+    if [[ -n "$browser_bin" ]] && "$browser_bin" --help 2>&1 | grep -q -- "--new-instance"; then
+        local tmp_profile="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/xdg-open-browser-profile"
+        mkdir -p "$tmp_profile"
+        DISPLAY="$x_display" WAYLAND_DISPLAY="$wayland_name" \
+            "$browser_bin" --new-instance --profile "$tmp_profile" "$url" &
+    else
+        DISPLAY="$x_display" WAYLAND_DISPLAY="$wayland_name" gtk-launch "$default_app" "$url" &
+    fi
 }
 
 if [[ "$1" == https://open.spotify.com/* ]]; then
@@ -15,8 +61,10 @@ elif [[ "$1" == https://spotify.link/* ]]; then
     if [[ "$resolved" == https://open.spotify.com/* ]]; then
         open_in_spotify "$resolved"
     else
-        exec /usr/bin/xdg-open "$@"
+        open_in_browser "$@"
     fi
+elif [[ "$1" == http://* ]] || [[ "$1" == https://* ]]; then
+    open_in_browser "$1"
 else
     exec /usr/bin/xdg-open "$@"
 fi
