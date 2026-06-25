@@ -6,6 +6,7 @@
       # Desktop
       - 7zip
       - discord
+      - evtest # probing mouse/keyboard capabilities
       - gparted # Partition management
       - libreoffice-still
       - nextcloud-client
@@ -18,4 +19,5 @@
       - qpwgraph # Pipewire GUI
       - zathura # Minimalist document viewer
       - zathura-pdf-poppler # PDF-plugin for Zathura
+      - wev # debugging input events on wayland
       - wine
