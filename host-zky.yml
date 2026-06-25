@@ -25,6 +25,7 @@
     - { role: nix, tags: nix }
     - { role: signal, tags: signal }
     - { role: spotify, tags: spotify }
+    - { role: steam, tags: steam }
     - { role: tmux, tags: tmux }
     - { role: vim, tags: vim }
     - { role: vlc, tags: vlc }
