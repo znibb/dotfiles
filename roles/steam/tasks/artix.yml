@@ -1,0 +1,26 @@
+- name: Enable multilib repo
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/pacman.conf
+    block: |
+      [multilib]
+      Include = /etc/pacman.d/mirrorlist-arch
+    marker: "# {mark} MULTILIB REPO"
+    insertafter: EOF
+
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    packages:
+      - "{{ lib32_vulkan_driver }}"
+  when: lib32_vulkan_driver is defined
+
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    pkg_update_cache: true
+    packages:
+      - steam
+      - ttf-liberation
