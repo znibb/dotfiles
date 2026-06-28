@@ -23,6 +23,7 @@
     - { role: locale, tags: locale }
     - { role: nfs-delay-mount, tags: nfs-delay-mount } # for using NFS over wifi
     - { role: nix, tags: nix }
+    - { role: ratbagd, tags: ratbagd }
     - { role: signal, tags: signal }
     - { role: spotify, tags: spotify }
     - { role: steam, tags: steam }

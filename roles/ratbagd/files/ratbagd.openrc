@@ -1,0 +1,9 @@
+#!/usr/bin/openrc-run
+
+supervisor="supervise-daemon"
+command="/usr/bin/ratbagd"
+
+depend() {
+    after coldplug
+    need dbus
+}

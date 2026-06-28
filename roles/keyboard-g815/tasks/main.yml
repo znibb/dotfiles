@@ -1,9 +1,6 @@
-- ansible.builtin.include_role:
-    name: pkg
-    tasks_from: pacman
-  vars:
-    packages:
-      - libratbag # DBus daemon to configure gaming peripherals, contains `ratbagctl`
+- name: Install ratbagd
+  ansible.builtin.include_role:
+    name: ratbagd
 
 - name: Ensure relevant directories exists
   ansible.builtin.file:

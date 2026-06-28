@@ -1,0 +1,17 @@
+- ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    packages:
+      - libratbag # DBus daemon to configure gaming peripherals, contains `ratbagctl` and `ratbagd`
+
+- name: OpenRC-specific
+  ansible.builtin.include_tasks: "openrc.yml"
+  when: ansible_service_mgr == 'openrc'
+
+- name: Enable and start ratbagd service
+  become: true
+  ansible.builtin.service:
+    name: ratbagd
+    enabled: true
+    state: started

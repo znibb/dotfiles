@@ -1,0 +1,8 @@
+- name: Deploy ratbagd OpenRC init script
+  become: true
+  ansible.builtin.copy:
+    src: ratbagd.openrc
+    dest: /etc/init.d/ratbagd
+    mode: '0755'
+    owner: root
+    group: root
