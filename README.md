@@ -141,4 +141,4 @@ To make the shared directory auto mount on boot make the following addition to `
 
 The `virt_mic`sink is used to output sound to. The `combined_mic` sink merges the input from the regular mic with the audio from `virt_mic`. The `combined_mic` sink is then forwarded to an audio source called `CombinedMic` that can be selected instead of the raw microphone device to allow audio injection via `virt_mic`.
 
-The setpu also includes loopback of `virt_mic` to the default speaker.
+The setup also includes loopback of `virt_mic` to the default speaker.
