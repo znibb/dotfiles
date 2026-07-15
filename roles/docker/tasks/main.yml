@@ -9,3 +9,17 @@
 - name: Alpine
   ansible.builtin.include_tasks: "alpine.yml"
   when: ansible_distribution | lower == 'alpine'
+
+- name: Ensure /etc/docker exists
+  become: true
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    mode: '0755'
+
+- name: Deploy Docker daemon config
+  become: true
+  ansible.builtin.template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    mode: '0644'
