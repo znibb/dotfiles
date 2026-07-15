@@ -5,6 +5,7 @@
   roles:
     - { role: install-packages-system, tags: install-packages-system }
     - { role: guest-agent, tags: guest-agent }
+    - { role: docker, tags: docker }
     - { role: fastfetch, tags: fastfetch }
     - { role: git, tags: git }
     - { role: lazygit, tags: lazygit }

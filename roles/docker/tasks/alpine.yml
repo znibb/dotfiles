@@ -1,6 +1,6 @@
 - ansible.builtin.include_role:
     name: pkg
-    tasks_from: pacman
+    tasks_from: apk
   vars:
     packages:
       - docker
@@ -18,6 +18,6 @@
 - name: Start/enable docker service
   become: true
   ansible.builtin.service:
-    name: docker.socket
+    name: docker
     enabled: true
     state: started
