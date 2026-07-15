@@ -4,9 +4,8 @@
   vars:
     packages:
       - docker
-      - docker-compose
-      - docker-buildx
-      - fuse-overlayfs
+      - docker-cli-compose
+      - docker-cli-buildx
 
 - name: "Make sure user {{ ansible_facts.env.USER }} is a member of docker group"
   become: true
