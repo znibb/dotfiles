@@ -16,7 +16,6 @@
       - dysk # `df` but better
       - fzf # fuzzy-finder
       - git
-      - github-cli
       - jq # command line JSON processor
       - man
       - ncdu # ncurses `du` frontend
