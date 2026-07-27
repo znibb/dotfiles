@@ -20,5 +20,7 @@
     "update.showReleaseNotes": false,
     "claudeCode.preferredLocation": "panel",
     "window.confirmSaveUntitledWorkspace": false,
-    "markdown.extension.toc.omittedFromToc": {}
+    "markdown.extension.toc.omittedFromToc": {},
+    "terminal.integrated.tabStopWidth": 2,
+    "editor.tabSize": 2
 }
