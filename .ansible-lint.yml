@@ -1,3 +1,6 @@
 skip_list:
   - yaml[commas]
   - latest[git]
+
+exclude_paths:
+  - roles/*/files/**
