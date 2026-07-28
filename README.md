@@ -142,3 +142,19 @@ To make the shared directory auto mount on boot make the following addition to `
 The `virt_mic`sink is used to output sound to. The `combined_mic` sink merges the input from the regular mic with the audio from `virt_mic`. The `combined_mic` sink is then forwarded to an audio source called `CombinedMic` that can be selected instead of the raw microphone device to allow audio injection via `virt_mic`.
 
 The setup also includes loopback of `virt_mic` to the default speaker.
+
+### Firefox hardening
+Resources:
+* https://brainfucksec.github.io/firefox-hardening-guide
+* https://github.com/Renatoissance/firefox-hardening-guide
+
+Settings (about:config)
+|||
+|:-|:-|
+|privacy.resistFingerprinting|true|
+|privacy.firstparty.isolate|true|
+
+Recommended addons:
+* uBlock Origin: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+* CanvasBlocker: https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/
+* ClearURLs: https://addons.mozilla.org/en-US/firefox/addon/clearurls/

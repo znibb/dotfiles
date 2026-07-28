@@ -7,6 +7,7 @@
       - 7zip
       - discord
       - evtest # probing mouse/keyboard capabilities
+      - firefox
       - gparted # Partition management
       - libreoffice-still
       - nextcloud-client
