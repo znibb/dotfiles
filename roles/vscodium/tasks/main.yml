@@ -21,13 +21,14 @@
     - { src: "settings.json", dest: "{{ vscodium_config_dir }}/settings.json" }
 
 - name: Get list of installed VSCodium extensions
-  ansible.builtin.shell: codium --list-extensions
+  ansible.builtin.command: codium --list-extensions
   register: installed_extensions
   changed_when: false
 
 - name: Install missing VSCodium extensions
-  ansible.builtin.shell: codium --install-extension {{ item }}
+  ansible.builtin.command: codium --install-extension {{ item }}
   when: item not in installed_extensions.stdout_lines
+  changed_when: true
   loop:
     - ms-vscode.makefile-tools    # Makefiles
     - tamasfe.even-better-toml    # TOML
