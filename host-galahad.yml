@@ -3,40 +3,40 @@
   gather_facts: true
 
   roles:
-    - { role: package-handler-settings, tags: package-handler-settings }
-    - { role: install-packages-system, tags: install-packages-system }
+    - { role: package_handler_settings, tags: package_handler_settings }
+    - { role: install_packages_system, tags: install_packages_system }
     - { role: kde, tags: kde }
     - { role: sddm, tags: sddm }
-    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: install_packages_desktop, tags: install_packages_desktop }
     - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
     - { role: alacritty, tags: alacritty }
-    - { role: avr-dev, tags: avr-dev }
+    - { role: avr_dev, tags: avr_dev }
     - { role: bluetooth, tags: bluetooth }
-    - { role: claude-code, tags: claude-code }
+    - { role: claude_code, tags: claude_code }
     - { role: docker, tags: docker }
     - { role: fastfetch, tags: fastfetch }
-    - { role: fractal-scape, tags: fractal-scape } # headset drivers+udev
+    - { role: fractal_scape, tags: fractal_scape } # headset drivers+udev
     - { role: git, tags: git }
-    - { role: github-cli, tags: github-cli }
+    - { role: github_cli, tags: github_cli }
     - { role: keepass, tags: keepass }
-    - { role: keyboard-g815, tags: keyboard-g815 }
+    - { role: keyboard_g815, tags: keyboard_g815 }
     - { role: kicad, tags: kicad }
     - { role: lazygit, tags: lazygit }
     - { role: librewolf, tags: librewolf }
     - { role: locale, tags: locale }
-    - { role: mouse-g600, tags: mouse-g600 }
-    - { role: nfs-client, tags: nfs-client }
-    - { role: obs-studio, tags: obs-studio }
+    - { role: mouse_g600, tags: mouse_g600 }
+    - { role: nfs_client, tags: nfs_client }
+    - { role: obs_studio, tags: obs_studio }
     - { role: signal, tags: signal }
     - { role: soundboard, tags: soundboard }
     - { role: spotify, tags: spotify }
     - { role: steam, tags: steam }
-    - { role: streamdeck-streamcontroller, tags: streamdeck-streamcontroller }
+    - { role: streamdeck_streamcontroller, tags: streamdeck_streamcontroller }
     - { role: teams, tags: teams }
     - { role: tmux, tags: tmux }
     - { role: vim, tags: vim }
-    - { role: virt-manager, tags: virt-manager }
+    - { role: virt_manager, tags: virt_manager }
     - { role: vlc, tags: vlc }
     - { role: vscodium, tags: vscodium }
-    - { role: yt-dlp, tags: yt-dlp }
+    - { role: yt_dlp, tags: yt_dlp }
     - { role: zsh, tags: zsh }

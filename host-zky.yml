@@ -3,15 +3,15 @@
   gather_facts: true
 
   roles:
-    - { role: package-handler-settings, tags: package-handler-settings }
-    - { role: install-packages-system, tags: install-packages-system }
+    - { role: package_handler_settings, tags: package_handler_settings }
+    - { role: install_packages_system, tags: install_packages_system }
     - { role: kde, tags: kde }
     - { role: sddm, tags: sddm }
-    - { role: install-packages-desktop, tags: install-packages-desktop }
+    - { role: install_packages_desktop, tags: install_packages_desktop }
     - { role: ssh, tags: ssh } # put early to allow cloning of github repos with ssh config
     - { role: alacritty, tags: alacritty }
     - { role: bluetooth, tags: bluetooth }
-    - { role: claude-code, tags: claude-code }
+    - { role: claude_code, tags: claude_code }
     - { role: docker, tags: docker }
     - { role: fastfetch, tags: fastfetch }
     - { role: git, tags: git }
@@ -21,7 +21,7 @@
     - { role: lazygit, tags: lazygit }
     - { role: librewolf, tags: librewolf }
     - { role: locale, tags: locale }
-    - { role: nfs-delay-mount, tags: nfs-delay-mount } # for using NFS over wifi
+    - { role: nfs_delay_mount, tags: nfs_delay_mount } # for using NFS over wifi
     - { role: nix, tags: nix }
     - { role: ratbagd, tags: ratbagd }
     - { role: signal, tags: signal }
@@ -31,5 +31,5 @@
     - { role: vim, tags: vim }
     - { role: vlc, tags: vlc }
     - { role: vscodium, tags: vscodium }
-    - { role: yt-dlp, tags: yt-dlp }
+    - { role: yt_dlp, tags: yt_dlp }
     - { role: zsh, tags: zsh }
