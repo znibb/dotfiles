@@ -4,14 +4,14 @@
     tasks_from: pacman
   vars:
     pkg_update_cache: true
-    packages:
+    pkg_packages:
       - artix-archlinux-support
 
 - name: Ensure [extra] repo is enabled
   become: true
   ansible.builtin.blockinfile:
     path: /etc/pacman.conf
-    block: "{{ pacman_extra_block }}"
+    block: "{{ package_handler_settings_pacman_extra_block }}"
     marker: "# {mark} ARTIX EXTRA REPO"
     insertafter: EOF
 

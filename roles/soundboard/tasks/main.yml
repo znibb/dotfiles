@@ -1,4 +1,4 @@
-- name: "Ensure {{ user_scripts_dir }} exists"
+- name: "Ensure user scripts directory exists: {{ user_scripts_dir }}"
   ansible.builtin.file:
     path: "{{ user_scripts_dir }}"
     state: directory
@@ -13,13 +13,13 @@
     - play-to-virt-mic.sh
     - setup-virt-mic.sh
 
-- name: "Ensure {{ user_bin_dir }} exists"
+- name: "Ensure user bin directory exists: {{ user_bin_dir }}"
   ansible.builtin.file:
     path: "{{ ansible_facts.env.HOME }}/.local/bin"
     state: directory
     mode: '0755'
 
-- name: "Symlink play-to-virt-mic.sh to {{ user_bin_dir }}/soundboard"
+- name: "Symlink play-to-virt-mic.sh into user bin dir: {{ user_bin_dir ~ '/soundboard' }}"
   ansible.builtin.file:
     src: "{{ user_scripts_dir }}/play-to-virt-mic.sh"
     dest: "{{ user_bin_dir }}/soundboard"

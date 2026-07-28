@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       # Desktop
       - 7zip
       - discord

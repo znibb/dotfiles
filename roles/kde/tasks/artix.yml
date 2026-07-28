@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - power-profiles-daemon-openrc
       - pipewire-openrc
       - pipewire-pulse-openrc

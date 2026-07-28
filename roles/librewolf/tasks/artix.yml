@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - librewolf
 
 - name: Install AUR package(s)
@@ -11,5 +11,5 @@
     name: pkg
     tasks_from: aur
   vars:
-    packages:
+    pkg_packages:
       - librewolf-extension-keepassxc-browser

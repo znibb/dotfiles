@@ -4,7 +4,7 @@
     tasks_from: aur
   vars:
     pkg_update_cache: true
-    packages:
+    pkg_packages:
       - spotify
 
 - name: Ensure ~/.local/bin exists

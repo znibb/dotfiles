@@ -3,6 +3,6 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - vlc
       - vlc-plugins-all

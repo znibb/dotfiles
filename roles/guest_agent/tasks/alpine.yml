@@ -3,6 +3,6 @@
     name: pkg
     tasks_from: apk
   vars:
-    packages:
+    pkg_packages:
       - qemu-guest-agent
       - qemu-guest-agent-openrc

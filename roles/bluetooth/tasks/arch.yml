@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - bluez-utils # bluetoothctl
 
 - name: Start/enable bluetooth.service

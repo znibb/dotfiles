@@ -3,13 +3,13 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - docker
       - docker-compose
       - docker-buildx
       - fuse-overlayfs
 
-- name: "Make sure user {{ ansible_facts.env.USER }} is a member of docker group"
+- name: "Make sure user is a member of docker group: {{ ansible_facts.env.USER }}"
   become: true
   ansible.builtin.user:
     name: "{{ ansible_facts.user_id }}"

@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - libratbag # DBus daemon to configure gaming peripherals, contains `ratbagctl` and `ratbagd`
 
 - name: OpenRC-specific

@@ -3,5 +3,5 @@
     name: pkg
     tasks_from: aur
   vars:
-    packages:
+    pkg_packages:
       - wireguird # Wireguard GUI client

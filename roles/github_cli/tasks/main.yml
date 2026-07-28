@@ -4,7 +4,7 @@
 
 - name: Ensure config directory exists
   ansible.builtin.file:
-    path: "{{ githubcli_config_dir }}"
+    path: "{{ github_cli_config_dir }}"
     state: directory
     mode: '0751'
 
@@ -15,4 +15,4 @@
     state: link
     force: true
   loop:
-    - { src: "config.yml",  dest: "{{ githubcli_config_dir }}/config.yml"}
+    - { src: "config.yml",  dest: "{{ github_cli_config_dir }}/config.yml"}

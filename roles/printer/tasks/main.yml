@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - cups # Printing
       - ghostscript
       - print-manager # KDE compatibility

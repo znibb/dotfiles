@@ -4,13 +4,13 @@
     tasks_from: aur
   vars:
     pkg_update_cache: true
-    packages:
+    pkg_packages:
       - streamcontroller # Stream Deck control software
       - kdotool # Window detection dependancy
 
 - name: Ensure StreamController static config directory exists
   ansible.builtin.file:
-    path: "{{ static_config_dir }}"
+    path: "{{ streamdeck_streamcontroller_static_config_dir }}"
     state: directory
     mode: '0755'
 
@@ -18,9 +18,9 @@
   ansible.builtin.copy:
     content: |
       {
-        "data-path": "{{ streamcontroller_config_dir }}"
+        "data-path": "{{ streamdeck_streamcontroller_config_dir }}"
       }
-    dest: "{{ static_config_dir }}/settings.json"
+    dest: "{{ streamdeck_streamcontroller_static_config_dir }}/settings.json"
     mode: '0644'
 
 - name: Find cv2 config-3.py in StreamController Python environment
@@ -28,15 +28,15 @@
     paths: /usr/local/lib/streamcontroller
     patterns: "config-3.py"
     recurse: true
-  register: cv2_config_files
+  register: streamdeck_streamcontroller_cv2_config_files
 
 - name: Disable cv2 Qt plugin path overrides to prevent system Qt5 apps (e.g. VLC) from crashing
   ansible.builtin.replace:
     path: "{{ item.path }}"
     regexp: 'ci_and_not_headless = ci_build and not headless'
     replace: 'ci_and_not_headless = False  # Disabled: bundled Qt plugins incompatible with system Qt5'
-  loop: "{{ cv2_config_files.files }}"
+  loop: "{{ streamdeck_streamcontroller_cv2_config_files.files }}"
   loop_control:
     label: "{{ item.path }}"
-  when: cv2_config_files.files | length > 0
+  when: streamdeck_streamcontroller_cv2_config_files.files | length > 0
   become: true

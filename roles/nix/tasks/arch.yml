@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - nix
 
 - name: Install AUR package(s)
@@ -12,7 +12,7 @@
     tasks_from: aur
   vars:
     pkg_update_cache: true
-    packages:
+    pkg_packages:
       - zsh-nix-shell
 
 - name: Enable nix flakes feature

@@ -3,6 +3,6 @@
     name: pkg
     tasks_from: aur
   vars:
-    packages:
+    pkg_packages:
       - librewolf-bin
       - librewolf-extension-keepassxc-browser

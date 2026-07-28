@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: aur
   vars:
-    packages:
+    pkg_packages:
       - vscodium-bin
 
 - name: Ensure VSCodium config directory exists
@@ -22,12 +22,12 @@
 
 - name: Get list of installed VSCodium extensions
   ansible.builtin.command: codium --list-extensions
-  register: installed_extensions
+  register: vscodium_installed_extensions
   changed_when: false
 
 - name: Install missing VSCodium extensions
   ansible.builtin.command: codium --install-extension {{ item }}
-  when: item not in installed_extensions.stdout_lines
+  when: item not in vscodium_installed_extensions.stdout_lines
   changed_when: true
   loop:
     - ms-vscode.makefile-tools    # Makefiles

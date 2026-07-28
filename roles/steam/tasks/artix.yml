@@ -13,7 +13,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - "{{ lib32_vulkan_driver }}"
   when: lib32_vulkan_driver is defined
 
@@ -23,6 +23,6 @@
     tasks_from: pacman
   vars:
     pkg_update_cache: true
-    packages:
+    pkg_packages:
       - steam
       - ttf-liberation

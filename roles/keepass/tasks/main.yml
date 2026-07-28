@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - keepassxc
 
 - name: Install AUR package(s)
@@ -11,7 +11,7 @@
     name: pkg
     tasks_from: aur
   vars:
-    packages:
+    pkg_packages:
       - firefox-extension-keepassxc-browser # Keepass Firefox integration
 
 - name: Ensure KeePass config directory exists

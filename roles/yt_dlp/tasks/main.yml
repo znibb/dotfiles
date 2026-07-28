@@ -6,7 +6,7 @@
 # Config
 - name: Ensure yt-dlp config directory exists
   ansible.builtin.file:
-    path: "{{ ytdlp_config_dir }}"
+    path: "{{ yt_dlp_config_dir }}"
     state: directory
     mode: '0755'
 
@@ -16,5 +16,5 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - { src: "mp3.conf", dest: "{{ ytdlp_config_dir }}/mp3.conf" }
-    - { src: "mkv.conf", dest: "{{ ytdlp_config_dir }}/mkv.conf" }
+    - { src: "mp3.conf", dest: "{{ yt_dlp_config_dir }}/mp3.conf" }
+    - { src: "mkv.conf", dest: "{{ yt_dlp_config_dir }}/mkv.conf" }

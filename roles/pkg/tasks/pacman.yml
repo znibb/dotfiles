@@ -2,7 +2,7 @@
   become: true
   community.general.pacman:
     update_cache: "{{ pkg_update_cache | default(false) }}"
-    name: "{{ packages }}"
+    name: "{{ pkg_packages }}"
     state: present
   register: pkg_output
   changed_when: pkg_output.packages is defined and pkg_output.packages | length > 0

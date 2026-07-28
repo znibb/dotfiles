@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: aur
   vars:
-    packages:
+    pkg_packages:
       - fractal-udev
 
 - name: Setup udev rules for headset

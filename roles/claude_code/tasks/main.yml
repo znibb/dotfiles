@@ -2,7 +2,7 @@
   ansible.builtin.include_tasks: "arch.yml"
   when: ansible_distribution | lower == 'archlinux' or ansible_distribution | lower == 'artix linux'
 
-- name: "Ensure {{ claude_code_config_dir }} exists"
+- name: "Ensure config directory exists: {{ claude_code_config_dir }}"
   ansible.builtin.file:
     path: "{{ claude_code_config_dir }}"
     state: directory
@@ -11,20 +11,20 @@
 - name: Check ~/.claude status
   ansible.builtin.stat:
     path: "{{ ansible_facts.env.HOME }}/.claude"
-  register: claude_dot
+  register: claude_code_dot
 
 # If ~/.claude exists and isn't already a symlink
 - name: Move contents of ~/.claude into ~/.config/claude (migration)
   ansible.builtin.shell:
     cmd: mv {{ ansible_facts.env.HOME }}/.claude/* {{ claude_code_config_dir }}/ 2>/dev/null || true
   changed_when: true
-  when: claude_dot.stat.exists and not claude_dot.stat.islnk
+  when: claude_code_dot.stat.exists and not claude_code_dot.stat.islnk
 
 - name: Remove ~/.claude directory (migration)
   ansible.builtin.file:
     path: "{{ ansible_facts.env.HOME }}/.claude"
     state: absent
-  when: claude_dot.stat.exists and not claude_dot.stat.islnk
+  when: claude_code_dot.stat.exists and not claude_code_dot.stat.islnk
 # -----------------------------------------------
 
 - name: "Symlink ~/.claude to {{ claude_code_config_dir }}"
@@ -32,9 +32,9 @@
     src: "{{ claude_code_config_dir }}"
     dest: "{{ ansible_facts.env.HOME }}/.claude"
     state: link
-  when: not claude_dot.stat.exists or not claude_dot.stat.islnk
+  when: not claude_code_dot.stat.exists or not claude_code_dot.stat.islnk
 
-- name: "Ensure {{ claude_code_config_dir }}/skills exists"
+- name: "Ensure skills directory exists: {{ claude_code_config_dir ~ '/skills' }}"
   ansible.builtin.file:
     path: "{{ claude_code_config_dir }}/skills"
     state: directory
@@ -44,14 +44,14 @@
   ansible.builtin.find:
     paths: "{{ role_path }}/files/skills"
     file_type: file
-  register: skills_files
+  register: claude_code_skills_files
 
 - name: Ensure skill subdirectories exists
   ansible.builtin.file:
     path: "{{ claude_code_config_dir }}/skills/{{ item.path | basename | splitext | first }}"
     state: directory
     mode: '0755'
-  loop: "{{ skills_files.files }}"
+  loop: "{{ claude_code_skills_files.files }}"
   loop_control:
     label: "{{ item.path | basename }}"
 
@@ -60,7 +60,7 @@
     src: "{{ item.path }}"
     dest: "{{ claude_code_config_dir }}/skills/{{ item.path | basename | splitext | first }}/SKILL.md"
     state: link
-  loop: "{{ skills_files.files }}"
+  loop: "{{ claude_code_skills_files.files }}"
   loop_control:
     label: "{{ item.path | basename }}"
 

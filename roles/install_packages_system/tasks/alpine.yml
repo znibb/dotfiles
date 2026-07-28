@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: apk
   vars:
-    packages:
+    pkg_packages:
       - acl # getfacl, setfacl
       - bat
       - btop

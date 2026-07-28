@@ -1,2 +1,2 @@
-streamcontroller_config_dir: "{{ ansible_facts.env.HOME }}/.config/StreamController"
-static_config_dir: "{{ ansible_facts.env.HOME }}/.var/app/com.core447.StreamController/static"
+streamdeck_streamcontroller_config_dir: "{{ ansible_facts.env.HOME }}/.config/StreamController"
+streamdeck_streamcontroller_static_config_dir: "{{ ansible_facts.env.HOME }}/.var/app/com.core447.StreamController/static"

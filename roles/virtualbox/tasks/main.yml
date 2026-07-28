@@ -3,7 +3,7 @@
     name: pkg
     tasks_from: pacman
   vars:
-    packages:
+    pkg_packages:
       - virtualbox
       - virtualbox-host-modules-arch
       - virtualbox-guest-iso
@@ -31,6 +31,6 @@
 
 - name: Ensure VirtualBox default machine directory exists
   ansible.builtin.file:
-    path: "{{ default_machine_dir }}"
+    path: "{{ virtualbox_default_machine_dir }}"
     state: directory
     mode: '0755'

@@ -1,1 +1,1 @@
-githubcli_config_dir: "{{ ansible_facts.env.HOME }}/.config/gh"
+github_cli_config_dir: "{{ ansible_facts.env.HOME }}/.config/gh"
