@@ -8,7 +8,8 @@
     marker: "# {mark} MULTILIB REPO"
     insertafter: EOF
 
-- ansible.builtin.include_role:
+- name: Install pacman package(s)
+  ansible.builtin.include_role:
     name: pkg
     tasks_from: pacman
   vars:
@@ -16,7 +17,8 @@
       - "{{ lib32_vulkan_driver }}"
   when: lib32_vulkan_driver is defined
 
-- ansible.builtin.include_role:
+- name: Install pacman package(s)
+  ansible.builtin.include_role:
     name: pkg
     tasks_from: pacman
   vars:

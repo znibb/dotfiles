@@ -1,4 +1,5 @@
-- ansible.builtin.include_role:
+- name: Install AUR package(s)
+  ansible.builtin.include_role:
     name: pkg
     tasks_from: aur
   vars:
