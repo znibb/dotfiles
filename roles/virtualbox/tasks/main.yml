@@ -17,7 +17,7 @@
 - name: Add user to vboxusers group
   become: true
   ansible.builtin.user:
-    name: "{{ ansible_env.USER}}"
+    name: "{{ ansible_env.USER }}"
     append: true
     groups:
       - vboxusers
