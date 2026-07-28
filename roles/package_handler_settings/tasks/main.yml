@@ -7,11 +7,6 @@
   ansible.builtin.set_fact:
     package_handler_settings_is_artix: true
     # Deliberately overriding the built-in ansible_distribution fact:
-    # Artix's own fact value isn't what the rest of this repo's roles
-    # check for, and 24+ role files key off this exact variable name
-    # via `when: ansible_distribution | lower == ...`. Renaming it per
-    # var-naming[no-role-prefix] would silently break distro detection
-    # on Artix hosts everywhere else in the repo.
     ansible_distribution: "Artix Linux"  # noqa: var-naming[no-role-prefix]
   when: package_handler_settings_artix_release.stat.exists
 
