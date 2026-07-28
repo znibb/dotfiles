@@ -7,7 +7,7 @@
     src: "{{ role_path }}/files/znibb.png"
     dest: "{{ ansible_facts.env.HOME }}/.face.icon"
     state: link
-    force: yes
+    force: true
 
 - name: Ensure SDDM can access ~/
   ansible.posix.acl:

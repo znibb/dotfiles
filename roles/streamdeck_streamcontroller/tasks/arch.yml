@@ -18,7 +18,7 @@
   ansible.builtin.copy:
     content: |
       {
-        "data-path": "{{ StreamController_config_dir }}"
+        "data-path": "{{ streamcontroller_config_dir }}"
       }
     dest: "{{ static_config_dir }}/settings.json"
     mode: '0644'

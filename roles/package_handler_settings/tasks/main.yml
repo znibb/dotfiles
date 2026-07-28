@@ -1,10 +1,10 @@
 - name: Check for Artix-specific release file
-  stat:
+  ansible.builtin.stat:
     path: /etc/artix-release
   register: artix_release
 
 - name: Set fact if system is Artix
-  set_fact:
+  ansible.builtin.set_fact:
     is_artix: true
     ansible_distribution: "Artix Linux"
   when: artix_release.stat.exists

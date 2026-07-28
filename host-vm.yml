@@ -18,4 +18,3 @@
     - { role: vim, tags: vim }
     - { role: vscodium, tags: vscodium }
     - { role: zsh, tags: zsh }
-    

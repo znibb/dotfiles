@@ -54,4 +54,4 @@
     dest: "{{ zsh_config_dir }}/starship-theme"
     state: link
     force: true
-  when: theme_file.stat.islnk is not defined or theme_file.stat.islnk == False
+  when: theme_file.stat.islnk is not defined or not theme_file.stat.islnk
