@@ -17,6 +17,7 @@
 - name: Move contents of ~/.claude into ~/.config/claude (migration)
   ansible.builtin.shell:
     cmd: mv {{ ansible_facts.env.HOME }}/.claude/* {{ claude_code_config_dir }}/ 2>/dev/null || true
+  changed_when: true
   when: claude_dot.stat.exists and not claude_dot.stat.islnk
 
 - name: Remove ~/.claude directory (migration)
