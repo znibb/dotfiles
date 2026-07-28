@@ -704,6 +704,10 @@ pcbnew.EditorControl.viaSizeDec	Shift+S
 pcbnew.EditorControl.viaSizeInc	S	
 pcbnew.EditorControl.zoneDuplicate		
 pcbnew.EditorControl.zoneMerge		
+pcbnew.EditorControl.zonePriorityLower		
+pcbnew.EditorControl.zonePriorityMoveToBottom		
+pcbnew.EditorControl.zonePriorityMoveToTop		
+pcbnew.EditorControl.zonePriorityRaise		
 pcbnew.FpWizard.exportFpToEditor		
 pcbnew.FpWizard.resetWizardPrms		
 pcbnew.FpWizard.selectNextWizardPage		
@@ -728,6 +732,7 @@ pcbnew.GlobalEdit.editTeardrops
 pcbnew.GlobalEdit.editTextAndGraphics		
 pcbnew.GlobalEdit.editTracksAndVias		
 pcbnew.GlobalEdit.globalDeletions		
+pcbnew.GlobalEdit.migrate3DModels		
 pcbnew.GlobalEdit.removeUnusedPads		
 pcbnew.GlobalEdit.swapLayers		
 pcbnew.GlobalEdit.updateFootprint		
