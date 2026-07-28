@@ -66,11 +66,13 @@
     creates: "/usr/bin/{{ aur_helper }}"
   when: not bin_file.stat.exists
 
+# Cleanup must happen now, before the pkg role runs next; deferring to a
+# handler would leave the build dir behind until end of play.
 - name: Remove build files for yay
   ansible.builtin.file:
     path: "{{ aur_helper_dir }}"
     state: absent
-  when: source_cloned is changed
+  when: source_cloned is changed  # noqa: no-handler
 
 - name: Install AUR package(s)
   ansible.builtin.include_role:

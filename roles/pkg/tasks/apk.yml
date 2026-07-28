@@ -6,7 +6,9 @@
     state: present
   register: pkg_output
 
+# Debug output must run immediately after this specific install, not
+# deferred/deduplicated at end of play with every other pkg role call.
 - name: Show installed packages
   ansible.builtin.debug:
     msg: "{{ pkg_output.packages }}"
-  when: pkg_output.changed
+  when: pkg_output.changed  # noqa: no-handler

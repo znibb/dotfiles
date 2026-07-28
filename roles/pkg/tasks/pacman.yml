@@ -7,7 +7,9 @@
   register: pkg_output
   changed_when: pkg_output.packages is defined and pkg_output.packages | length > 0
 
+# Debug output must run immediately after this specific install, not
+# deferred/deduplicated at end of play with every other pkg role call.
 - name: Show installed packages
   ansible.builtin.debug:
     msg: "{{ pkg_output.packages }}"
-  when: pkg_output.changed
+  when: pkg_output.changed  # noqa: no-handler
