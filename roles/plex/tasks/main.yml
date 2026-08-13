@@ -1,7 +1,0 @@
-- name: Install AUR package(s)
-  ansible.builtin.include_role:
-    name: pkg
-    tasks_from: aur
-  vars:
-    pkg_packages:
-      - plex-desktop
