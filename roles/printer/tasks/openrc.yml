@@ -1,0 +1,7 @@
+- name: Install pacman package(s)
+  ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    pkg_packages:
+      - cups-openrc

@@ -9,9 +9,13 @@
       - print-manager # KDE compatibility
       - system-config-printer # CUPS printer configuration
 
-- name: Enable CUPS socket
+- name: OpenRC-specific
+  ansible.builtin.include_tasks: "openrc.yml"
+  when: ansible_service_mgr == 'openrc'
+
+- name: Enable CUPS service
   become: true
-  ansible.builtin.systemd_service:
-    name: docker.socket
-    scope: system
+  ansible.builtin.service:
+    name: cupsd
     enabled: true
+    state: started
