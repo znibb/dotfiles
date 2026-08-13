@@ -42,3 +42,8 @@ post_processing = true
 persist = false
 mouse = { enabled = true}
 action = "Copy"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
