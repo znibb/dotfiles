@@ -11,11 +11,6 @@ export LC_TIME=sv_SE.UTF-8
 # Set EDITOR
 EDITOR=vim
 
-# Default DISPLAY for shells that don't inherit it (e.g. tmux panes
-# started before X, or created before tmux's update-environment ran)
-: ${DISPLAY:=:1}
-export DISPLAY
-
 # Add ~/.local/bin to PATH
 typeset -U path PATH
 path=(~/.local/bin $path)

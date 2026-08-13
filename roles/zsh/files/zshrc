@@ -65,3 +65,8 @@ bindkey "^[[4~" end-of-line         # inside tmux
 # enabled on exit, which causes clicks to print raw escape sequences)
 _reset_mouse() { printf '\e[?1000l\e[?1002l\e[?1003l\e[?1006l' }
 precmd_functions+=(_reset_mouse)
+
+# Default DISPLAY for shells that don't inherit it (e.g. tmux panes
+# started before X, or created before tmux's update-environment ran)
+: ${DISPLAY:=:1}
+export DISPLAY
