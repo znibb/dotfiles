@@ -10,6 +10,10 @@
       - virt-manager
       - qemu-hw-usb-host # Needed for USB passthrough to guest
 
+- name: OpenRC-specific
+  ansible.builtin.include_tasks: "openrc.yml"
+  when: ansible_service_mgr == 'openrc'
+
 - name: Add user to libvirt group
   become: true
   ansible.builtin.user:
@@ -21,8 +25,7 @@
 
 - name: Start/enable libvirtd service
   become: true
-  ansible.builtin.systemd_service:
-    name: libvirtd.socket
-    scope: system
+  ansible.builtin.service:
+    name: libvirtd
     enabled: true
     state: started
