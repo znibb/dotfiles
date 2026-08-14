@@ -24,9 +24,7 @@
     - { role: librewolf, tags: librewolf }
     - { role: locale, tags: locale }
     - { role: nix, tags: nix }
-    - { role: printer, tags: printer }
     - { role: signal, tags: signal }
-    - { role: steam, tags: steam }
     - { role: teams, tags: teams }
     - { role: tmux, tags: tmux }
     - { role: vim, tags: vim }
