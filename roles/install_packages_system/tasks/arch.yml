@@ -22,6 +22,7 @@
       - ncdu # ncurses `du` frontend
       - net-tools # netstat etc
       - nfs-utils
+      - nmap # ncat etc
       - openssh # ssh-keygen etc
       - powertop # power monitoring
       - python-pip
