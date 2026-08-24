@@ -280,6 +280,7 @@ eeschema.EditorControl.selectOnPCB
 eeschema.EditorControl.setDNP		
 eeschema.EditorControl.setExcludeFromBOM		
 eeschema.EditorControl.setExcludeFromBoard		
+eeschema.EditorControl.setExcludeFromPosFiles		
 eeschema.EditorControl.setExcludeFromSimulation		
 eeschema.EditorControl.showDirectiveLabels		
 eeschema.EditorControl.showERCErrors		
@@ -811,6 +812,8 @@ pcbnew.InteractiveEdit.subtractPolygons
 pcbnew.InteractiveEdit.swap		
 pcbnew.InteractiveEdit.swapGateNets		
 pcbnew.InteractiveEdit.swapPadNets		
+pcbnew.InteractiveEdit.toggleExcludeFromBOM		
+pcbnew.InteractiveEdit.toggleExcludeFromPosFiles		
 pcbnew.InteractiveMove.copyWithReference		
 pcbnew.InteractiveMove.move	M	
 pcbnew.InteractiveMove.moveIndividually	Ctrl+M	
