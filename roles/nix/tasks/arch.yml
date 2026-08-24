@@ -15,17 +15,3 @@
     pkg_packages:
       - zsh-nix-shell
 
-- name: Enable nix flakes feature
-  become: true
-  ansible.builtin.blockinfile:
-    path: /etc/nix/nix.conf
-    block: experimental-features = nix-command flakes
-    marker: "# {mark} ENABLE FLAKES"
-    insertafter: EOF
-
-- name: Start nix-daemon
-  become: true
-  ansible.builtin.service:
-    name: nix-daemon
-    state: started
-    enabled: true

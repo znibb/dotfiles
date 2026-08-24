@@ -4,3 +4,6 @@
 
 # Source ~/.profile if available
 [ -f ~/.profile ] && source ~/.profile
+
+# Set up Nix per-user profile (PATH, NIX_PROFILES, NIX_SSL_CERT_FILE)
+[ -f /etc/profile.d/nix-daemon.sh ] && source /etc/profile.d/nix-daemon.sh

@@ -1,3 +1,42 @@
 - name: Arch
   ansible.builtin.include_tasks: "arch.yml"
   when: ansible_distribution | lower == 'archlinux'
+
+- name: Initialize nix store
+  become: true
+  ansible.builtin.command: nix-store --init
+  args:
+    creates: /nix/store
+
+- name: List configured nix channels
+  ansible.builtin.command: nix-channel --list
+  register: nix_channels_list
+  changed_when: false
+
+- name: Add nixpkgs channel
+  ansible.builtin.command: nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+  when: "'nixpkgs https://nixos.org/channels/nixpkgs-unstable' not in nix_channels_list.stdout"
+  register: nix_channel_added
+
+- name: Update nix channels
+  ansible.builtin.command: nix-channel --update
+  when: nix_channel_added.changed
+
+- name: OpenRC-specific
+  ansible.builtin.include_tasks: "openrc.yml"
+  when: ansible_service_mgr == 'openrc'
+
+- name: Enable nix flakes feature
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/nix/nix.conf
+    block: experimental-features = nix-command flakes
+    marker: "# {mark} ENABLE FLAKES"
+    insertafter: EOF
+
+- name: Start/enable nix-daemon
+  become: true
+  ansible.builtin.service:
+    name: nix-daemon
+    state: started
+    enabled: true

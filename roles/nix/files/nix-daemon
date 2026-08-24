@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+
+name="nix-daemon"
+description="Nix package manager daemon"
+command="/usr/bin/nix-daemon"
+command_args="--daemon"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/var/log/${RC_SVCNAME}.log"
+error_log="/var/log/${RC_SVCNAME}.log"
+
+depend() {
+	need localmount
+	after bootmisc
+}

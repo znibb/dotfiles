@@ -1,0 +1,8 @@
+- name: Symlink nix-daemon OpenRC init script
+  become: true
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/nix-daemon"
+    dest: /etc/init.d/nix-daemon
+    state: link
+    owner: root
+    group: root
