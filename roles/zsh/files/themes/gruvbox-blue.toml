@@ -26,6 +26,7 @@ $kotlin\
 $haskell\
 $python\
 [](fg:color_bg4 bg:color_bg5)\
+$direnv\
 $docker_context\
 $conda\
 [](fg:color_bg5 bg:color_bg6)\
@@ -140,6 +141,18 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_bg4)]($style)'
 [conda]
 style = "bg:color_bg5"
 format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg5)]($style)'
+
+[direnv]
+disabled = false
+detect_files = ['.envrc']
+symbol = 'd/e:'
+style = 'bg:color_bg5'
+allowed_msg = 'a'
+not_allowed_msg = '!a'
+denied_msg = 'd'
+loaded_msg = 'l'
+unloaded_msg = '!l'
+format = '[$symbol$loaded/$allowed]($style)'
 
 [docker_context]
 symbol = ""

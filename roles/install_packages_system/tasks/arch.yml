@@ -12,6 +12,7 @@
       - ansible-lint # ansible syntax checking
       - bat
       - btop
+      - direnv
       - dnsutils # dig/nslookup
       - dosfstools # mkfs.vfat etc
       - dysk # `df` but better

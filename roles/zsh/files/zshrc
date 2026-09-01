@@ -31,6 +31,9 @@ case ${TERM} in
 esac
 eval "$(starship init zsh)"
 
+# Activate direnv, if installed
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
 # Define a no-op widget
 noop() {}
 zle -N noop
