@@ -19,3 +19,11 @@
     name: cupsd
     enabled: true
     state: started
+
+- name: "Symlink scripts to {{ user_scripts_dir }}"
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ user_scripts_dir }}/{{ item }}"
+    state: link
+  loop:
+    - printer-setup.sh
