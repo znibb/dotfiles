@@ -19,6 +19,7 @@
   register: nix_channel_added
 
 - name: Update nix channels
+  become: true
   ansible.builtin.command: nix-channel --update
   when: nix_channel_added.changed
 
