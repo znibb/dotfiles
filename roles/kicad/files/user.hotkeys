@@ -323,7 +323,7 @@ eeschema.InteractiveDrawing.drawBezier
 eeschema.InteractiveDrawing.drawCircle		
 eeschema.InteractiveDrawing.drawRectangle		
 eeschema.InteractiveDrawing.drawRuleArea		
-eeschema.InteractiveDrawing.drawSheet	S	
+eeschema.InteractiveDrawing.drawSheet		
 eeschema.InteractiveDrawing.drawSheetFromDesignBlock		
 eeschema.InteractiveDrawing.drawSheetFromFile		
 eeschema.InteractiveDrawing.drawTable		
@@ -347,7 +347,7 @@ eeschema.InteractiveDrawing.placeSheetPin
 eeschema.InteractiveDrawing.placeSymbol	A	
 eeschema.InteractiveDrawing.saveToLinkedDesignBlock		
 eeschema.InteractiveDrawing.syncAllSheetsPins		
-eeschema.InteractiveDrawing.syncSheetPins		
+eeschema.InteractiveDrawing.syncSheetPins	S	
 eeschema.InteractiveDrawingLineWireBus.drawBuses	B	
 eeschema.InteractiveDrawingLineWireBus.drawLines	I	
 eeschema.InteractiveDrawingLineWireBus.drawWires	W	
