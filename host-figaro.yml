@@ -26,6 +26,7 @@
     - { role: nix, tags: nix }
     - { role: printer, tags: printer }
     - { role: signal, tags: signal }
+    - { role: spotify, tags: spotify }
     - { role: teams, tags: teams }
     - { role: tmux, tags: tmux }
     - { role: vim, tags: vim }
