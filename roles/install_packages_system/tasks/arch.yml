@@ -40,11 +40,21 @@
       - zip
       - unzip
 
-- name: "Allow user to run passwordless pacman/yay: {{ ansible_facts.env.USER }}"
+- name: "Allow user to run passwordless sudo pacman: {{ ansible_facts.env.USER }}"
   become: true
   ansible.builtin.copy:
     dest: "/etc/sudoers.d/{{ ansible_facts.env.USER }}-pacman-yay"
-    content: "{{ ansible_facts.env.USER }} ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay"
+    content: "{{ ansible_facts.env.USER }} ALL=(ALL) NOPASSWD: /bin/pacman"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: '/usr/sbin/visudo -cf %s'
+  
+- name: "Allow user to run passwordless sudo dmesg: {{ ansible_facts.env.USER }}"
+  become: true
+  ansible.builtin.copy:
+    dest: "/etc/sudoers.d/{{ ansible_facts.env.USER }}-dmesg"
+    content: "{{ ansible_facts.env.USER }} ALL=(ALL) NOPASSWD: /bin/dmesg"
     owner: root
     group: root
     mode: '0440'
