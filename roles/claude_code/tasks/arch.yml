@@ -5,3 +5,4 @@
   vars:
     pkg_packages:
       - claude-code
+      - claude-desktop
