@@ -23,20 +23,27 @@
     dest: "{{ streamdeck_streamcontroller_static_config_dir }}/settings.json"
     mode: '0644'
 
-- name: Find cv2 config-3.py in StreamController Python environment
-  ansible.builtin.find:
-    paths: /usr/local/lib/streamcontroller
-    patterns: "config-3.py"
-    recurse: true
-  register: streamdeck_streamcontroller_cv2_config_files
+- name: Ensure user scripts and autostart directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "{{ user_scripts_dir }}"
+    - "{{ ansible_facts.env.HOME }}/.config/autostart"
 
-- name: Disable cv2 Qt plugin path overrides to prevent system Qt5 apps (e.g. VLC) from crashing
-  ansible.builtin.replace:
-    path: "{{ item.path }}"
-    regexp: 'ci_and_not_headless = ci_build and not headless'
-    replace: 'ci_and_not_headless = False  # Disabled: bundled Qt plugins incompatible with system Qt5'
-  loop: "{{ streamdeck_streamcontroller_cv2_config_files.files }}"
-  loop_control:
-    label: "{{ item.path }}"
-  when: streamdeck_streamcontroller_cv2_config_files.files | length > 0
-  become: true
+- name: Symlink StreamController wrapper script
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/streamcontroller.sh"
+    dest: "{{ user_scripts_dir }}/streamcontroller.sh"
+    state: link
+
+- name: Create StreamController autostart entry
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/autostart/StreamController.desktop"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=StreamController
+      Exec={{ user_scripts_dir }}/streamcontroller.sh -b
+    mode: '0644'
