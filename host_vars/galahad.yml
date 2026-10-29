@@ -1,1 +1,2 @@
-lib32_vulkan_driver: lib32-vulkan-intel
+lib32_vulkan_driver: lib32-vulkan-radeon
+vulkan_driver: vulkan-radeon

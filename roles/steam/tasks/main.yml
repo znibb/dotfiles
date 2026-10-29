@@ -1,7 +1,53 @@
+- name: Detect Artix (Ansible reports it as Archlinux)
+  ansible.builtin.stat:
+    path: /etc/artix-release
+  register: steam_artix_release
+
 - name: Artix
   ansible.builtin.include_tasks: artix.yml
-  when: ansible_distribution | lower == 'artix linux'
+  when: steam_artix_release.stat.exists
 
 - name: Arch
   ansible.builtin.include_tasks: arch.yml
-  when: ansible_distribution | lower == 'archlinux'
+  when: not steam_artix_release.stat.exists and ansible_distribution | lower == 'archlinux'
+
+- name: Install vulkan package(s)
+  ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    pkg_packages:
+      - "{{ lib32_vulkan_driver }}"
+      - "{{ vulkan_driver }}"
+  when: lib32_vulkan_driver is defined
+
+- name: Install pacman package(s)
+  ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    pkg_update_cache: true
+    pkg_packages:
+      - steam
+      - ttf-liberation
+      - vulkan-tools
+
+- name: Raise open-file limit for gaming
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/security/limits.d/99-gaming.conf
+    content: |
+      {{ ansible_facts.env.USER }} soft nofile 524288
+      {{ ansible_facts.env.USER }} hard nofile 524288
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Raise vm.max_map_count
+  become: true
+  ansible.posix.sysctl:
+    name: vm.max_map_count
+    value: "2147483642"
+    sysctl_file: /etc/sysctl.d/99-gaming.conf
+    state: present
+    reload: true
