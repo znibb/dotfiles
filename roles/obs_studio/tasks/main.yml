@@ -13,4 +13,4 @@
     tasks_from: aur
   vars:
     pkg_packages:
-      - obs-pipewire-audio-capture
+      - obs-pipewire-audio-capture-bin
