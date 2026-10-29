@@ -1,3 +1,11 @@
+- name: Install pacman package(s)
+  ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    pkg_packages:
+      - mpv
+
 - name: "Ensure user scripts directory exists: {{ user_scripts_dir }}"
   ansible.builtin.file:
     path: "{{ user_scripts_dir }}"

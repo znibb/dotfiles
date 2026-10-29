@@ -20,23 +20,10 @@ if ! pactl list sinks short | grep -q "$SINK_NAME"; then
     exit 1
 fi
 
-if command -v mpv &>/dev/null; then
-    mpv --no-video --audio-device="pulse/${SINK_NAME}" -- "$FILE" >/dev/null
-elif command -v ffplay &>/dev/null; then
-    ffplay -nodisp -autoexit \
-        -af "aresample=async=1" \
-        "$FILE" >/dev/null &
-    FFPLAY_PID=$!
-    # Move the stream to the virtual sink once it appears
-    sleep 0.5
-    SINK_INPUT=$(pactl list sink-inputs short | awk '{print $1}' | tail -1)
-    if [[ -n "$SINK_INPUT" ]]; then
-        pactl move-sink-input "$SINK_INPUT" "$SINK_NAME"
-    fi
-    wait "$FFPLAY_PID"
-else
-    echo "Error: neither mpv nor ffplay found. Install one:"
+if ! command -v mpv &>/dev/null; then
+    echo "Error: mpv not found. Install it:"
     echo "  sudo pacman -S mpv"
-    echo "  sudo pacman -S ffmpeg"
     exit 1
 fi
+
+mpv --no-video --audio-device="pulse/${SINK_NAME}" -- "$FILE" >/dev/null
