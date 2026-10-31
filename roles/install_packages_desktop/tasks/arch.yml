@@ -23,3 +23,11 @@
       - zathura-pdf-poppler # PDF-plugin for Zathura
       - wev # debugging input events on wayland
       - wine
+
+- name: Install host-specific pacman package(s)
+  ansible.builtin.include_role:
+    name: pkg
+    tasks_from: pacman
+  vars:
+    pkg_packages: "{{ install_packages_desktop_host_packages }}"
+  when: install_packages_desktop_host_packages | default([]) | length > 0
