@@ -1,1 +1,2 @@
 lib32_vulkan_driver: lib32-vulkan-intel
+vulkan_driver: vulkan-intel
