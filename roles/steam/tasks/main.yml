@@ -32,6 +32,15 @@
       - ttf-liberation
       - vulkan-tools
 
+- name: Ensure limits.d directory exists
+  become: true
+  ansible.builtin.file:
+    path: /etc/security/limits.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
 - name: Raise open-file limit for gaming
   become: true
   ansible.builtin.copy:
