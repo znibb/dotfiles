@@ -1,1 +1,3 @@
 git_contact_email: "pontus.berlin@airolit.com"
+install_packages_desktop_host_packages:
+  - rocm-smi-lib # AMD GPU monitoring in btop
