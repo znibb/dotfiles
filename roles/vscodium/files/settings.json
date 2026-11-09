@@ -7,6 +7,7 @@
     "git.confirmSync": false,
     "git.autofetch": true,
     "git.suggestSmartCommit": false,
+    "git.repositoryScanIgnoredFolders": ["node_modules", ".history"],
     "makefile.configureOnOpen": true,
     "explorer.confirmDragAndDrop": false,
     "remote.SSH.remotePlatform": {
